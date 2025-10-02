@@ -25,9 +25,9 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
@@ -49,7 +49,7 @@
         }
 
         .lang-btn {
-            background: white;
+            background: #ffffff;
             border: 2px solid #d4af37;
             padding: 12px 25px;
             border-radius: 8px;
@@ -66,7 +66,7 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
             background: #d4af37;
-            color: white;
+            color: #ffffff;
         }
 
         .lang-btn.active {
@@ -78,75 +78,77 @@
         .header {
             background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
             color: #d4af37;
-            padding: 80px 30px 40px;
+            padding: 100px 30px 60px;
             text-align: center;
             position: relative;
         }
 
         .logo-container {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .logo-container img {
-            max-width: 250px;
+            max-width: 800px;
+            width: 90%;
             height: auto;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
         }
 
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #d4af37;
         }
 
         .header p {
-            font-size: 1.1em;
+            font-size: 1.4em;
             opacity: 0.95;
             color: #f0e68c;
         }
 
         .content {
-            padding: 40px 30px;
+            padding: 50px 40px;
         }
 
         .apps-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .apps-section h2 {
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 1.8em;
+            color: #1a4d2e;
+            margin-bottom: 35px;
+            font-size: 2.2em;
             text-align: center;
         }
 
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
             margin-bottom: 40px;
         }
 
         .app-card {
-            background: #f8f9fa;
+            background: #f5f5f0;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid #e0e0e0;
+            border: 2px solid #d4af37;
         }
 
         .app-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(26, 77, 46, 0.2);
         }
 
         .app-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
             border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(26, 77, 46, 0.3);
         }
 
         .app-icon img {
@@ -156,25 +158,25 @@
         }
 
         .app-name {
-            font-size: 1.3em;
+            font-size: 1.5em;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
+            color: #1a4d2e;
+            margin-bottom: 10px;
         }
 
         .app-status {
-            font-size: 0.9em;
-            color: #666;
+            font-size: 1em;
+            color: #4a7c59;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .status-badge {
             display: inline-block;
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: #d4af37;
             animation: pulse 2s infinite;
@@ -186,37 +188,39 @@
         }
 
         .form-section {
-            background: #f8f9fa;
+            background: #f5f5f0;
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
+            border: 2px solid #d4af37;
         }
 
         .form-section h3 {
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 1.5em;
+            color: #1a4d2e;
+            margin-bottom: 30px;
+            font-size: 1.8em;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         label {
             display: block;
-            color: #555;
+            color: #1a4d2e;
             font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.95em;
+            margin-bottom: 10px;
+            font-size: 1em;
         }
 
         input, select {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
+            padding: 14px 16px;
+            border: 2px solid #d4af37;
             border-radius: 8px;
             font-size: 1em;
             transition: border-color 0.3s;
-            background: white;
+            background: #ffffff;
+            color: #1a4d2e;
         }
 
         [dir="rtl"] input,
@@ -227,6 +231,7 @@
         input:focus, select:focus {
             outline: none;
             border-color: #1a4d2e;
+            box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.1);
         }
 
         .custom-select {
@@ -252,7 +257,7 @@
             transform: translateY(-50%);
             pointer-events: none;
             color: #1a4d2e;
-            font-size: 0.8em;
+            font-size: 0.9em;
         }
 
         [dir="rtl"] .custom-select::after {
@@ -262,20 +267,20 @@
 
         .submit-btn {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: linear-gradient(135deg, #1a4d2e 0%, #d4af37 100%);
-            color: white;
+            color: #ffffff;
             border: none;
             border-radius: 8px;
-            font-size: 1.1em;
-            font-weight: 600;
+            font-size: 1.2em;
+            font-weight: 700;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(26, 77, 46, 0.4);
+            box-shadow: 0 8px 25px rgba(26, 77, 46, 0.4);
         }
 
         .submit-btn:active {
@@ -290,12 +295,12 @@
 
         .success-message {
             display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
+            background: #e8f5e9;
+            color: #1a4d2e;
+            padding: 18px;
             border-radius: 8px;
             margin-top: 20px;
-            border: 1px solid #4caf50;
+            border: 2px solid #4caf50;
             animation: slideIn 0.3s ease-out;
         }
 
@@ -312,14 +317,15 @@
 
         .footer {
             text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9em;
+            padding: 30px;
+            color: #4a7c59;
+            font-size: 1em;
         }
 
         .footer a {
             color: #d4af37;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .footer a:hover {
@@ -329,9 +335,9 @@
         .info-box {
             background: #e8f5e9;
             border-left: 4px solid #1a4d2e;
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 4px;
+            padding: 18px;
+            margin-bottom: 35px;
+            border-radius: 8px;
         }
 
         [dir="rtl"] .info-box {
@@ -342,16 +348,29 @@
         .info-box p {
             color: #1a4d2e;
             margin: 0;
-            font-size: 0.95em;
+            font-size: 1.05em;
         }
 
         .hidden {
             display: none;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .header {
+                padding: 80px 20px 50px;
+            }
+
             .header h1 {
-                font-size: 2em;
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .logo-container img {
+                max-width: 400px;
+                width: 85%;
             }
             
             .apps-grid {
@@ -359,11 +378,11 @@
             }
 
             .content {
-                padding: 30px 20px;
+                padding: 35px 25px;
             }
 
             .form-section {
-                padding: 20px;
+                padding: 25px;
             }
 
             .lang-switcher {
@@ -381,9 +400,19 @@
                 padding: 10px 20px;
                 font-size: 1em;
             }
+        }
 
+        @media (max-width: 480px) {
             .logo-container img {
-                max-width: 180px;
+                max-width: 280px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .apps-section h2 {
+                font-size: 1.7em;
             }
         }
     </style>
@@ -418,7 +447,7 @@
                 <div class="apps-grid">
                     <div class="app-card">
                         <div class="app-icon">
-                            <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%23000%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23FF8C00%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%23000%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+                            <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23d4af37%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
                         </div>
                         <div class="app-name">Alif Play</div>
                         <div class="app-status">
@@ -429,7 +458,7 @@
 
                     <div class="app-card">
                         <div class="app-icon">
-                            <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23000%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
+                            <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%231a4d2e%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
                         </div>
                         <div class="app-name">Hajj & Umrah Guide</div>
                         <div class="app-status">
@@ -483,7 +512,7 @@
                         <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
                     </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🎉</button>
+                    <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🚀</button>
 
                     <div class="success-message" id="successMessage">
                         <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
@@ -515,7 +544,7 @@
                 labelEmail: "Email Address *",
                 labelPlatform: "Device Platform *",
                 labelDevice: "Device Model (Optional)",
-                submitBtn: "Join Beta Testing 🎉",
+                submitBtn: "Join Beta Testing 🚀",
                 successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
                 footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
                 footerContact: "Questions? Contact us at ",
@@ -538,7 +567,7 @@
                 labelEmail: "عنوان البريد الإلكتروني *",
                 labelPlatform: "منصة الجهاز *",
                 labelDevice: "موديل الجهاز (اختياري)",
-                submitBtn: "انضم للاختبار التجريبي 🎉",
+                submitBtn: "انضم للاختبار التجريبي 🚀",
                 successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
                 footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
                 footerContact: "أسئلة؟ اتصل بنا على ",

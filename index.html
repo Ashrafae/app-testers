@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps">
+    <title>Beta Testing - Join Our Apps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .apps-section {
+            margin-bottom: 40px;
+        }
+
+        .apps-section h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .app-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #e0e0e0;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .app-status {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffc107;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .form-section h3 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            background: white;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .custom-select select {
+            appearance: none;
+            cursor: pointer;
+            padding-right: 40px;
+        }
+
+        .custom-select::after {
+            content: "▼";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #667eea;
+            font-size: 0.8em;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .info-box p {
+            color: #0d47a1;
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Beta Testing Program</h1>
+            <p>Join us in testing our exciting new apps!</p>
+        </div>
+
+        <div class="content">
+            <div class="info-box">
+                <p><strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
+            </div>
+
+            <div class="apps-section">
+                <h2>Available Apps for Testing</h2>
+                
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%23000%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23FF8C00%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%23000%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="app-name">Alif Play</div>
+                        <div class="app-status">
+                            <span class="status-badge"></span>
+                            iOS 2.0 - Pending Release
+                        </div>
+                    </div>
+
+                    <div class="app-card">
+                        <div class="app-icon">
+                            <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23000%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
+                        </div>
+                        <div class="app-name">Hajj & Umrah Guide</div>
+                        <div class="app-status">
+                            <span class="status-badge"></span>
+                            iOS 1.0 - In Review
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>📝 Sign Up as a Tester</h3>
+                
+                <form id="testerForm">
+                    <div class="form-group">
+                        <label for="appSelect">Select App to Test *</label>
+                        <div class="custom-select">
+                            <select id="appSelect" required>
+                                <option value="">Choose an app...</option>
+                                <option value="alifplay">Alif Play - Educational Learning App</option>
+                                <option value="hajj-umrah">Hajj & Umrah Guide - Spiritual Journey Companion</option>
+                                <option value="both">Both Apps - I want to test everything!</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="platform">Device Platform *</label>
+                        <div class="custom-select">
+                            <select id="platform" required>
+                                <option value="">Select platform...</option>
+                                <option value="ios">iOS (iPhone/iPad)</option>
+                                <option value="android">Android</option>
+                                <option value="both">Both iOS and Android</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deviceModel">Device Model (Optional)</label>
+                        <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🎉</button>
+
+                    <div class="success-message" id="successMessage">
+                        ✅ <strong>Thank you for signing up!</strong><br>
+                        We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Beta Testing Program. All rights reserved.</p>
+            <p>Questions? Contact us at <a href="mailto:support@example.com">support@example.com</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('testerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Get form values
+            const formData = {
+                app: document.getElementById('appSelect').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                platform: document.getElementById('platform').value,
+                deviceModel: document.getElementById('deviceModel').value || 'Not specified',
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent
+            };
+            
+            // Log data (in production, send to your backend/form service)
+            console.log('Tester Registration:', formData);
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                document.getElementById('testerForm').reset();
+                
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join Beta Testing 🎉';
+                
+                // Hide success message after 7 seconds
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 7000);
+                
+                // Optional: Send to Google Sheets, Formspree, or your backend
+                // Example with Formspree (replace with your form ID):
+                // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify(formData)
+                // });
+                
+            }, 1000);
+        });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

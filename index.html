@@ -3,327 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps — Developed by AshCore Labs">
-    <meta property="og:title" content="Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا">
-    <meta property="og:description" content="Early access to Alif Play and Hajj & Umrah Guide. Developed by AshCore Labs.">
-    <meta property="og:image" content="images/ashcore-labs.png">
-    <link rel="icon" type="image/png" href="images/ashcore-labs.png">
+    <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps">
     <title>Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #1a4d2e;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
             transition: direction 0.3s ease;
         }
-        [dir="rtl"] body { font-family: 'Segoe UI', 'Geeza Pro', 'Arial', sans-serif; }
+
+        .top-header {
+            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 4px solid #d4af37;
+        }
+
+        .top-header-logo {
+            max-width: 200px;
+            width: 50%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
+        }
+
+        .main-wrapper {
+            padding: 20px;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Segoe UI', 'Geeza Pro', 'Arial', sans-serif;
+        }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
         .lang-switcher {
-            position: absolute; top: 20px; right: 20px; z-index: 1000;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
-        [dir="rtl"] .lang-switcher { right: auto; left: 20px; }
+
+        [dir="rtl"] .lang-switcher {
+            right: auto;
+            left: 20px;
+        }
 
         .lang-btn {
-            background: white; border: none; padding: 10px 20px; border-radius: 25px;
-            cursor: pointer; font-weight: 600; font-size: 0.9em;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;
-            display: flex; align-items: center; gap: 8px;
+            background: #ffffff;
+            border: 2px solid #d4af37;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+            color: #1a4d2e;
         }
-        .lang-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            background: #d4af37;
+            color: #ffffff;
+        }
+
+        .lang-btn.active {
+            background: #1a4d2e;
+            color: #d4af37;
+            border-color: #1a4d2e;
+        }
 
         .header {
-            background: linear-gradient(135deg, #0f5132 0%, #0b3d25 100%); /* deep green to match logo */
-            color: white;
-            padding: 64px 30px 44px;
+            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
+            color: #d4af37;
+            padding: 100px 30px 60px;
             text-align: center;
             position: relative;
         }
 
-        /* HERO brand badge with big logo + name */
-        .dev-brand {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 30px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.18);
-            padding: 24px 32px;
-            border-radius: 999px;
-            margin: 0 auto 28px;
-        }
-        .dev-brand .logo {
-            width: 132px;  /* 44px * 3 */
-            height: 132px;
-            border-radius: 20px;
-            object-fit: cover;
-            background: #0e3a2a;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-        }
-        .dev-brand .dev-text { text-align: left; line-height: 1.15; }
-        [dir="rtl"] .dev-brand .dev-text { text-align: right; }
-        .dev-brand .dev-by {
-            font-size: 36px;  /* 12px * 3 */
-            opacity: 0.92;
-        }
-        .dev-brand .dev-name {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 0.4px;
+        .logo-container {
+            margin-bottom: 40px;
         }
 
-        .header h1 { font-size: 2.3em; margin: 8px 0 6px; }
-        .header p { font-size: 1.06em; opacity: 0.95; }
+        .logo-container img {
+            max-width: 800px;
+            width: 90%;
+            height: auto;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+        }
 
-        .content { padding: 40px 30px; }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
 
-        .apps-section { margin-bottom: 40px; }
+        .header p {
+            font-size: 1.4em;
+            opacity: 0.95;
+            color: #f0e68c;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .apps-section {
+            margin-bottom: 50px;
+        }
+
         .apps-section h2 {
-            color: #333; margin-bottom: 30px; font-size: 1.8em; text-align: center;
+            color: #1a4d2e;
+            margin-bottom: 35px;
+            font-size: 2.2em;
+            text-align: center;
         }
 
         .apps-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px; margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-bottom: 40px;
         }
 
         .app-card {
-            background: #f8f9fa; border-radius: 15px; padding: 25px; text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s; border: 2px solid #e0e0e0;
+            background: #f5f5f0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #d4af37;
         }
-        .app-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 
-        .app-icon { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 22px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-        .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(26, 77, 46, 0.2);
+        }
 
-        .app-name { font-size: 1.3em; font-weight: 600; color: #333; margin-bottom: 8px; }
-        .app-status { font-size: 0.9em; color: #666; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .status-badge { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ffc107; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(26, 77, 46, 0.3);
+        }
 
-        .form-section { background: #f8f9fa; border-radius: 15px; padding: 30px; }
-        .form-section h3 { color: #333; margin-bottom: 25px; font-size: 1.5em; }
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-        .form-group { margin-bottom: 25px; }
-        label { display: block; color: #555; font-weight: 600; margin-bottom: 8px; font-size: 0.95em; }
+        .app-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #1a4d2e;
+            margin-bottom: 10px;
+        }
+
+        .app-status {
+            font-size: 1em;
+            color: #4a7c59;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4af37;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .form-section {
+            background: #f5f5f0;
+            border-radius: 15px;
+            padding: 40px;
+            border: 2px solid #d4af37;
+        }
+
+        .form-section h3 {
+            color: #1a4d2e;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            color: #1a4d2e;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
 
         input, select {
-            width: 100%; padding: 12px 15px; border: 2px solid #e0e0e0; border-radius: 8px;
-            font-size: 1em; transition: border-color 0.3s; background: white;
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+            background: #ffffff;
+            color: #1a4d2e;
         }
-        [dir="rtl"] input, [dir="rtl"] select { text-align: right; }
-        input:focus, select:focus { outline: none; border-color: #667eea; }
 
-        .custom-select { position: relative; }
-        .custom-select select { appearance: none; cursor: pointer; padding-right: 40px; }
-        [dir="rtl"] .custom-select select { padding-right: 15px; padding-left: 40px; }
-        .custom-select::after {
-            content: "▼"; position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
-            pointer-events: none; color: #667eea; font-size: 0.8em;
+        [dir="rtl"] input,
+        [dir="rtl"] select {
+            text-align: right;
         }
-        [dir="rtl"] .custom-select::after { right: auto; left: 15px; }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #1a4d2e;
+            box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.1);
+        }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .custom-select select {
+            appearance: none;
+            cursor: pointer;
+            padding-right: 40px;
+        }
+
+        [dir="rtl"] .custom-select select {
+            padding-right: 15px;
+            padding-left: 40px;
+        }
+
+        .custom-select::after {
+            content: "▼";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #1a4d2e;
+            font-size: 0.9em;
+        }
+
+        [dir="rtl"] .custom-select::after {
+            right: auto;
+            left: 15px;
+        }
 
         .submit-btn {
-            width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600;
-            cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #1a4d2e 0%, #d4af37 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); }
-        .submit-btn:active { transform: translateY(0); }
-        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 77, 46, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         .success-message {
-            display: none; background: #d4edda; color: #155724; padding: 15px; border-radius: 8px;
-            margin-top: 20px; border: 1px solid #c3e6cb; animation: slideIn 0.3s ease-out;
+            display: none;
+            background: #e8f5e9;
+            color: #1a4d2e;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #4caf50;
+            animation: slideIn 0.3s ease-out;
         }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .footer {
-            text-align: center; padding: 20px; color: #666; font-size: 0.9em;
-            background: #fafafa; border-top: 1px solid #eee;
+            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
+            text-align: center;
+            padding: 35px 30px;
+            color: #d4af37;
+            font-size: 1em;
+            border-top: 4px solid #d4af37;
+            margin-top: 0;
         }
-        .footer a { color: #667eea; text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
 
-        .footer .dev-footer {
-            display: inline-flex; align-items: center; gap: 20px; margin-top: 10px;
-            padding: 15px 20px; border-radius: 999px; background: #fff; border: 1px solid #eee;
+        .footer-logo {
+            max-width: 180px;
+            width: 40%;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
         }
-        .footer .dev-footer img {
-            width: 66px; height: 66px; border-radius: 12px; object-fit: cover;
+
+        .footer-company-name {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
-        .footer .dev-footer span { font-size: 36px; font-weight: 800; }
+
+        .footer-content {
+            margin-top: 20px;
+        }
+
+        .footer-content p {
+            color: #f0e68c;
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
 
         .info-box {
-            background: #e7f3ff; border-left: 4px solid #2196F3; padding: 15px; margin-bottom: 30px; border-radius: 4px;
+            background: #e8f5e9;
+            border-left: 4px solid #1a4d2e;
+            padding: 18px;
+            margin-bottom: 35px;
+            border-radius: 8px;
         }
-        [dir="rtl"] .info-box { border-left: none; border-right: 4px solid #2196F3; }
-        .info-box p { color: #0d47a1; margin: 0; font-size: 0.95em; }
 
-        .hidden { display: none; }
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 4px solid #1a4d2e;
+        }
 
-        /* Responsive tweaks for small screens */
-        @media (max-width: 600px) {
-            .header { padding: 44px 18px 32px; }
-            .header h1 { font-size: 1.8em; }
-            .dev-brand {
-                gap: 16px; padding: 14px 18px; margin-bottom: 18px;
+        .info-box p {
+            color: #1a4d2e;
+            margin: 0;
+            font-size: 1.05em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 80px 20px 50px;
             }
-            .dev-brand .logo { width: 96px; height: 96px; border-radius: 16px; }
-            .dev-brand .dev-by { font-size: 22px; }
-            .dev-brand .dev-name { font-size: 30px; }
 
-            .apps-grid { grid-template-columns: 1fr; }
-            .content { padding: 30px 20px; }
-            .form-section { padding: 20px; }
-            .lang-switcher { top: 10px; right: 10px; }
-            [dir="rtl"] .lang-switcher { right: auto; left: 10px; }
+            .header h1 {
+                font-size: 2.2em;
+            }
 
-            .footer .dev-footer { gap: 12px; padding: 10px 12px; }
-            .footer .dev-footer img { width: 44px; height: 44px; }
-            .footer .dev-footer span { font-size: 22px; }
+            .header p {
+                font-size: 1.1em;
+            }
+
+            .logo-container img {
+                max-width: 400px;
+                width: 85%;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 35px 25px;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+                gap: 8px;
+            }
+
+            [dir="rtl"] .lang-switcher {
+                right: auto;
+                left: 10px;
+            }
+
+            .lang-btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .top-header-logo {
+                max-width: 150px;
+                width: 40%;
+            }
+
+            .footer-logo {
+                max-width: 130px;
+                width: 35%;
+            }
+
+            .footer-company-name {
+                font-size: 1.4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container img {
+                max-width: 280px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .apps-section h2 {
+                font-size: 1.7em;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="lang-switcher">
-        <button class="lang-btn" onclick="toggleLanguage()">
-            <span id="langIcon">🌐</span>
-            <span id="langText">العربية</span>
-        </button>
+    <div class="top-header">
+        <img src="images/ashcore-labs.png" alt="AshCore Labs" class="top-header-logo" onerror="this.style.display='none'">
     </div>
 
-    <div class="container">
-        <div class="header">
-            <!-- HERO Brand badge centered -->
-            <div class="dev-brand" aria-label="Developed by AshCore Labs">
-                <img class="logo" src="images/ashcore-labs.png" alt="AshCore Labs logo">
-                <div class="dev-text">
-                    <div class="dev-by" id="devBy">Developed by</div>
-                    <div class="dev-name">AshCore Labs</div>
-                </div>
-            </div>
-
-            <h1 id="headerTitle">🚀 Beta Testing Program</h1>
-            <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
+    <div class="main-wrapper">
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btnEnglish" onclick="switchLanguage('en')">
+                English
+            </button>
+            <button class="lang-btn" id="btnArabic" onclick="switchLanguage('ar')">
+                العربية
+            </button>
         </div>
 
-        <div class="content">
-            <div class="info-box">
-                <p id="infoText"><strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
+        <div class="container">
+            <div class="header">
+                <div class="logo-container">
+                    <img src="images/ashcorelabs.png" alt="AshCore Labs" onerror="this.style.display='none'">
+                </div>
+                <h1 id="headerTitle">🚀 Beta Testing Program</h1>
+                <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
             </div>
 
-            <div class="apps-section">
-                <h2 id="appsTitle">Available Apps for Testing</h2>
+            <div class="content">
+                <div class="info-box">
+                    <p id="infoText"><strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
+                </div>
 
-                <div class="apps-grid">
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%23FFD700 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%23000%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%23FF8C00%3E%D8%A5%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%23000%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+                <div class="apps-section">
+                    <h2 id="appsTitle">Available Apps for Testing</h2>
+                    
+                    <div class="apps-grid">
+                        <div class="app-card">
+                            <div class="app-icon">
+                                <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23d4af37%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="app-name">Alif Play</div>
+                            <div class="app-status">
+                                <span class="status-badge"></span>
+                                <span id="alifStatus">iOS 2.0 - Pending Release</span>
+                            </div>
                         </div>
-                        <div class="app-name">Alif Play</div>
-                        <div class="app-status">
-                            <span class="status-badge"></span>
-                            <span id="alifStatus">iOS 2.0 - Pending Release</span>
-                        </div>
-                    </div>
 
-                    <div class="app-card">
-                        <div class="app-icon">
-                            <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%23000 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%23D4AF37/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%23D4AF37/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%23D4AF37/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%23D4AF37/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%23D4AF37%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
-                        </div>
-                        <div class="app-name">Hajj & Umrah Guide</div>
-                        <div class="app-status">
-                            <span class="status-badge"></span>
-                            <span id="hajjStatus">iOS 1.0 - In Review</span>
+                        <div class="app-card">
+                            <div class="app-icon">
+                                <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%231a4d2e%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
+                            </div>
+                            <div class="app-name">Hajj & Umrah Guide</div>
+                            <div class="app-status">
+                                <span class="status-badge"></span>
+                                <span id="hajjStatus">iOS 1.0 - In Review</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-section">
-                <h3 id="formTitle">📝 Sign Up as a Tester</h3>
-
-                <form id="testerForm">
-                    <div class="form-group">
-                        <label for="appSelect" id="labelApp">Select App to Test *</label>
-                        <div class="custom-select">
-                            <select id="appSelect" required>
-                                <option value="">Choose an app...</option>
-                                <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
-                                <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
-                                <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
-                            </select>
+                <div class="form-section">
+                    <h3 id="formTitle">📝 Sign Up as a Tester</h3>
+                    
+                    <form id="testerForm">
+                        <div class="form-group">
+                            <label for="appSelect" id="labelApp">Select App to Test *</label>
+                            <div class="custom-select">
+                                <select id="appSelect" required>
+                                    <option value="">Choose an app...</option>
+                                    <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
+                                    <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
+                                    <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="name" id="labelName">Full Name *</label>
-                        <input type="text" id="name" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email" id="labelEmail">Email Address *</label>
-                        <input type="email" id="email" placeholder="email@example.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="platform" id="labelPlatform">Device Platform *</label>
-                        <div class="custom-select">
-                            <select id="platform" required>
-                                <option value="">Select platform...</option>
-                                <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
-                                <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
-                                <option value="both" data-en="Both iOS and Android" data-ar="كلاهما iOS و Android">Both iOS and Android</option>
-                            </select>
+                        <div class="form-group">
+                            <label for="name" id="labelName">Full Name *</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
-                        <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
-                    </div>
+                        <div class="form-group">
+                            <label for="email" id="labelEmail">Email Address *</label>
+                            <input type="email" id="email" placeholder="email@example.com" required>
+                        </div>
 
-                    <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🎉</button>
+                        <div class="form-group">
+                            <label for="platform" id="labelPlatform">Device Platform *</label>
+                            <div class="custom-select">
+                                <select id="platform" required>
+                                    <option value="">Select platform...</option>
+                                    <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
+                                    <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
+                                    <option value="both" data-en="Both iOS and Android" data-ar="كلاهما iOS و Android">Both iOS and Android</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="success-message" id="successMessage">
-                        <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
-                        We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
+                            <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🚀</button>
+
+                        <div class="success-message" id="successMessage">
+                            <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
+                            We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
 
-        <div class="footer">
-            <p id="footerCopyright">© 2025 Beta Testing Program. All rights reserved.</p>
-            <div class="dev-footer">
-                <img src="images/ashcore-labs.png" alt="AshCore Labs">
-                <span id="footerDev">Developed by <strong>AshCore Labs</strong></span>
-            </div>
+    <div class="footer">
+        <img src="images/ashcore-labs.png" alt="AshCore Labs" class="footer-logo" onerror="this.style.display='none'">
+        <div class="footer-company-name">AshCore Labs</div>
+        <div class="footer-content">
+            <p id="footerCopyright">© 2025 AshCore Labs. All rights reserved.</p>
             <p id="footerContact">Questions? Contact us at <a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a></p>
         </div>
     </div>
 
     <script>
-        // Translations
+        // Translation object
         const translations = {
             en: {
-                langText: "العربية",
                 headerTitle: "🚀 Beta Testing Program",
                 headerSubtitle: "Join us in testing our exciting new apps!",
-                devBy: "Developed by",
-                footerDev: "Developed by <strong>AshCore Labs</strong>",
                 infoText: "<strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!",
                 appsTitle: "Available Apps for Testing",
                 alifStatus: "iOS 2.0 - Pending Release",
@@ -334,9 +617,9 @@
                 labelEmail: "Email Address *",
                 labelPlatform: "Device Platform *",
                 labelDevice: "Device Model (Optional)",
-                submitBtn: "Join Beta Testing 🎉",
+                submitBtn: "Join Beta Testing 🚀",
                 successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
-                footerCopyright: "© 2025 Beta Testing Program. All rights reserved.",
+                footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
                 footerContact: "Questions? Contact us at ",
                 placeholderName: "Enter your full name",
                 placeholderEmail: "email@example.com",
@@ -345,11 +628,8 @@
                 selectPlatform: "Select platform..."
             },
             ar: {
-                langText: "English",
                 headerTitle: "🚀 برنامج الاختبار التجريبي",
                 headerSubtitle: "انضم إلينا في اختبار تطبيقاتنا المثيرة!",
-                devBy: "تم التطوير بواسطة",
-                footerDev: "تم التطوير بواسطة <strong>AshCore Labs</strong>",
                 infoText: "<strong>📱 ما هو الاختبار التجريبي؟</strong> يحصل المختبرون التجريبيون على وصول مبكر إلى الميزات الجديدة ويساعدوننا في تحسين التطبيق قبل الإصدار الرسمي. ملاحظاتك لا تقدر بثمن!",
                 appsTitle: "التطبيقات المتاحة للاختبار",
                 alifStatus: "iOS 2.0 - في انتظار الإصدار",
@@ -360,9 +640,9 @@
                 labelEmail: "عنوان البريد الإلكتروني *",
                 labelPlatform: "منصة الجهاز *",
                 labelDevice: "موديل الجهاز (اختياري)",
-                submitBtn: "انضم للاختبار التجريبي 🎉",
+                submitBtn: "انضم للاختبار التجريبي 🚀",
                 successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
-                footerCopyright: "© 2025 برنامج الاختبار التجريبي. جميع الحقوق محفوظة.",
+                footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
                 footerContact: "أسئلة؟ اتصل بنا على ",
                 placeholderName: "أدخل اسمك الكامل",
                 placeholderEmail: "email@example.com",
@@ -374,26 +654,26 @@
 
         let currentLang = 'en';
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'ar' : 'en';
+        function switchLanguage(lang) {
+            currentLang = lang;
             applyTranslations();
+            
+            // Update button states
+            document.getElementById('btnEnglish').classList.toggle('active', lang === 'en');
+            document.getElementById('btnArabic').classList.toggle('active', lang === 'ar');
         }
 
         function applyTranslations() {
             const t = translations[currentLang];
             const html = document.documentElement;
-
+            
+            // Set direction
             html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             html.setAttribute('lang', currentLang);
-
-            document.getElementById('langText').textContent = t.langText;
+            
+            // Update text content
             document.getElementById('headerTitle').textContent = t.headerTitle;
             document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
-
-            // Dev name strings
-            document.getElementById('devBy').textContent = t.devBy;
-            document.getElementById('footerDev').innerHTML = t.footerDev;
-
             document.getElementById('infoText').innerHTML = t.infoText;
             document.getElementById('appsTitle').textContent = t.appsTitle;
             document.getElementById('alifStatus').textContent = t.alifStatus;
@@ -407,15 +687,18 @@
             document.getElementById('submitBtn').textContent = t.submitBtn;
             document.getElementById('successText').innerHTML = t.successText;
             document.getElementById('footerCopyright').textContent = t.footerCopyright;
-            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:support@example.com">support@example.com</a>';
-
+            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a>';
+            
+            // Update placeholders
             document.getElementById('name').placeholder = t.placeholderName;
             document.getElementById('email').placeholder = t.placeholderEmail;
             document.getElementById('deviceModel').placeholder = t.placeholderDevice;
-
+            
+            // Update select options
             document.getElementById('appSelect').options[0].text = t.selectApp;
             document.getElementById('platform').options[0].text = t.selectPlatform;
-
+            
+            // Update data-driven options
             document.querySelectorAll('option[data-en]').forEach(option => {
                 option.text = option.getAttribute('data-' + currentLang);
             });
@@ -424,12 +707,12 @@
         // Form submission handler
         document.getElementById('testerForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
             submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
-
+            
             const formData = {
                 app: document.getElementById('appSelect').value,
                 name: document.getElementById('name').value,
@@ -437,27 +720,28 @@
                 platform: document.getElementById('platform').value,
                 deviceModel: document.getElementById('deviceModel').value || 'Not specified',
                 language: currentLang,
-                timestamp: new Date().toISOString(),
                 userAgent: navigator.userAgent
             };
-
+            
             console.log('Tester Registration:', formData);
-
+            
             setTimeout(() => {
                 document.getElementById('successMessage').style.display = 'block';
                 document.getElementById('testerForm').reset();
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
-
+                
                 setTimeout(() => {
                     document.getElementById('successMessage').style.display = 'none';
                 }, 7000);
-
+                
+                // Send to Formspree (uncomment after setup)
                 // fetch('https://formspree.io/f/YOUR_FORM_ID', {
                 //     method: 'POST',
                 //     headers: { 'Content-Type': 'application/json' },
                 //     body: JSON.stringify(formData)
                 // });
+                
             }, 1000);
         });
     </script>

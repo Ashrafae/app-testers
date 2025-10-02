@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps">
-    <title>Beta Testing - Join Our Apps</title>
+    <title>Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,11 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
+            transition: direction 0.3s ease;
+        }
+
+        [dir="rtl"] body {
+            font-family: 'Segoe UI', 'Geeza Pro', 'Arial', sans-serif;
         }
 
         .container {
@@ -28,11 +33,44 @@
             overflow: hidden;
         }
 
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        [dir="rtl"] .lang-switcher {
+            right: auto;
+            left: 20px;
+        }
+
+        .lang-btn {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 60px 30px 40px;
             text-align: center;
+            position: relative;
         }
 
         .header h1 {
@@ -160,6 +198,11 @@
             background: white;
         }
 
+        [dir="rtl"] input,
+        [dir="rtl"] select {
+            text-align: right;
+        }
+
         input:focus, select:focus {
             outline: none;
             border-color: #667eea;
@@ -175,6 +218,11 @@
             padding-right: 40px;
         }
 
+        [dir="rtl"] .custom-select select {
+            padding-right: 15px;
+            padding-left: 40px;
+        }
+
         .custom-select::after {
             content: "▼";
             position: absolute;
@@ -184,6 +232,11 @@
             pointer-events: none;
             color: #667eea;
             font-size: 0.8em;
+        }
+
+        [dir="rtl"] .custom-select::after {
+            right: auto;
+            left: 15px;
         }
 
         .submit-btn {
@@ -260,10 +313,19 @@
             border-radius: 4px;
         }
 
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 4px solid #2196F3;
+        }
+
         .info-box p {
             color: #0d47a1;
             margin: 0;
             font-size: 0.95em;
+        }
+
+        .hidden {
+            display: none;
         }
 
         @media (max-width: 600px) {
@@ -282,23 +344,40 @@
             .form-section {
                 padding: 20px;
             }
+
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+            }
+
+            [dir="rtl"] .lang-switcher {
+                right: auto;
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span id="langIcon">🌐</span>
+            <span id="langText">العربية</span>
+        </button>
+    </div>
+
     <div class="container">
         <div class="header">
-            <h1>🚀 Beta Testing Program</h1>
-            <p>Join us in testing our exciting new apps!</p>
+            <h1 id="headerTitle">🚀 Beta Testing Program</h1>
+            <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
         </div>
 
         <div class="content">
             <div class="info-box">
-                <p><strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
+                <p id="infoText"><strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
             </div>
 
             <div class="apps-section">
-                <h2>Available Apps for Testing</h2>
+                <h2 id="appsTitle">Available Apps for Testing</h2>
                 
                 <div class="apps-grid">
                     <div class="app-card">
@@ -308,7 +387,7 @@
                         <div class="app-name">Alif Play</div>
                         <div class="app-status">
                             <span class="status-badge"></span>
-                            iOS 2.0 - Pending Release
+                            <span id="alifStatus">iOS 2.0 - Pending Release</span>
                         </div>
                     </div>
 
@@ -319,114 +398,206 @@
                         <div class="app-name">Hajj & Umrah Guide</div>
                         <div class="app-status">
                             <span class="status-badge"></span>
-                            iOS 1.0 - In Review
+                            <span id="hajjStatus">iOS 1.0 - In Review</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-section">
-                <h3>📝 Sign Up as a Tester</h3>
+                <h3 id="formTitle">📝 Sign Up as a Tester</h3>
                 
                 <form id="testerForm">
                     <div class="form-group">
-                        <label for="appSelect">Select App to Test *</label>
+                        <label for="appSelect" id="labelApp">Select App to Test *</label>
                         <div class="custom-select">
                             <select id="appSelect" required>
                                 <option value="">Choose an app...</option>
-                                <option value="alifplay">Alif Play - Educational Learning App</option>
-                                <option value="hajj-umrah">Hajj & Umrah Guide - Spiritual Journey Companion</option>
-                                <option value="both">Both Apps - I want to test everything!</option>
+                                <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
+                                <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
+                                <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name" id="labelName">Full Name *</label>
                         <input type="text" id="name" placeholder="Enter your full name" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" id="labelEmail">Email Address *</label>
                         <input type="email" id="email" placeholder="email@example.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="platform">Device Platform *</label>
+                        <label for="platform" id="labelPlatform">Device Platform *</label>
                         <div class="custom-select">
                             <select id="platform" required>
                                 <option value="">Select platform...</option>
-                                <option value="ios">iOS (iPhone/iPad)</option>
-                                <option value="android">Android</option>
-                                <option value="both">Both iOS and Android</option>
+                                <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
+                                <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
+                                <option value="both" data-en="Both iOS and Android" data-ar="كلاهما iOS و Android">Both iOS and Android</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="deviceModel">Device Model (Optional)</label>
+                        <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
                         <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
                     </div>
 
                     <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🎉</button>
 
                     <div class="success-message" id="successMessage">
-                        ✅ <strong>Thank you for signing up!</strong><br>
-                        We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.
+                        <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
+                        We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
                     </div>
                 </form>
             </div>
         </div>
 
         <div class="footer">
-            <p>© 2025 Beta Testing Program. All rights reserved.</p>
-            <p>Questions? Contact us at <a href="mailto:support@example.com">support@example.com</a></p>
+            <p id="footerCopyright">© 2025 Beta Testing Program. All rights reserved.</p>
+            <p id="footerContact">Questions? Contact us at <a href="mailto:support@example.com">support@example.com</a></p>
         </div>
     </div>
 
     <script>
+        // Translation object
+        const translations = {
+            en: {
+                langText: "العربية",
+                headerTitle: "🚀 Beta Testing Program",
+                headerSubtitle: "Join us in testing our exciting new apps!",
+                infoText: "<strong>📱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!",
+                appsTitle: "Available Apps for Testing",
+                alifStatus: "iOS 2.0 - Pending Release",
+                hajjStatus: "iOS 1.0 - In Review",
+                formTitle: "📝 Sign Up as a Tester",
+                labelApp: "Select App to Test *",
+                labelName: "Full Name *",
+                labelEmail: "Email Address *",
+                labelPlatform: "Device Platform *",
+                labelDevice: "Device Model (Optional)",
+                submitBtn: "Join Beta Testing 🎉",
+                successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
+                footerCopyright: "© 2025 Beta Testing Program. All rights reserved.",
+                footerContact: "Questions? Contact us at ",
+                placeholderName: "Enter your full name",
+                placeholderEmail: "email@example.com",
+                placeholderDevice: "e.g., iPhone 14 Pro, Samsung Galaxy S23",
+                selectApp: "Choose an app...",
+                selectPlatform: "Select platform..."
+            },
+            ar: {
+                langText: "English",
+                headerTitle: "🚀 برنامج الاختبار التجريبي",
+                headerSubtitle: "انضم إلينا في اختبار تطبيقاتنا المثيرة!",
+                infoText: "<strong>📱 ما هو الاختبار التجريبي؟</strong> يحصل المختبرون التجريبيون على وصول مبكر إلى الميزات الجديدة ويساعدوننا في تحسين التطبيق قبل الإصدار الرسمي. ملاحظاتك لا تقدر بثمن!",
+                appsTitle: "التطبيقات المتاحة للاختبار",
+                alifStatus: "iOS 2.0 - في انتظار الإصدار",
+                hajjStatus: "iOS 1.0 - قيد المراجعة",
+                formTitle: "📝 سجل كمختبر",
+                labelApp: "اختر التطبيق للاختبار *",
+                labelName: "الاسم الكامل *",
+                labelEmail: "عنوان البريد الإلكتروني *",
+                labelPlatform: "منصة الجهاز *",
+                labelDevice: "موديل الجهاز (اختياري)",
+                submitBtn: "انضم للاختبار التجريبي 🎉",
+                successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
+                footerCopyright: "© 2025 برنامج الاختبار التجريبي. جميع الحقوق محفوظة.",
+                footerContact: "أسئلة؟ اتصل بنا على ",
+                placeholderName: "أدخل اسمك الكامل",
+                placeholderEmail: "email@example.com",
+                placeholderDevice: "مثال: iPhone 14 Pro، Samsung Galaxy S23",
+                selectApp: "اختر تطبيقاً...",
+                selectPlatform: "اختر المنصة..."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            applyTranslations();
+        }
+
+        function applyTranslations() {
+            const t = translations[currentLang];
+            const html = document.documentElement;
+            
+            // Set direction
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            html.setAttribute('lang', currentLang);
+            
+            // Update text content
+            document.getElementById('langText').textContent = t.langText;
+            document.getElementById('headerTitle').textContent = t.headerTitle;
+            document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
+            document.getElementById('infoText').innerHTML = t.infoText;
+            document.getElementById('appsTitle').textContent = t.appsTitle;
+            document.getElementById('alifStatus').textContent = t.alifStatus;
+            document.getElementById('hajjStatus').textContent = t.hajjStatus;
+            document.getElementById('formTitle').textContent = t.formTitle;
+            document.getElementById('labelApp').textContent = t.labelApp;
+            document.getElementById('labelName').textContent = t.labelName;
+            document.getElementById('labelEmail').textContent = t.labelEmail;
+            document.getElementById('labelPlatform').textContent = t.labelPlatform;
+            document.getElementById('labelDevice').textContent = t.labelDevice;
+            document.getElementById('submitBtn').textContent = t.submitBtn;
+            document.getElementById('successText').innerHTML = t.successText;
+            document.getElementById('footerCopyright').textContent = t.footerCopyright;
+            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:support@example.com">support@example.com</a>';
+            
+            // Update placeholders
+            document.getElementById('name').placeholder = t.placeholderName;
+            document.getElementById('email').placeholder = t.placeholderEmail;
+            document.getElementById('deviceModel').placeholder = t.placeholderDevice;
+            
+            // Update select options
+            document.getElementById('appSelect').options[0].text = t.selectApp;
+            document.getElementById('platform').options[0].text = t.selectPlatform;
+            
+            // Update data-driven options
+            document.querySelectorAll('option[data-en]').forEach(option => {
+                option.text = option.getAttribute('data-' + currentLang);
+            });
+        }
+
         // Form submission handler
         document.getElementById('testerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Disable submit button
             const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
+            submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
             
-            // Get form values
             const formData = {
                 app: document.getElementById('appSelect').value,
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 platform: document.getElementById('platform').value,
                 deviceModel: document.getElementById('deviceModel').value || 'Not specified',
+                language: currentLang,
                 timestamp: new Date().toISOString(),
                 userAgent: navigator.userAgent
             };
             
-            // Log data (in production, send to your backend/form service)
             console.log('Tester Registration:', formData);
             
-            // Simulate API call delay
             setTimeout(() => {
-                // Show success message
                 document.getElementById('successMessage').style.display = 'block';
-                
-                // Reset form
                 document.getElementById('testerForm').reset();
-                
-                // Re-enable button
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Join Beta Testing 🎉';
+                submitBtn.textContent = originalText;
                 
-                // Hide success message after 7 seconds
                 setTimeout(() => {
                     document.getElementById('successMessage').style.display = 'none';
                 }, 7000);
                 
-                // Optional: Send to Google Sheets, Formspree, or your backend
-                // Example with Formspree (replace with your form ID):
+                // Send to Formspree (uncomment after setup)
                 // fetch('https://formspree.io/f/YOUR_FORM_ID', {
                 //     method: 'POST',
                 //     headers: { 'Content-Type': 'application/json' },
@@ -434,17 +605,6 @@
                 // });
                 
             }, 1000);
-        });
-
-        // Add smooth scrolling for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
         });
     </script>
 </body>

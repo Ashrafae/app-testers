@@ -15,14 +15,14 @@ A professional and user-friendly beta testing signup page for **Alif Play** and 
 Educational learning app focusing on Arabic alphabet and language fundamentals.  
 تطبيق تعليمي يركز على الحروف الأبجدية العربية وأساسيات اللغة.  
 
-- **Status | الحالة**: Android Beta — Coming Soon | تجريبي على أندرويد - قريباً  
+- **Status | الحالة**: Android Beta — Available now| تجريبي على أندرويد -   
 - **Platform | المنصة**: Android (Phones & Tablets) | أندرويد (هواتف وأجهزة لوحية)  
 
 ### Hajj & Umrah Guide | دليل الحج والعمرة
 Comprehensive spiritual journey companion for pilgrims.  
 رفيق شامل للحاج والمعتمر في رحلته الروحية.  
 
-- **Status | الحالة**: Android Beta — Coming Soon | تجريبي على أندرويد - قريباً  
+- **Status | الحالة**: Android Beta — Available now | تجريبي على أندرويد  
 - **Platform | المنصة**: Android (Phones & Tablets) | أندرويد (هواتف وأجهزة لوحية)  
 
 ---

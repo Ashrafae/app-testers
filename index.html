@@ -318,6 +318,17 @@
             animation: slideIn 0.3s ease-out;
         }
 
+        .error-message {
+            display: none;
+            background: #ffebee;
+            color: #c62828;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #ef5350;
+            animation: slideIn 0.3s ease-out;
+        }
+
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -490,9 +501,6 @@
 
         <div class="container">
             <div class="header">
-                <div class="logo-container">
-                    <img src="images/ashcorelabs.png" alt="AshCore Labs" onerror="this.style.display='none'">
-                </div>
                 <h1 id="headerTitle">🚀 Beta Testing Program</h1>
                 <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
             </div>
@@ -537,7 +545,7 @@
                         <div class="form-group">
                             <label for="appSelect" id="labelApp">Select App to Test *</label>
                             <div class="custom-select">
-                                <select id="appSelect" required>
+                                <select id="appSelect" name="app" required>
                                     <option value="">Choose an app...</option>
                                     <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
                                     <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
@@ -548,18 +556,18 @@
 
                         <div class="form-group">
                             <label for="name" id="labelName">Full Name *</label>
-                            <input type="text" id="name" placeholder="Enter your full name" required>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email" id="labelEmail">Email Address *</label>
-                            <input type="email" id="email" placeholder="email@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
                         </div>
 
                         <div class="form-group">
                             <label for="platform" id="labelPlatform">Device Platform *</label>
                             <div class="custom-select">
-                                <select id="platform" required>
+                                <select id="platform" name="platform" required>
                                     <option value="">Select platform...</option>
                                     <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
                                     <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
@@ -570,7 +578,7 @@
 
                         <div class="form-group">
                             <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
-                            <input type="text" id="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
+                            <input type="text" id="deviceModel" name="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
                         </div>
 
                         <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🚀</button>
@@ -578,6 +586,11 @@
                         <div class="success-message" id="successMessage">
                             <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
                             We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
+                        </div>
+
+                        <div class="error-message" id="errorMessage">
+                            <span id="errorText">❌ <strong>Submission failed.</strong><br>
+                            Please try again or contact us directly at ashr2230@gmail.com</span>
                         </div>
                     </form>
                 </div>
@@ -590,7 +603,7 @@
         <div class="footer-company-name">AshCore Labs</div>
         <div class="footer-content">
             <p id="footerCopyright">© 2025 AshCore Labs. All rights reserved.</p>
-            <p id="footerContact">Questions? Contact us at <a href="mailto:ashr1570@icloud.com">ashr157@icloud.com</a></p>
+            <p id="footerContact">Questions? Contact us at <a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a></p>
         </div>
     </div>
 
@@ -612,6 +625,7 @@
                 labelDevice: "Device Model (Optional)",
                 submitBtn: "Join Beta Testing 🚀",
                 successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
+                errorText: "❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr2230@gmail.com",
                 footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
                 footerContact: "Questions? Contact us at ",
                 placeholderName: "Enter your full name",
@@ -635,6 +649,7 @@
                 labelDevice: "موديل الجهاز (اختياري)",
                 submitBtn: "انضم للاختبار التجريبي 🚀",
                 successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
+                errorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة على ashr2230@gmail.com",
                 footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
                 footerContact: "أسئلة؟ اتصل بنا على ",
                 placeholderName: "أدخل اسمك الكامل",
@@ -679,6 +694,7 @@
             document.getElementById('labelDevice').textContent = t.labelDevice;
             document.getElementById('submitBtn').textContent = t.submitBtn;
             document.getElementById('successText').innerHTML = t.successText;
+            document.getElementById('errorText').innerHTML = t.errorText;
             document.getElementById('footerCopyright').textContent = t.footerCopyright;
             document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a>';
             
@@ -697,7 +713,7 @@
             });
         }
 
-        // Form submission handler
+        // Form submission handler with Web3Forms integration
         document.getElementById('testerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -706,36 +722,67 @@
             submitBtn.disabled = true;
             submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
             
+            // Hide any previous messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            
+            // Prepare form data for Web3Forms
             const formData = {
+                access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE', // Replace with your actual Web3Forms access key
+                subject: 'New Beta Tester Signup - AshCore Labs',
+                from_name: 'AshCore Labs Beta Testing',
                 app: document.getElementById('appSelect').value,
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 platform: document.getElementById('platform').value,
                 deviceModel: document.getElementById('deviceModel').value || 'Not specified',
                 language: currentLang,
+                submittedAt: new Date().toISOString(),
                 userAgent: navigator.userAgent
             };
             
-            console.log('Tester Registration:', formData);
-            
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('testerForm').reset();
+            // Send to Web3Forms API
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Web3Forms Response:', data);
+                
+                if (data.success) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('testerForm').reset();
+                    
+                    // Hide success message after 7 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 7000);
+                } else {
+                    // Show error message
+                    document.getElementById('errorMessage').style.display = 'block';
+                    console.error('Web3Forms Error:', data);
+                }
+                
+                // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
+            })
+            .catch(error => {
+                console.error('Submission Error:', error);
                 
-                setTimeout(() => {
-                    document.getElementById('successMessage').style.display = 'none';
-                }, 7000);
+                // Show error message
+                document.getElementById('errorMessage').style.display = 'block';
                 
-                // Send to Formspree (uncomment after setup)
-                // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify(formData)
-                // });
-                
-            }, 1000);
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
         });
     </script>
 </body>

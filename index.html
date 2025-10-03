@@ -98,30 +98,30 @@
         .header {
             background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
             color: #d4af37;
-            padding: 100px 30px 60px;
+            padding: 30px 30px 25px;
             text-align: center;
             position: relative;
         }
 
         .logo-container {
-            margin-bottom: 40px;
+            margin-bottom: 15px;
         }
 
         .logo-container img {
-            max-width: 800px;
-            width: 90%;
+            max-width: 200px;
+            width: 25%;
             height: auto;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
         }
 
         .header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
+            font-size: 1.5em;
+            margin-bottom: 8px;
             color: #d4af37;
         }
 
         .header p {
-            font-size: 1.4em;
+            font-size: 0.95em;
             opacity: 0.95;
             color: #f0e68c;
         }
@@ -410,20 +410,20 @@
 
         @media (max-width: 768px) {
             .header {
-                padding: 80px 20px 50px;
+                padding: 25px 20px 20px;
             }
 
             .header h1 {
-                font-size: 2.2em;
+                font-size: 1.3em;
             }
 
             .header p {
-                font-size: 1.1em;
+                font-size: 0.85em;
             }
 
             .logo-container img {
-                max-width: 400px;
-                width: 85%;
+                max-width: 120px;
+                width: 30%;
             }
             
             .apps-grid {
@@ -471,11 +471,15 @@
 
         @media (max-width: 480px) {
             .logo-container img {
-                max-width: 280px;
+                max-width: 100px;
             }
 
             .header h1 {
-                font-size: 1.8em;
+                font-size: 1.2em;
+            }
+
+            .header p {
+                font-size: 0.8em;
             }
 
             .apps-section h2 {
@@ -691,7 +695,7 @@
             document.getElementById('submitBtn').textContent = t.submitBtn;
             document.getElementById('successText').innerHTML = t.successText;
             document.getElementById('footerCopyright').textContent = t.footerCopyright;
-            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr157@icloud.com">ashr157@icloud.com</a>';
+            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a>';
             
             // Update placeholders
             document.getElementById('name').placeholder = t.placeholderName;

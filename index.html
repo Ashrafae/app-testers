@@ -1,960 +1,653 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps">
-    <title>Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #1a4d2e;
-            min-height: 100vh;
-            padding: 0;
-            transition: direction 0.3s ease;
-        }
-
-        .top-header {
-            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
-            padding: 25px 20px;
-            text-align: center;
-            border-bottom: 4px solid #d4af37;
-        }
-
-        .top-header-logo {
-            max-width: 200px;
-            width: 50%;
-            height: auto;
-            margin: 0 auto;
-            display: block;
-            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
-        }
-
-        .main-wrapper {
-            padding: 20px;
-        }
-
-        [dir="rtl"] body {
-            font-family: 'Segoe UI', 'Geeza Pro', 'Arial', sans-serif;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-
-        .lang-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        [dir="rtl"] .lang-switcher {
-            right: auto;
-            left: 20px;
-        }
-
-        .lang-btn {
-            background: #ffffff;
-            border: 2px solid #d4af37;
-            padding: 12px 25px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.1em;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            text-align: center;
-            color: #1a4d2e;
-        }
-
-        .lang-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-            background: #d4af37;
-            color: #ffffff;
-        }
-
-        .lang-btn.active {
-            background: #1a4d2e;
-            color: #d4af37;
-            border-color: #1a4d2e;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
-            color: #d4af37;
-            padding: 15px 20px 12px;
-            text-align: center;
-            position: relative;
-        }
-
-        .logo-container {
-            display: none;
-        }
-
-        .header h1 {
-            font-size: 1.1em;
-            margin-bottom: 5px;
-            color: #d4af37;
-            font-weight: 600;
-        }
-
-        .header p {
-            font-size: 0.85em;
-            opacity: 0.95;
-            color: #f0e68c;
-        }
-
-        .content {
-            padding: 50px 40px;
-        }
-
-        .apps-section {
-            margin-bottom: 50px;
-        }
-
-        .apps-section h2 {
-            color: #1a4d2e;
-            margin-bottom: 35px;
-            font-size: 2.2em;
-            text-align: center;
-        }
-
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-bottom: 40px;
-        }
-
-        .app-card {
-            background: #f5f5f0;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid #d4af37;
-        }
-
-        .app-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(26, 77, 46, 0.2);
-        }
-
-        .app-icon {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(26, 77, 46, 0.3);
-        }
-
-        .app-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .app-name {
-            font-size: 1.5em;
-            font-weight: 600;
-            color: #1a4d2e;
-            margin-bottom: 10px;
-        }
-
-        .app-status {
-            font-size: 1em;
-            color: #4a7c59;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #d4af37;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .form-section {
-            background: #f5f5f0;
-            border-radius: 15px;
-            padding: 40px;
-            border: 2px solid #d4af37;
-        }
-
-        .form-section h3 {
-            color: #1a4d2e;
-            margin-bottom: 30px;
-            font-size: 1.8em;
-        }
-
-        .form-group {
-            margin-bottom: 28px;
-        }
-
-        label {
-            display: block;
-            color: #1a4d2e;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #d4af37;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
-            background: #ffffff;
-            color: #1a4d2e;
-        }
-
-        [dir="rtl"] input,
-        [dir="rtl"] select {
-            text-align: right;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #1a4d2e;
-            box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.1);
-        }
-
-        .custom-select {
-            position: relative;
-        }
-
-        .custom-select select {
-            appearance: none;
-            cursor: pointer;
-            padding-right: 40px;
-        }
-
-        [dir="rtl"] .custom-select select {
-            padding-right: 15px;
-            padding-left: 40px;
-        }
-
-        .custom-select::after {
-            content: "▼";
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            color: #1a4d2e;
-            font-size: 0.9em;
-        }
-
-        [dir="rtl"] .custom-select::after {
-            right: auto;
-            left: 15px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #1a4d2e 0%, #d4af37 100%);
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(26, 77, 46, 0.4);
-        }
-
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .success-message {
-            display: none;
-            background: #e8f5e9;
-            color: #1a4d2e;
-            padding: 18px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border: 2px solid #4caf50;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        .error-message {
-            display: none;
-            background: #ffebee;
-            color: #c62828;
-            padding: 18px;
-            border-radius: 8px;
-            margin-top: 20px;
-            border: 2px solid #ef5350;
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .footer {
-            background: linear-gradient(135deg, #1a4d2e 0%, #0d2818 100%);
-            text-align: center;
-            padding: 35px 30px;
-            color: #d4af37;
-            font-size: 1em;
-            border-top: 4px solid #d4af37;
-            margin-top: 0;
-        }
-
-        .footer-logo {
-            max-width: 180px;
-            width: 40%;
-            height: auto;
-            margin: 0 auto 20px;
-            display: block;
-            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
-        }
-
-        .footer-company-name {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #d4af37;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .footer-content {
-            margin-top: 20px;
-        }
-
-        .footer-content p {
-            color: #f0e68c;
-            margin: 10px 0;
-        }
-
-        .footer a {
-            color: #d4af37;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .info-box {
-            background: #e8f5e9;
-            border-left: 4px solid #1a4d2e;
-            padding: 18px;
-            margin-bottom: 35px;
-            border-radius: 8px;
-        }
-
-        [dir="rtl"] .info-box {
-            border-left: none;
-            border-right: 4px solid #1a4d2e;
-        }
-
-        .info-box p {
-            color: #1a4d2e;
-            margin: 0;
-            font-size: 1.05em;
-        }
-
-        .info-box strong {
-            color: #1a4d2e;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 12px 15px 10px;
-            }
-
-            .header h1 {
-                font-size: 1em;
-            }
-
-            .header p {
-                font-size: 0.8em;
-            }
-            
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content {
-                padding: 35px 25px;
-            }
-
-            .form-section {
-                padding: 25px;
-            }
-
-            .lang-switcher {
-                top: 10px;
-                right: 10px;
-                gap: 8px;
-            }
-
-            [dir="rtl"] .lang-switcher {
-                right: auto;
-                left: 10px;
-            }
-
-            .lang-btn {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-
-            .top-header-logo {
-                max-width: 150px;
-                width: 40%;
-            }
-
-            .footer-logo {
-                max-width: 130px;
-                width: 35%;
-            }
-
-            .footer-company-name {
-                font-size: 1.4em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 0.95em;
-            }
-
-            .header p {
-                font-size: 0.75em;
-            }
-
-            .apps-section h2 {
-                font-size: 1.7em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Join our beta testing program for Alif Play and Hajj & Umrah Guide apps — Developed by AshCore Labs" />
+  <meta property="og:title" content="Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا" />
+  <meta property="og:description" content="Early access to Alif Play and Hajj & Umrah Guide. Developed by AshCore Labs." />
+  <meta property="og:image" content="images/ashcore-labs.png" />
+  <link rel="icon" type="image/png" href="images/ashcore-labs.png" />
+  <title>Beta Testing - Join Our Apps | اختبار تجريبي - انضم إلى تطبيقاتنا</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background:#1a4d2e;
+      min-height:100vh;
+      padding:0;
+      transition: direction .3s ease;
+    }
+    [dir="rtl"] body { font-family:'Segoe UI','Geeza Pro','Arial',sans-serif; }
+
+    /* HERO with big centered logo + name */
+    .top-header {
+      background: linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);
+      padding: 34px 20px 28px;
+      text-align:center;
+      border-bottom:4px solid #d4af37;
+    }
+    .top-header .brand {
+      display:inline-flex; align-items:center; justify-content:center; gap:24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 999px;
+      padding: 18px 26px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35), inset 0 0 20px rgba(212,175,55,0.15);
+    }
+    .top-header-logo {
+      width: 180px; height: 180px; border-radius: 28px; object-fit: cover;
+      filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+      background:#0e3a2a;
+    }
+    .brand-text { text-align:left; line-height:1.15; color:#d4af37; }
+    [dir="rtl"] .brand-text { text-align:right; }
+    .brand-text .by { font-size: 22px; opacity:.95; color:#f0e68c; }
+    .brand-text .name { font-size: 48px; font-weight: 900; letter-spacing:.4px; color:#ffd76a; }
+
+    .main-wrapper { padding:20px; }
+
+    .container {
+      max-width: 900px; margin:0 auto; background:#fff; border-radius:20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow:hidden;
+    }
+
+    .lang-switcher {
+      position:absolute; top:20px; right:20px; z-index:1000; display:flex; flex-direction:column; gap:10px;
+    }
+    [dir="rtl"] .lang-switcher { right:auto; left:20px; }
+    .lang-btn {
+      background:#fff; border:2px solid #d4af37; padding:12px 25px; border-radius:8px; cursor:pointer;
+      font-weight:700; font-size:1.1em; box-shadow:0 4px 15px rgba(0,0,0,0.2); transition:all .3s ease;
+      text-align:center; color:#1a4d2e;
+    }
+    .lang-btn:hover { transform: translateY(-2px); box-shadow:0 6px 20px rgba(212,175,55,0.4); background:#d4af37; color:#fff; }
+    .lang-btn.active { background:#1a4d2e; color:#d4af37; border-color:#1a4d2e; }
+
+    .header {
+      background: linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);
+      color:#d4af37; padding:18px 20px 14px; text-align:center; position:relative;
+    }
+    .header h1 { font-size:1.1em; margin-bottom:5px; font-weight:600; color:#d4af37; }
+    .header p { font-size:.9em; color:#f0e68c; opacity:.98; }
+
+    .content { padding: 50px 40px; }
+
+    .apps-section { margin-bottom: 50px; }
+    .apps-section h2 { color:#1a4d2e; margin-bottom:35px; font-size:2.2em; text-align:center; }
+
+    .apps-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:35px; margin-bottom:40px; }
+    .app-card {
+      background:#f5f5f0; border-radius:15px; padding:30px; text-align:center;
+      transition: transform .3s, box-shadow .3s; border:2px solid #d4af37;
+    }
+    .app-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(26,77,46,.2); }
+    .app-icon { width:120px; height:120px; margin:0 auto 25px; border-radius:22px; overflow:hidden; box-shadow:0 5px 20px rgba(26,77,46,.3); }
+    .app-icon img { width:100%; height:100%; object-fit: cover; }
+    .app-name { font-size:1.5em; font-weight:600; color:#1a4d2e; margin-bottom:10px; }
+    .app-status { font-size:1em; color:#4a7c59; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .status-badge { width:10px; height:10px; border-radius:50%; background:#d4af37; animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+    .info-box {
+      background:#e8f5e9; border-left:4px solid #1a4d2e; padding:18px; margin-bottom:35px; border-radius:8px;
+    }
+    [dir="rtl"] .info-box { border-left:none; border-right:4px solid #1a4d2e; }
+    .info-box p { color:#1a4d2e; margin:0; font-size:1.05em; }
+
+    .form-section {
+      background:#f5f5f0; border-radius:15px; padding:40px; border:2px solid #d4af37;
+    }
+    .form-section h3 { color:#1a4d2e; margin-bottom:30px; font-size:1.8em; }
+    .form-group { margin-bottom:28px; }
+    label { display:block; color:#1a4d2e; font-weight:600; margin-bottom:10px; font-size:1em; }
+
+    input, select, textarea {
+      width:100%; padding:14px 16px; border:2px solid #d4af37; border-radius:8px; font-size:1em;
+      transition: border-color .3s; background:#fff; color:#1a4d2e; font-family:inherit;
+    }
+    [dir="rtl"] input, [dir="rtl"] select, [dir="rtl"] textarea { text-align:right; }
+    input:focus, select:focus, textarea:focus { outline:none; border-color:#1a4d2e; box-shadow:0 0 0 3px rgba(26,77,46,.1); }
+
+    .custom-select { position:relative; }
+    .custom-select select { appearance:none; cursor:pointer; padding-right:40px; }
+    [dir="rtl"] .custom-select select { padding-right:15px; padding-left:40px; }
+    .custom-select::after {
+      content:"▼"; position:absolute; right:15px; top:50%; transform:translateY(-50%);
+      pointer-events:none; color:#1a4d2e; font-size:.9em;
+    }
+    [dir="rtl"] .custom-select::after { right:auto; left:15px; }
+
+    .submit-btn {
+      width:100%; padding:18px;
+      background: linear-gradient(135deg,#1a4d2e 0%, #d4af37 100%);
+      color:#fff; border:none; border-radius:8px; font-size:1.2em; font-weight:700; cursor:pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(26,77,46,.4); }
+    .submit-btn:active { transform:translateY(0); }
+    .submit-btn:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+
+    .success-message, .error-message {
+      display:none; padding:18px; border-radius:8px; margin-top:20px; animation:slideIn .3s ease-out;
+    }
+    .success-message { background:#e8f5e9; color:#1a4d2e; border:2px solid #4caf50; }
+    .error-message { background:#ffebee; color:#c62828; border:2px solid #ef5350; }
+    @keyframes slideIn { from{opacity:0; transform:translateY(-10px);} to{opacity:1; transform:translateY(0);} }
+
+    .footer {
+      background: linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);
+      text-align:center; padding:35px 30px; color:#d4af37; font-size:1em; border-top:4px solid #d4af37;
+    }
+    .footer-logo {
+      max-width:150px; height:auto; margin:0 auto 14px; display:block;
+      filter: drop-shadow(0 4px 15px rgba(0,0,0,.4)); border-radius:22px;
+    }
+    .footer-company-name { font-size:1.8em; font-weight:700; color:#d4af37; margin-bottom:12px; letter-spacing:1px; }
+    .footer-content p { color:#f0e68c; margin:10px 0; }
+    .footer a { color:#d4af37; text-decoration:none; font-weight:600; }
+    .footer a:hover { text-decoration:underline; }
+
+    .hidden { display:none; }
+
+    @media (max-width: 900px) {
+      .top-header .brand { gap:18px; padding:14px 18px; }
+      .top-header-logo { width:140px; height:140px; border-radius:22px; }
+      .brand-text .by { font-size:18px; }
+      .brand-text .name { font-size:36px; }
+    }
+
+    @media (max-width: 768px) {
+      .header { padding:12px 15px 10px; }
+      .header h1 { font-size:1em; }
+      .header p { font-size:.85em; }
+      .apps-grid { grid-template-columns:1fr; }
+      .content { padding:35px 25px; }
+      .form-section { padding:25px; }
+      .lang-switcher { top:10px; right:10px; gap:8px; }
+      [dir="rtl"] .lang-switcher { right:auto; left:10px; }
+      .lang-btn { padding:10px 20px; font-size:1em; }
+      .footer-logo { max-width:120px; }
+      .footer-company-name { font-size:1.5em; }
+    }
+
+    @media (max-width: 480px) {
+      .apps-section h2 { font-size:1.65em; }
+    }
+  </style>
 </head>
 <body>
-    <div class="top-header">
-        <img src="images/ashcore-labs.png" alt="AshCore Labs" class="top-header-logo" onerror="this.style.display='none'">
-    </div>
+  <!-- Language Switcher -->
+  <div class="lang-switcher" aria-label="Language Switcher">
+    <button class="lang-btn active" id="btnEnglish" type="button" onclick="switchLanguage('en')">English</button>
+    <button class="lang-btn" id="btnArabic" type="button" onclick="switchLanguage('ar')">العربية</button>
+  </div>
 
-    <div class="main-wrapper">
-        <div class="lang-switcher">
-            <button class="lang-btn active" id="btnEnglish" onclick="switchLanguage('en')">
-                English
-            </button>
-            <button class="lang-btn" id="btnArabic" onclick="switchLanguage('ar')">
-                العربية
-            </button>
+  <!-- HERO Brand -->
+  <div class="top-header">
+    <div class="brand" aria-label="Developed by AshCore Labs">
+      <img src="images/ashcore-labs.png" alt="AshCore Labs logo" class="top-header-logo" onerror="this.style.display='none'">
+      <div class="brand-text">
+        <div class="by" id="brandBy">Developed by</div>
+        <div class="name">AshCore Labs</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+    <div class="container" role="main">
+      <div class="header">
+        <h1 id="headerTitle">🚀 Beta Testing Program</h1>
+        <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
+      </div>
+
+      <div class="content">
+        <div class="info-box">
+          <p id="infoText"><strong>🌱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
         </div>
 
-        <div class="container">
-            <div class="header">
-                <h1 id="headerTitle">🚀 Beta Testing Program</h1>
-                <p id="headerSubtitle">Join us in testing our exciting new apps!</p>
+        <!-- Apps -->
+        <div class="apps-section">
+          <h2 id="appsTitle">Available Apps for Testing</h2>
+          <div class="apps-grid">
+            <div class="app-card">
+              <div class="app-icon">
+                <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23d4af37%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+              </div>
+              <div class="app-name">Alif Play</div>
+              <div class="app-status"><span class="status-badge"></span><span id="alifStatus">iOS 2.0 - Pending Release</span></div>
             </div>
 
-            <div class="content">
-                <div class="info-box">
-                    <p id="infoText"><strong>🌱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!</p>
-                </div>
-
-                <div class="apps-section">
-                    <h2 id="appsTitle">Available Apps for Testing</h2>
-                    
-                    <div class="apps-grid">
-                        <div class="app-card">
-                            <div class="app-icon">
-                                <img src="images/alifplay-icon.png" alt="Alif Play" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23d4af37%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
-                            </div>
-                            <div class="app-name">Alif Play</div>
-                            <div class="app-status">
-                                <span class="status-badge"></span>
-                                <span id="alifStatus">iOS 2.0 - Pending Release</span>
-                            </div>
-                        </div>
-
-                        <div class="app-card">
-                            <div class="app-icon">
-                                <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%231a4d2e%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
-                            </div>
-                            <div class="app-name">Hajj & Umrah Guide</div>
-                            <div class="app-status">
-                                <span class="status-badge"></span>
-                                <span id="hajjStatus">iOS 1.0 - In Review</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <h3 id="formTitle">📝 Sign Up as a Tester</h3>
-                    
-                    <form id="testerForm">
-                        <div class="form-group">
-                            <label for="appSelect" id="labelApp">Select App to Test *</label>
-                            <div class="custom-select">
-                                <select id="appSelect" name="app" required>
-                                    <option value="">Choose an app...</option>
-                                    <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
-                                    <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
-                                    <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="name" id="labelName">Full Name *</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email" id="labelEmail">Email Address *</label>
-                            <input type="email" id="email" name="email" placeholder="email@example.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="platform" id="labelPlatform">Device Platform *</label>
-                            <div class="custom-select">
-                                <select id="platform" name="platform" required>
-                                    <option value="">Select platform...</option>
-                                    <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
-                                    <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
-                                    <option value="both" data-en="Both iOS and Android" data-ar="كلاهما iOS و Android">Both iOS and Android</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
-                            <input type="text" id="deviceModel" name="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
-                        </div>
-
-                        <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🚀</button>
-
-                        <div class="success-message" id="successMessage">
-                            <span id="successText">✅ <strong>Thank you for signing up!</strong><br>
-                            We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
-                        </div>
-
-                        <div class="error-message" id="errorMessage">
-                            <span id="errorText">❌ <strong>Submission failed.</strong><br>
-                            Please try again or contact us directly at ashr2230@gmail.com</span>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Feedback Section for Existing Testers -->
-                <div class="form-section" style="margin-top: 40px;">
-                    <h3 id="feedbackTitle">💬 Already Testing? Share Your Feedback</h3>
-                    <p id="feedbackDescription" style="color: #4a7c59; margin-bottom: 25px; font-size: 0.95em;">
-                        Help us improve by reporting bugs, suggesting features, or sharing your experience.
-                    </p>
-                    
-                    <form id="feedbackForm">
-                        <div class="form-group">
-                            <label for="feedbackApp" id="labelFeedbackApp">Which App? *</label>
-                            <div class="custom-select">
-                                <select id="feedbackApp" name="feedbackApp" required>
-                                    <option value="">Select app...</option>
-                                    <option value="alifplay" data-en="Alif Play" data-ar="أليف بلاي">Alif Play</option>
-                                    <option value="hajj-umrah" data-en="Hajj & Umrah Guide" data-ar="دليل الحج والعمرة">Hajj & Umrah Guide</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedbackName" id="labelFeedbackName">Your Name *</label>
-                            <input type="text" id="feedbackName" name="feedbackName" placeholder="Enter your name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedbackEmail" id="labelFeedbackEmail">Your Email *</label>
-                            <input type="email" id="feedbackEmail" name="feedbackEmail" placeholder="email@example.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedbackType" id="labelFeedbackType">Feedback Type *</label>
-                            <div class="custom-select">
-                                <select id="feedbackType" name="feedbackType" required>
-                                    <option value="">Select type...</option>
-                                    <option value="bug" data-en="Bug Report" data-ar="بلاغ عن خطأ">Bug Report</option>
-                                    <option value="suggestion" data-en="Feature Suggestion" data-ar="اقتراح ميزة">Feature Suggestion</option>
-                                    <option value="comment" data-en="General Comment" data-ar="تعليق عام">General Comment</option>
-                                    <option value="improvement" data-en="Improvement Idea" data-ar="فكرة تحسين">Improvement Idea</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="feedbackMessage" id="labelFeedbackMessage">Your Feedback *</label>
-                            <textarea id="feedbackMessage" name="feedbackMessage" rows="6" 
-                                placeholder="Describe the issue, suggestion, or feedback in detail..." 
-                                required
-                                style="width: 100%; padding: 14px 16px; border: 2px solid #d4af37; border-radius: 8px; font-size: 1em; font-family: inherit; resize: vertical; background: #ffffff; color: #1a4d2e;"></textarea>
-                        </div>
-
-                        <button type="submit" class="submit-btn" id="feedbackBtn">Submit Feedback 📨</button>
-
-                        <div class="success-message" id="feedbackSuccessMessage">
-                            <span id="feedbackSuccessText">✅ <strong>Thank you for your feedback!</strong><br>
-                            We've received your message and will review it carefully. Your input helps us make the app better!</span>
-                        </div>
-
-                        <div class="error-message" id="feedbackErrorMessage">
-                            <span id="feedbackErrorText">❌ <strong>Submission failed.</strong><br>
-                            Please try again or email us directly at ashr2230@gmail.com</span>
-                        </div>
-                    </form>
-                </div>
+            <div class="app-card">
+              <div class="app-icon">
+                <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%231a4d2e%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
+              </div>
+              <div class="app-name">Hajj & Umrah Guide</div>
+              <div class="app-status"><span class="status-badge"></span><span id="hajjStatus">iOS 1.0 - In Review</span></div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div class="footer">
-        <img src="images/ashcore-labs.png" alt="AshCore Labs" class="footer-logo" onerror="this.style.display='none'">
-        <div class="footer-company-name">AshCore Labs</div>
-        <div class="footer-content">
-            <p id="footerCopyright">© 2025 AshCore Labs. All rights reserved.</p>
-            <p id="footerContact">Questions? Contact us at <a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a></p>
+        <!-- Tester Signup -->
+        <div class="form-section" aria-labelledby="formTitle">
+          <h3 id="formTitle">📝 Sign Up as a Tester</h3>
+          <form id="testerForm" novalidate>
+            <!-- Honeypot -->
+            <input type="text" name="company" id="hp1" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="form-group">
+              <label for="appSelect" id="labelApp">Select App to Test *</label>
+              <div class="custom-select">
+                <select id="appSelect" name="app" required>
+                  <option value="">Choose an app...</option>
+                  <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
+                  <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
+                  <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name" id="labelName">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" id="labelEmail">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="platform" id="labelPlatform">Device Platform *</label>
+              <div class="custom-select">
+                <select id="platform" name="platform" required>
+                  <option value="">Select platform...</option>
+                  <option value="ios" data-en="iOS (iPhone/iPad)" data-ar="iOS (آيفون/آيباد)">iOS (iPhone/iPad)</option>
+                  <option value="android" data-en="Android" data-ar="أندرويد">Android</option>
+                  <option value="both" data-en="Both iOS and Android" data-ar="كلاهما iOS و Android">Both iOS and Android</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
+              <input type="text" id="deviceModel" name="deviceModel" placeholder="e.g., iPhone 14 Pro, Samsung Galaxy S23">
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Join Beta Testing 🚀</button>
+
+            <div class="success-message" id="successMessage">
+              <span id="successText">✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.</span>
+            </div>
+            <div class="error-message" id="errorMessage">
+              <span id="errorText">❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr2230@gmail.com</span>
+            </div>
+          </form>
         </div>
+
+        <!-- Feedback (Bugs/Suggestions/Comments) -->
+        <div class="form-section" style="margin-top:40px;" aria-labelledby="feedbackTitle">
+          <h3 id="feedbackTitle">💬 Already Testing? Share Your Feedback</h3>
+          <p id="feedbackDescription" style="color:#4a7c59; margin-bottom:25px; font-size:.95em;">
+            Help us improve by reporting bugs, suggesting features, or sharing your experience.
+          </p>
+
+          <form id="feedbackForm" novalidate>
+            <!-- Honeypot -->
+            <input type="text" name="website" id="hp2" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="form-group">
+              <label for="feedbackApp" id="labelFeedbackApp">Which App? *</label>
+              <div class="custom-select">
+                <select id="feedbackApp" name="feedbackApp" required>
+                  <option value="">Select app...</option>
+                  <option value="alifplay" data-en="Alif Play" data-ar="أليف بلاي">Alif Play</option>
+                  <option value="hajj-umrah" data-en="Hajj & Umrah Guide" data-ar="دليل الحج والعمرة">Hajj & Umrah Guide</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackType" id="labelFeedbackType">Feedback Type *</label>
+              <div class="custom-select">
+                <select id="feedbackType" name="feedbackType" required>
+                  <option value="">Select type...</option>
+                  <option value="bug" data-en="Bug Report" data-ar="بلاغ عن خطأ">Bug Report</option>
+                  <option value="suggestion" data-en="Feature Suggestion" data-ar="اقتراح ميزة">Feature Suggestion</option>
+                  <option value="comment" data-en="General Comment" data-ar="تعليق عام">General Comment</option>
+                  <option value="improvement" data-en="Improvement Idea" data-ar="فكرة تحسين">Improvement Idea</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackName" id="labelFeedbackName">Your Name *</label>
+              <input type="text" id="feedbackName" name="feedbackName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackEmail" id="labelFeedbackEmail">Your Email *</label>
+              <input type="email" id="feedbackEmail" name="feedbackEmail" placeholder="email@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackMessage" id="labelFeedbackMessage">Your Feedback *</label>
+              <textarea id="feedbackMessage" name="feedbackMessage" rows="6" placeholder="Describe the issue, suggestion, or feedback in detail..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="feedbackBtn">Submit Feedback 📨</button>
+
+            <div class="success-message" id="feedbackSuccessMessage">
+              <span id="feedbackSuccessText">✅ <strong>Thank you for your feedback!</strong><br>We've received your message and will review it carefully. Your input helps us make the app better!</span>
+            </div>
+            <div class="error-message" id="feedbackErrorMessage">
+              <span id="feedbackErrorText">❌ <strong>Submission failed.</strong><br>Please try again or email us directly at ashr2230@gmail.com</span>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Translation object
-        const translations = {
-            en: {
-                headerTitle: "🚀 Beta Testing Program",
-                headerSubtitle: "Join us in testing our exciting new apps!",
-                infoText: "<strong>🌱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!",
-                appsTitle: "Available Apps for Testing",
-                alifStatus: "iOS 2.0 - Pending Release",
-                hajjStatus: "iOS 1.0 - In Review",
-                formTitle: "📝 Sign Up as a Tester",
-                labelApp: "Select App to Test *",
-                labelName: "Full Name *",
-                labelEmail: "Email Address *",
-                labelPlatform: "Device Platform *",
-                labelDevice: "Device Model (Optional)",
-                submitBtn: "Join Beta Testing 🚀",
-                successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
-                errorText: "❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr2230@gmail.com",
-                footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
-                footerContact: "Questions? Contact us at ",
-                placeholderName: "Enter your full name",
-                placeholderEmail: "email@example.com",
-                placeholderDevice: "e.g., iPhone 14 Pro, Samsung Galaxy S23",
-                selectApp: "Choose an app...",
-                selectPlatform: "Select platform...",
-                feedbackTitle: "💬 Already Testing? Share Your Feedback",
-                feedbackDescription: "Help us improve by reporting bugs, suggesting features, or sharing your experience.",
-                labelFeedbackApp: "Which App? *",
-                labelFeedbackName: "Your Name *",
-                labelFeedbackEmail: "Your Email *",
-                labelFeedbackType: "Feedback Type *",
-                labelFeedbackMessage: "Your Feedback *",
-                feedbackBtn: "Submit Feedback 📨",
-                feedbackSuccessText: "✅ <strong>Thank you for your feedback!</strong><br>We've received your message and will review it carefully. Your input helps us make the app better!",
-                feedbackErrorText: "❌ <strong>Submission failed.</strong><br>Please try again or email us directly at ashr2230@gmail.com",
-                selectFeedbackApp: "Select app...",
-                selectFeedbackType: "Select type...",
-                feedbackPlaceholder: "Describe the issue, suggestion, or feedback in detail...",
-                feedbackNamePlaceholder: "Enter your name"
-            },
-            ar: {
-                headerTitle: "🚀 برنامج الاختبار التجريبي",
-                headerSubtitle: "انضم إلينا في اختبار تطبيقاتنا المثيرة!",
-                infoText: "<strong>🌱 ما هو الاختبار التجريبي؟</strong> يحصل المختبرون التجريبيون على وصول مبكر إلى الميزات الجديدة ويساعدوننا في تحسين التطبيق قبل الإصدار الرسمي. ملاحظاتك لا تقدر بثمن!",
-                appsTitle: "التطبيقات المتاحة للاختبار",
-                alifStatus: "iOS 2.0 - في انتظار الإصدار",
-                hajjStatus: "iOS 1.0 - قيد المراجعة",
-                formTitle: "📝 سجل كمختبر",
-                labelApp: "اختر التطبيق للاختبار *",
-                labelName: "الاسم الكامل *",
-                labelEmail: "عنوان البريد الإلكتروني *",
-                labelPlatform: "منصة الجهاز *",
-                labelDevice: "موديل الجهاز (اختياري)",
-                submitBtn: "انضم للاختبار التجريبي 🚀",
-                successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
-                errorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة على ashr2230@gmail.com",
-                footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
-                footerContact: "أسئلة؟ اتصل بنا على ",
-                placeholderName: "أدخل اسمك الكامل",
-                placeholderEmail: "email@example.com",
-                placeholderDevice: "مثال: iPhone 14 Pro، Samsung Galaxy S23",
-                selectApp: "اختر تطبيقاً...",
-                selectPlatform: "اختر المنصة...",
-                feedbackTitle: "💬 هل تختبر بالفعل؟ شارك ملاحظاتك",
-                feedbackDescription: "ساعدنا في التحسين من خلال الإبلاغ عن الأخطاء أو اقتراح الميزات أو مشاركة تجربتك.",
-                labelFeedbackApp: "أي تطبيق؟ *",
-                labelFeedbackName: "اسمك *",
-                labelFeedbackEmail: "بريدك الإلكتروني *",
-                labelFeedbackType: "نوع الملاحظات *",
-                labelFeedbackMessage: "ملاحظاتك *",
-                feedbackBtn: "إرسال الملاحظات 📨",
-                feedbackSuccessText: "✅ <strong>شكراً لملاحظاتك!</strong><br>لقد تلقينا رسالتك وسنراجعها بعناية. مدخلاتك تساعدنا في تحسين التطبيق!",
-                feedbackErrorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على ashr2230@gmail.com",
-                selectFeedbackApp: "اختر تطبيقاً...",
-                selectFeedbackType: "اختر النوع...",
-                feedbackPlaceholder: "صف المشكلة أو الاقتراح أو الملاحظات بالتفصيل...",
-                feedbackNamePlaceholder: "أدخل اسمك"
-            }
-        };
+  <!-- Footer -->
+  <div class="footer">
+    <img src="images/ashcore-labs.png" alt="AshCore Labs" class="footer-logo" onerror="this.style.display='none'">
+    <div class="footer-company-name">AshCore Labs</div>
+    <div class="footer-content">
+      <p id="footerCopyright">© 2025 AshCore Labs. All rights reserved.</p>
+      <p id="footerContact">Questions? Contact us at <a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a></p>
+    </div>
+  </div>
 
-        let currentLang = 'en';
+  <script>
+    // Translations
+    const translations = {
+      en: {
+        brandBy: "Developed by",
+        headerTitle: "🚀 Beta Testing Program",
+        headerSubtitle: "Join us in testing our exciting new apps!",
+        infoText: "<strong>🌱 What is Beta Testing?</strong> Beta testers get early access to new features and help us improve the app before official release. Your feedback is invaluable!",
+        appsTitle: "Available Apps for Testing",
+        alifStatus: "iOS 2.0 - Pending Release",
+        hajjStatus: "iOS 1.0 - In Review",
+        formTitle: "📝 Sign Up as a Tester",
+        labelApp: "Select App to Test *",
+        labelName: "Full Name *",
+        labelEmail: "Email Address *",
+        labelPlatform: "Device Platform *",
+        labelDevice: "Device Model (Optional)",
+        submitBtn: "Join Beta Testing 🚀",
+        successText: "✅ <strong>Thank you for signing up!</strong><br>We'll send you testing instructions via email shortly. Check your inbox for the TestFlight (iOS) or Google Play Beta (Android) invitation.",
+        errorText: "❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr2230@gmail.com",
+        feedbackTitle: "💬 Already Testing? Share Your Feedback",
+        feedbackDescription: "Help us improve by reporting bugs, suggesting features, or sharing your experience.",
+        labelFeedbackApp: "Which App? *",
+        labelFeedbackName: "Your Name *",
+        labelFeedbackEmail: "Your Email *",
+        labelFeedbackType: "Feedback Type *",
+        labelFeedbackMessage: "Your Feedback *",
+        feedbackBtn: "Submit Feedback 📨",
+        feedbackSuccessText: "✅ <strong>Thank you for your feedback!</strong><br>We've received your message and will review it carefully. Your input helps us make the app better!",
+        feedbackErrorText: "❌ <strong>Submission failed.</strong><br>Please try again or email us directly at ashr2230@gmail.com",
+        footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
+        footerContact: "Questions? Contact us at ",
+        placeholderName: "Enter your full name",
+        placeholderEmail: "email@example.com",
+        placeholderDevice: "e.g., iPhone 14 Pro, Samsung Galaxy S23",
+        selectApp: "Choose an app...",
+        selectPlatform: "Select platform...",
+        selectFeedbackApp: "Select app...",
+        selectFeedbackType: "Select type...",
+        feedbackPlaceholder: "Describe the issue, suggestion, or feedback in detail...",
+        feedbackNamePlaceholder: "Enter your name"
+      },
+      ar: {
+        brandBy: "تم التطوير بواسطة",
+        headerTitle: "🚀 برنامج الاختبار التجريبي",
+        headerSubtitle: "انضم إلينا في اختبار تطبيقاتنا المثيرة!",
+        infoText: "<strong>🌱 ما هو الاختبار التجريبي؟</strong> يحصل المختبرون التجريبيون على وصول مبكر إلى الميزات الجديدة ويساعدوننا في تحسين التطبيق قبل الإصدار الرسمي. ملاحظاتك لا تقدر بثمن!",
+        appsTitle: "التطبيقات المتاحة للاختبار",
+        alifStatus: "iOS 2.0 - في انتظار الإصدار",
+        hajjStatus: "iOS 1.0 - قيد المراجعة",
+        formTitle: "📝 سجل كمختبر",
+        labelApp: "اختر التطبيق للاختبار *",
+        labelName: "الاسم الكامل *",
+        labelEmail: "عنوان البريد الإلكتروني *",
+        labelPlatform: "منصة الجهاز *",
+        labelDevice: "موديل الجهاز (اختياري)",
+        submitBtn: "انضم للاختبار التجريبي 🚀",
+        successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سنرسل لك تعليمات الاختبار عبر البريد الإلكتروني قريباً. تحقق من بريدك الوارد للحصول على دعوة TestFlight (iOS) أو Google Play Beta (Android).",
+        errorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة على ashr2230@gmail.com",
+        feedbackTitle: "💬 هل تختبر بالفعل؟ شارك ملاحظاتك",
+        feedbackDescription: "ساعدنا في التحسين من خلال الإبلاغ عن الأخطاء أو اقتراح الميزات أو مشاركة تجربتك.",
+        labelFeedbackApp: "أي تطبيق؟ *",
+        labelFeedbackName: "اسمك *",
+        labelFeedbackEmail: "بريدك الإلكتروني *",
+        labelFeedbackType: "نوع الملاحظات *",
+        labelFeedbackMessage: "ملاحظاتك *",
+        feedbackBtn: "إرسال الملاحظات 📨",
+        feedbackSuccessText: "✅ <strong>شكراً لملاحظاتك!</strong><br>لقد تلقينا رسالتك وسنراجعها بعناية. مدخلاتك تساعدنا في تحسين التطبيق!",
+        feedbackErrorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على ashr2230@gmail.com",
+        footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
+        footerContact: "أسئلة؟ اتصل بنا على ",
+        placeholderName: "أدخل اسمك الكامل",
+        placeholderEmail: "email@example.com",
+        placeholderDevice: "مثال: iPhone 14 Pro، Samsung Galaxy S23",
+        selectApp: "اختر تطبيقاً...",
+        selectPlatform: "اختر المنصة...",
+        selectFeedbackApp: "اختر تطبيقاً...",
+        selectFeedbackType: "اختر النوع...",
+        feedbackPlaceholder: "صف المشكلة أو الاقتراح أو الملاحظات بالتفصيل...",
+        feedbackNamePlaceholder: "أدخل اسمك"
+      }
+    };
 
-        function switchLanguage(lang) {
-            currentLang = lang;
-            applyTranslations();
-            
-            // Update button states
-            document.getElementById('btnEnglish').classList.toggle('active', lang === 'en');
-            document.getElementById('btnArabic').classList.toggle('active', lang === 'ar');
+    let currentLang = 'en';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      applyTranslations();
+      document.getElementById('btnEnglish').classList.toggle('active', lang === 'en');
+      document.getElementById('btnArabic').classList.toggle('active', lang === 'ar');
+    }
+
+    function applyTranslations() {
+      const t = translations[currentLang];
+      const html = document.documentElement;
+
+      html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      html.setAttribute('lang', currentLang);
+
+      // Brand tagline
+      document.getElementById('brandBy').textContent = t.brandBy;
+
+      // Main texts
+      document.getElementById('headerTitle').textContent = t.headerTitle;
+      document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
+      document.getElementById('infoText').innerHTML = t.infoText;
+      document.getElementById('appsTitle').textContent = t.appsTitle;
+      document.getElementById('alifStatus').textContent = t.alifStatus;
+      document.getElementById('hajjStatus').textContent = t.hajjStatus;
+      document.getElementById('formTitle').textContent = t.formTitle;
+
+      // Labels
+      document.getElementById('labelApp').textContent = t.labelApp;
+      document.getElementById('labelName').textContent = t.labelName;
+      document.getElementById('labelEmail').textContent = t.labelEmail;
+      document.getElementById('labelPlatform').textContent = t.labelPlatform;
+      document.getElementById('labelDevice').textContent = t.labelDevice;
+
+      // Buttons/messages
+      document.getElementById('submitBtn').textContent = t.submitBtn;
+      document.getElementById('successText').innerHTML = t.successText;
+      document.getElementById('errorText').innerHTML = t.errorText;
+
+      // Feedback section
+      document.getElementById('feedbackTitle').textContent = t.feedbackTitle;
+      document.getElementById('feedbackDescription').textContent = t.feedbackDescription;
+      document.getElementById('labelFeedbackApp').textContent = t.labelFeedbackApp;
+      document.getElementById('labelFeedbackType').textContent = t.labelFeedbackType;
+      document.getElementById('labelFeedbackName').textContent = t.labelFeedbackName;
+      document.getElementById('labelFeedbackEmail').textContent = t.labelFeedbackEmail;
+      document.getElementById('labelFeedbackMessage').textContent = t.labelFeedbackMessage;
+      document.getElementById('feedbackBtn').textContent = t.feedbackBtn;
+      document.getElementById('feedbackSuccessText').innerHTML = t.feedbackSuccessText;
+      document.getElementById('feedbackErrorText').innerHTML = t.feedbackErrorText;
+
+      // Footer
+      document.getElementById('footerCopyright').textContent = t.footerCopyright;
+      document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a>';
+
+      // Placeholders
+      document.getElementById('name').placeholder = t.placeholderName;
+      document.getElementById('email').placeholder = t.placeholderEmail;
+      document.getElementById('deviceModel').placeholder = t.placeholderDevice;
+      document.getElementById('feedbackName').placeholder = t.feedbackNamePlaceholder;
+      document.getElementById('feedbackEmail').placeholder = t.placeholderEmail;
+      document.getElementById('feedbackMessage').placeholder = t.feedbackPlaceholder;
+
+      // Select option first rows
+      document.getElementById('appSelect').options[0].text = t.selectApp;
+      document.getElementById('platform').options[0].text = t.selectPlatform;
+      document.getElementById('feedbackApp').options[0].text = t.selectFeedbackApp;
+      document.getElementById('feedbackType').options[0].text = t.selectFeedbackType;
+
+      // Localize data-driven option text
+      document.querySelectorAll('option[data-en]').forEach(opt => {
+        opt.text = opt.getAttribute('data-' + currentLang);
+      });
+    }
+
+    // Simple email check
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Sign-up submit
+    document.getElementById('testerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // block bots
+      if (document.getElementById('hp1').value) return;
+
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
+
+      // hide old messages
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('errorMessage').style.display = 'none';
+
+      // quick validation
+      if (!isValidEmail(document.getElementById('email').value)) {
+        document.getElementById('errorMessage').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        return;
+      }
+
+      const payload = {
+        access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE',
+        subject: 'New Beta Tester Signup - AshCore Labs',
+        from_name: 'AshCore Labs Beta Testing',
+        app: document.getElementById('appSelect').value,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        platform: document.getElementById('platform').value,
+        deviceModel: document.getElementById('deviceModel').value || 'Not specified',
+        language: currentLang,
+        submittedAt: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json','Accept':'application/json' },
+          body: JSON.stringify(payload)
+        }).then(r => r.json());
+
+        if (res.success) {
+          document.getElementById('successMessage').style.display = 'block';
+          e.target.reset();
+          setTimeout(() => (document.getElementById('successMessage').style.display = 'none'), 7000);
+        } else {
+          document.getElementById('errorMessage').style.display = 'block';
+          console.error('Web3Forms Error:', res);
         }
+      } catch (err) {
+        console.error('Submission Error:', err);
+        document.getElementById('errorMessage').style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
 
-        function applyTranslations() {
-            const t = translations[currentLang];
-            const html = document.documentElement;
-            
-            // Set direction
-            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            html.setAttribute('lang', currentLang);
-            
-            // Update text content
-            document.getElementById('headerTitle').textContent = t.headerTitle;
-            document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
-            document.getElementById('infoText').innerHTML = t.infoText;
-            document.getElementById('appsTitle').textContent = t.appsTitle;
-            document.getElementById('alifStatus').textContent = t.alifStatus;
-            document.getElementById('hajjStatus').textContent = t.hajjStatus;
-            document.getElementById('formTitle').textContent = t.formTitle;
-            document.getElementById('labelApp').textContent = t.labelApp;
-            document.getElementById('labelName').textContent = t.labelName;
-            document.getElementById('labelEmail').textContent = t.labelEmail;
-            document.getElementById('labelPlatform').textContent = t.labelPlatform;
-            document.getElementById('labelDevice').textContent = t.labelDevice;
-            document.getElementById('submitBtn').textContent = t.submitBtn;
-            document.getElementById('successText').innerHTML = t.successText;
-            document.getElementById('errorText').innerHTML = t.errorText;
-            document.getElementById('feedbackTitle').textContent = t.feedbackTitle;
-            document.getElementById('feedbackDescription').textContent = t.feedbackDescription;
-            document.getElementById('labelFeedbackApp').textContent = t.labelFeedbackApp;
-            document.getElementById('labelFeedbackName').textContent = t.labelFeedbackName;
-            document.getElementById('labelFeedbackEmail').textContent = t.labelFeedbackEmail;
-            document.getElementById('labelFeedbackType').textContent = t.labelFeedbackType;
-            document.getElementById('labelFeedbackMessage').textContent = t.labelFeedbackMessage;
-            document.getElementById('feedbackBtn').textContent = t.feedbackBtn;
-            document.getElementById('feedbackSuccessText').innerHTML = t.feedbackSuccessText;
-            document.getElementById('feedbackErrorText').innerHTML = t.feedbackErrorText;
-            document.getElementById('footerCopyright').textContent = t.footerCopyright;
-            document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr2230@gmail.com">ashr2230@gmail.com</a>';
-            
-            // Update placeholders
-            document.getElementById('name').placeholder = t.placeholderName;
-            document.getElementById('email').placeholder = t.placeholderEmail;
-            document.getElementById('deviceModel').placeholder = t.placeholderDevice;
-            document.getElementById('feedbackName').placeholder = t.feedbackNamePlaceholder;
-            document.getElementById('feedbackEmail').placeholder = t.placeholderEmail;
-            document.getElementById('feedbackMessage').placeholder = t.feedbackPlaceholder;
-            
-            // Update select options
-            document.getElementById('appSelect').options[0].text = t.selectApp;
-            document.getElementById('platform').options[0].text = t.selectPlatform;
-            document.getElementById('feedbackApp').options[0].text = t.selectFeedbackApp;
-            document.getElementById('feedbackType').options[0].text = t.selectFeedbackType;
-            
-            // Update data-driven options
-            document.querySelectorAll('option[data-en]').forEach(option => {
-                option.text = option.getAttribute('data-' + currentLang);
-            });
+    // Feedback submit
+    document.getElementById('feedbackForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // block bots
+      if (document.getElementById('hp2').value) return;
+
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const originalText = feedbackBtn.textContent;
+      feedbackBtn.disabled = true;
+      feedbackBtn.textContent = currentLang === 'en' ? 'Sending...' : 'جاري الإرسال...';
+
+      document.getElementById('feedbackSuccessMessage').style.display = 'none';
+      document.getElementById('feedbackErrorMessage').style.display = 'none';
+
+      if (!isValidEmail(document.getElementById('feedbackEmail').value)) {
+        document.getElementById('feedbackErrorMessage').style.display = 'block';
+        feedbackBtn.disabled = false;
+        feedbackBtn.textContent = originalText;
+        return;
+      }
+
+      const payload = {
+        access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE',
+        subject: 'Beta Tester Feedback - AshCore Labs',
+        from_name: 'AshCore Labs Beta Feedback',
+        app: document.getElementById('feedbackApp').value,
+        feedbackType: document.getElementById('feedbackType').value,
+        name: document.getElementById('feedbackName').value,
+        email: document.getElementById('feedbackEmail').value,
+        message: document.getElementById('feedbackMessage').value,
+        language: currentLang,
+        submittedAt: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method:'POST',
+          headers:{ 'Content-Type':'application/json','Accept':'application/json' },
+          body: JSON.stringify(payload)
+        }).then(r => r.json());
+
+        if (res.success) {
+          document.getElementById('feedbackSuccessMessage').style.display = 'block';
+          e.target.reset();
+          setTimeout(() => (document.getElementById('feedbackSuccessMessage').style.display = 'none'), 7000);
+        } else {
+          document.getElementById('feedbackErrorMessage').style.display = 'block';
+          console.error('Feedback Error:', res);
         }
+      } catch (err) {
+        console.error('Feedback Submission Error:', err);
+        document.getElementById('feedbackErrorMessage').style.display = 'block';
+      } finally {
+        feedbackBtn.disabled = false;
+        feedbackBtn.textContent = originalText;
+      }
+    });
 
-        // Form submission handler with Web3Forms integration
-        document.getElementById('testerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
-            
-            // Hide any previous messages
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('errorMessage').style.display = 'none';
-            
-            // Prepare form data for Web3Forms
-            const formData = {
-                access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE', // Replace with your actual Web3Forms access key
-                subject: 'New Beta Tester Signup - AshCore Labs',
-                from_name: 'AshCore Labs Beta Testing',
-                app: document.getElementById('appSelect').value,
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                platform: document.getElementById('platform').value,
-                deviceModel: document.getElementById('deviceModel').value || 'Not specified',
-                language: currentLang,
-                submittedAt: new Date().toISOString(),
-                userAgent: navigator.userAgent
-            };
-            
-            // Send to Web3Forms API
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Web3Forms Response:', data);
-                
-                if (data.success) {
-                    // Show success message
-                    document.getElementById('successMessage').style.display = 'block';
-                    document.getElementById('testerForm').reset();
-                    
-                    // Hide success message after 7 seconds
-                    setTimeout(() => {
-                        document.getElementById('successMessage').style.display = 'none';
-                    }, 7000);
-                } else {
-                    // Show error message
-                    document.getElementById('errorMessage').style.display = 'block';
-                    console.error('Web3Forms Error:', data);
-                }
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            })
-            .catch(error => {
-                console.error('Submission Error:', error);
-                
-                // Show error message
-                document.getElementById('errorMessage').style.display = 'block';
-                
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-            });
-        });
-
-        // Feedback Form submission handler
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const feedbackBtn = document.getElementById('feedbackBtn');
-            const originalText = feedbackBtn.textContent;
-            feedbackBtn.disabled = true;
-            feedbackBtn.textContent = currentLang === 'en' ? 'Sending...' : 'جاري الإرسال...';
-            
-            // Hide any previous messages
-            document.getElementById('feedbackSuccessMessage').style.display = 'none';
-            document.getElementById('feedbackErrorMessage').style.display = 'none';
-            
-            // Prepare feedback data for Web3Forms
-            const feedbackData = {
-                access_key: 'YOUR_WEB3FORMS_ACCESS_KEY_HERE', // Same access key
-                subject: 'Beta Tester Feedback - AshCore Labs',
-                from_name: 'AshCore Labs Beta Feedback',
-                app: document.getElementById('feedbackApp').value,
-                name: document.getElementById('feedbackName').value,
-                email: document.getElementById('feedbackEmail').value,
-                feedbackType: document.getElementById('feedbackType').value,
-                message: document.getElementById('feedbackMessage').value,
-                language: currentLang,
-                submittedAt: new Date().toISOString(),
-                userAgent: navigator.userAgent
-            };
-            
-            // Send to Web3Forms API
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(feedbackData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Feedback Response:', data);
-                
-                if (data.success) {
-                    document.getElementById('feedbackSuccessMessage').style.display = 'block';
-                    document.getElementById('feedbackForm').reset();
-                    
-                    setTimeout(() => {
-                        document.getElementById('feedbackSuccessMessage').style.display = 'none';
-                    }, 7000);
-                } else {
-                    document.getElementById('feedbackErrorMessage').style.display = 'block';
-                    console.error('Feedback Error:', data);
-                }
-                
-                feedbackBtn.disabled = false;
-                feedbackBtn.textContent = originalText;
-            })
-            .catch(error => {
-                console.error('Feedback Submission Error:', error);
-                document.getElementById('feedbackErrorMessage').style.display = 'block';
-                feedbackBtn.disabled = false;
-                feedbackBtn.textContent = originalText;
-            });
-        });
-    </script>
+    // Initialize
+    applyTranslations();
+  </script>
 </body>
 </html>

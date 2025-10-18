@@ -3,267 +3,308 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AshCore Labs – Beta Testing</title>
+  <title>AshCore Labs — Beta Testing</title>
   <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --green-900:#0d2818;
-      --green-800:#123b22;
-      --green-700:#1a4d2e;
-      --green-600:#225d3a;
-      --gold-500:#d4af37;
-      --gold-400:#e0c356;
-      --paper:#f8fbf8;
-      --ink:#133321;
+      --g900:#0b1f14;
+      --g800:#0f2f1c;
+      --g700:#143b23;
+      --g600:#1a4d2e;
+      --g500:#225d3a;
+      --gold:#d4af37;
+      --gold-soft:#e1c968;
+      --paper:#f7fbf7;
+      --ink:#123321;
     }
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
-      color:var(--paper);
       background:
-        radial-gradient(1200px 600px at -10% 0%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(1000px 600px at 110% 20%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(135deg,var(--green-700) 0%,var(--green-900) 100%);
-      display:flex;align-items:center;justify-content:center;
-      padding:24px;overflow:hidden;
+        radial-gradient(1400px 900px at -10% -20%, rgba(212,175,55,.15), transparent 55%),
+        radial-gradient(1200px 700px at 110% 10%, rgba(212,175,55,.10), transparent 60%),
+        linear-gradient(135deg,var(--g600) 0%, var(--g900) 100%);
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      padding:28px; overflow:hidden;
     }
-    [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro','Arial',sans-serif}
+    [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
+
+    /* Floating sparkles */
+    .sparkles::before,
+    .sparkles::after{
+      content:""; position:absolute; inset:-20%; pointer-events:none; background:
+        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
+        radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
+        radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,.25), transparent 60%),
+        radial-gradient(2px 2px at 30% 70%, rgba(255,255,255,.30), transparent 60%),
+        radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,.20), transparent 60%);
+      animation: drift 18s linear infinite;
+    }
+    .sparkles::after{ animation-duration:26s; opacity:.6; filter: blur(.3px); }
+    @keyframes drift{
+      0%{ transform: translateY(0) }
+      100%{ transform: translateY(-12%) }
+    }
+
     .container{
-      width:min(1200px,96vw);height:96vh;min-height:720px;
-      background:linear-gradient(180deg,#0f2f1c 0%, #0f2f1c 70%, var(--green-800) 100%);
+      width:min(1200px,96vw); height:min(96vh,980px);
+      border-radius:28px; position:relative; overflow:hidden;
       border:1px solid rgba(212,175,55,.22);
-      border-radius:28px;overflow:hidden;
-      box-shadow:0 30px 90px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-      display:grid;grid-template-rows:auto 1fr;
-      position:relative;
+      box-shadow:0 40px 110px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);
+      display:grid; grid-template-rows:auto 1fr;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00) 35%),
+        radial-gradient(800px 300px at 50% -10%, rgba(212,175,55,.10), transparent 70%),
+        linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
     }
 
     /* language toggle */
-    .lang-switcher{
-      position:absolute;top:18px;right:18px;z-index:20;display:flex;gap:8px
+    .lang{
+      position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20;
     }
-    [dir="rtl"] .lang-switcher{right:auto;left:18px}
-    .lang-btn{
-      background:var(--gold-500);color:var(--green-900);border:0;
-      padding:8px 14px;border-radius:10px;font-weight:800;font-size:.9rem;
-      cursor:pointer;transition:.2s box-shadow,.2s transform;
+    [dir="rtl"] .lang{ right:auto; left:16px; }
+    .lang button{
+      border:1px solid var(--gold); color:var(--gold); background:rgba(212,175,55,.08);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      padding:8px 12px; border-radius:12px; font-weight:900; cursor:pointer;
+      transition: .2s transform, .2s box-shadow, .2s background;
     }
-    .lang-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(212,175,55,.35)}
-    .lang-btn.active{background:transparent;color:var(--gold-500);outline:1px solid var(--gold-500)}
+    .lang button:hover{ transform: translateY(-2px); box-shadow:0 8px 22px rgba(212,175,55,.3) }
+    .lang .active{ background:var(--gold); color:var(--g900) }
 
-    /* header / hero */
-    .header{
-      position:relative;display:grid;place-items:center;text-align:center;
-      padding:28px 18px 16px;border-bottom:1px solid rgba(212,175,55,.18);
-      background:
-        radial-gradient(800px 200px at 50% 0%, rgba(212,175,55,.10), transparent 70%),
-        linear-gradient(180deg,var(--green-700),transparent);
+    /* hero */
+    .hero{
+      padding:26px 18px 14px; display:grid; place-items:center; text-align:center;
+      position:relative; overflow:visible;
     }
-    .brand{
-      display:flex;flex-direction:column;align-items:center;gap:10px
+    .logo-wrap{
+      width:140px; height:140px; border-radius:26px; overflow:hidden;
+      display:grid; place-items:center;
+      border:1px solid rgba(212,175,55,.4);
+      box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
+      position:relative; background:rgba(212,175,55,.06);
+      isolation:isolate;
     }
-    .brand-logo{
-      width:132px;height:132px;border-radius:22px;background:rgba(212,175,55,.06);
-      display:grid;place-items:center;overflow:hidden;border:1px solid rgba(212,175,55,.28);
-      box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.06);
+    .logo-wrap::after{
+      /* subtle highlight sweep */
+      content:""; position:absolute; inset:-50% -20% auto -20%; height:60%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+      transform: rotate(12deg) translateX(-120%); filter: blur(8px);
+      animation: sweep 4.8s ease-in-out infinite;
     }
-    .brand-logo img{width:100%;height:100%;object-fit:cover}
-
-    .company-name{
-      font-size:2.25rem;letter-spacing:.04em;font-weight:900;color:var(--gold-500);
+    @keyframes sweep{
+      0%{ transform: rotate(12deg) translateX(-120%) }
+      50%{ transform: rotate(12deg) translateX(120%) }
+      100%{ transform: rotate(12deg) translateX(120%) }
+    }
+    .logo{width:100%; height:100%; object-fit:cover}
+    .brand{ margin-top:14px }
+    .brand h1{
+      font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold);
       text-shadow:0 2px 0 rgba(0,0,0,.25);
     }
-    .tagline{
-      color:#f7f0c4;font-size:1.05rem;opacity:.95
-    }
+    .brand p{ color:#f8efc9; opacity:.95; font-size:1.05rem }
 
-    /* main content */
+    /* content */
     .content{
-      display:grid;grid-template-columns:1fr 1fr;gap:22px;
-      padding:28px;overflow:auto;background:
-        linear-gradient(180deg,transparent 0%, rgba(0,0,0,.12) 100%);
+      padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px;
     }
-    @media (max-width:880px){.content{grid-template-columns:1fr;gap:18px}}
+    @media (max-width:900px){ .content{ grid-template-columns:1fr } }
 
-    .app-card{
-      background:linear-gradient(180deg,#f9fbf8,#eef6ef);
-      border-radius:22px;border:2px solid var(--gold-500);
-      padding:24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;
-      color:var(--ink);box-shadow:0 18px 38px rgba(0,0,0,.18);
+    .card{
+      position:relative; overflow:hidden; border-radius:22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border:1px solid rgba(212,175,55,.22);
+      box-shadow:
+        0 22px 50px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.05);
+      padding:22px; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
+      transition:.25s transform,.25s box-shadow;
     }
-    .icon-wrap{
-      width:88px;height:88px;border-radius:20px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--green-700),var(--green-600));
-      box-shadow:0 10px 24px rgba(26,77,46,.35), inset 0 0 0 1px rgba(255,255,255,.08);
-      border:1px solid rgba(0,0,0,.1)
+    .card:hover{ transform: translateY(-3px); box-shadow:0 26px 60px rgba(0,0,0,.45) }
+    .card::before{
+      /* gold border glow */
+      content:""; position:absolute; inset:-1px; border-radius:22px;
+      padding:1px; background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events:none;
     }
-    .icon-wrap .mini{
-      width:46px;height:46px;display:block;color:#fff
-    }
-    .app-meta{display:flex;flex-direction:column;gap:10px}
-    .app-title{font-size:1.45rem;font-weight:800;color:var(--green-800)}
-    .links{display:flex;flex-direction:column;gap:12px}
 
+    .glyph{
+      width:88px; height:88px; border-radius:18px; display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--g600), var(--g500));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 26px rgba(0,0,0,.35);
+    }
+    .glyph svg{ width:46px; height:46px; color:#fff }
+
+    .meta{ display:flex; flex-direction:column; gap:12px }
+    .title{ font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem }
+
+    .actions{ display:flex; flex-direction:column; gap:12px }
     .btn{
-      --bg:#000;--ink:#fff;
-      background:var(--bg);color:var(--ink);border:0;border-radius:12px;
-      padding:14px 18px;display:flex;align-items:center;justify-content:center;gap:10px;
-      font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow;text-decoration:none
+      --bg:#000; --ink:#fff;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      background: var(--bg); color: var(--ink);
+      padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900;
+      border:0; cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter;
+      position:relative; overflow:hidden;
     }
-    .btn:hover{transform:translateY(-2px)}
-    .btn-ios{--bg:#000}
-    .btn-ios:hover{box-shadow:0 8px 22px rgba(0,0,0,.35)}
-    .btn-android{--bg:#1f6a42}
-    .btn-android:hover{box-shadow:0 8px 22px rgba(31,106,66,.35)}
-    .btn svg{width:20px;height:20px;display:block}
-    .btn .badge{background:rgba(212,175,55,.18);color:var(--gold-500);font-size:.78rem;
-      padding:2px 8px;border-radius:999px;border:1px solid rgba(212,175,55,.35)}
-    .btn .label{display:flex;gap:8px;align-items:center}
+    .btn:hover{ transform: translateY(-2px) }
+    .btn:active{ transform: translateY(0) scale(.99) }
+    .btn .label{ display:flex; align-items:center; gap:10px }
+    .btn .badge{
+      padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
+      background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)
+    }
+    .btn-ios{ --bg:#000 }
+    .btn-ios:hover{ box-shadow: 0 10px 24px rgba(0,0,0,.35) }
+    .btn-android{ --bg:#1f6a42 }
+    .btn-android:hover{ box-shadow: 0 10px 24px rgba(31,106,66,.35) }
+
+    .btn svg{ width:20px; height:20px; display:block }
+    .gold-fill{ fill: var(--gold) }
+    .gold-stroke{ stroke: var(--gold) }
 
     /* modal */
-    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);
-      z-index:50;align-items:center;justify-content:center}
-    .modal.active{display:flex}
+    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+      z-index:50; align-items:center; justify-content:center;
+    }
+    .modal.active{ display:flex }
     .modal-card{
-      width:min(640px,92vw);max-height:92vh;overflow:auto;background:#fff;border-radius:20px;
-      box-shadow:0 30px 80px rgba(0,0,0,.55)
+      width:min(640px,92vw); max-height:92vh; overflow:auto; border-radius:20px;
+      background:#fff; color:var(--ink);
+      box-shadow:0 34px 90px rgba(0,0,0,.6);
     }
     .modal-head{
-      padding:22px;border-radius:20px 20px 0 0;
-      background:linear-gradient(135deg,var(--green-700),var(--green-900));
-      border-bottom:2px solid var(--gold-500);position:relative
+      padding:22px; background:linear-gradient(135deg,var(--g600),var(--g900));
+      border-bottom:2px solid var(--gold); color:var(--gold); position:relative;
+      border-radius:20px 20px 0 0;
     }
-    .modal-head h2{color:var(--gold-500);font-size:1.5rem;margin-bottom:6px}
-    .modal-head p{color:#faefc6}
-    .modal-close{
-      position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;
-      border:0;background:rgba(212,175,55,.18);color:var(--gold-500);
-      font-size:26px;font-weight:900;cursor:pointer
+    .modal-head p{ color:#faefc6 }
+    .close{
+      position:absolute; right:14px; top:14px; width:40px; height:40px; border-radius:50%;
+      border:0; background:rgba(212,175,55,.18); color:var(--gold);
+      font-size:26px; font-weight:900; cursor:pointer
     }
-    [dir="rtl"] .modal-close{right:auto;left:14px}
-    .modal-body{padding:22px}
+    [dir="rtl"] .close{ right:auto; left:14px }
+    .modal-body{ padding:22px }
     .callout{
-      background:#fff8e1;border:2px solid var(--gold-500);border-radius:12px;padding:16px;margin-bottom:18px
+      background:#fff8e1; border:2px solid var(--gold); border-radius:12px; padding:16px; margin-bottom:18px;
     }
-    .callout h4{color:var(--green-800);margin-bottom:8px}
-    .callout p{color:var(--green-800)}
-    .callout ol{margin:10px 0 0 20px}
-    [dir="rtl"] .callout ol{margin:10px 20px 0 0}
+    .callout h4{ margin-bottom:8px }
+    .callout ol{ margin:10px 0 0 20px }
+    [dir="rtl"] .callout ol{ margin:10px 20px 0 0 }
 
-    .form-group{margin-bottom:16px}
-    label{display:block;color:var(--green-900);font-weight:700;margin-bottom:6px}
-    input,select{
-      width:100%;padding:12px 14px;border-radius:10px;border:2px solid var(--gold-500);
-      background:#fff;color:#163924;font-size:1rem
+    .group{ margin-bottom:16px }
+    label{ display:block; font-weight:800; margin-bottom:6px }
+    input{
+      width:100%; padding:12px 14px; border-radius:10px; border:2px solid var(--gold);
+      background:#fff; color:#163924; font-size:1rem;
     }
-    [dir="rtl"] input,[dir="rtl"] select{text-align:right}
-    .hint{font-size:.85rem;color:#2c6b48;margin-top:6px}
-    .checks{background:#f5f7f4;border:2px solid var(--gold-500);border-radius:12px;padding:12px}
-    .check{display:flex;align-items:center;gap:8px;margin:10px 0}
+    [dir="rtl"] input{text-align:right}
+    .hint{ font-size:.85rem; color:#2c6b48; margin-top:6px }
+    .checks{ background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px }
+    .check{ display:flex; align-items:center; gap:8px; margin:10px 0 }
+
     .submit{
-      width:100%;padding:16px;border:0;border-radius:12px;font-weight:900;font-size:1.05rem;
-      color:#fff;background:linear-gradient(135deg,var(--green-700),var(--gold-500));
-      cursor:pointer;box-shadow:0 10px 30px rgba(26,77,46,.35)
+      width:100%; padding:16px; border:0; border-radius:12px; color:#fff;
+      font-weight:1000; font-size:1.05rem; cursor:pointer;
+      background: linear-gradient(135deg,var(--g600), var(--gold));
+      box-shadow:0 12px 30px rgba(26,77,46,.35);
     }
-    .submit:disabled{opacity:.6;cursor:not-allowed}
-    .msg{display:none;margin-top:14px;padding:12px;border-radius:10px;text-align:center;font-weight:800}
-    .ok{background:#e8f5e9;color:#0e3c23;border:2px solid #4caf50}
-    .err{background:#ffebee;color:#8d2b2b;border:2px solid #ef5350}
+    .submit:disabled{ opacity:.6; cursor:not-allowed }
+    .msg{ display:none; margin-top:14px; padding:12px; border-radius:10px; text-align:center; font-weight:900 }
+    .ok{ background:#e8f5e9; color:#0e3c23; border:2px solid #4caf50 }
+    .err{ background:#ffebee; color:#8d2b2b; border:2px solid #ef5350 }
 
-    /* scrollbars (desktop) */
-    ::-webkit-scrollbar{width:10px;height:10px}
-    ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-500),#b8962f);border-radius:999px}
-    ::-webkit-scrollbar-track{background:rgba(255,255,255,.06)}
+    /* custom scrollbar */
+    ::-webkit-scrollbar{ width:10px; height:10px }
+    ::-webkit-scrollbar-thumb{ background:linear-gradient(var(--gold), #b8962f); border-radius:999px }
+    ::-webkit-scrollbar-track{ background:rgba(255,255,255,.06) }
   </style>
 </head>
-<body>
-  <!-- Language Switch -->
-  <div class="lang-switcher">
-    <button class="lang-btn active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
-    <button class="lang-btn" id="btnArabic" onclick="switchLanguage('ar')">AR</button>
+<body class="sparkles">
+  <!-- Language toggle -->
+  <div class="lang">
+    <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
+    <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
   </div>
 
   <main class="container">
-    <!-- Header / Hero -->
-    <header class="header">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="logo-wrap">
+        <!-- Replace with your new green+gold logo -->
+        <img class="logo" src="images/ashcore-ashkur.png" alt="AshCore Labs logo (اشكر)">
+      </div>
       <div class="brand">
-        <div class="brand-logo">
-          <!-- Swap this src with your new image path -->
-          <img src="images/ashcore-ashkur.png" alt="AshCore Labs logo (اشكر)" />
-        </div>
-        <h1 class="company-name">AshCore Labs</h1>
-        <p class="tagline" id="tagline">Innovative, educational, family-oriented apps</p>
+        <h1>AshCore Labs</h1>
+        <p id="tagline">Innovative, educational, family-oriented apps</p>
       </div>
     </header>
 
-    <!-- Apps -->
+    <!-- CONTENT -->
     <section class="content">
-      <!-- Alif Play -->
-      <article class="app-card">
-        <div class="icon-wrap" aria-hidden="true">
-          <!-- Book / learning glyph -->
-          <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="glyph" aria-hidden="true">
+          <!-- Book glyph -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3h10.7A2.5 2.5 0 0 1 20 5.5V19"/>
             <path d="M4 19.5c0-1.9 1.5-3.5 3.5-3.5H20"/>
             <path d="M8 7h8M8 11h8"/>
           </svg>
         </div>
-        <div class="app-meta">
-          <h3 class="app-title" id="app1Name">Alif Play</h3>
-          <div class="links">
+        <div class="meta">
+          <h3 class="title" id="app1Name">Alif Play</h3>
+
+          <div class="actions">
             <a class="btn btn-ios" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <!-- Apple brand icon (gold stroke) -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#d4af37" stroke="none"
-                      d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
-                <path fill="#d4af37" stroke="none"
-                      d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
+              <!-- Apple brand (inline SVG, always renders) -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
+                <path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
               </svg>
               <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
 
             <button class="btn btn-android" onclick="openModal('Alif Play')">
-              <!-- Android brand icon (gold) -->
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#d4af37"
-                  d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/>
-              </svg>
+              <!-- Android brand -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
+                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn1">Android – Beta Test</span></span>
             </button>
           </div>
         </div>
       </article>
 
-      <!-- Hajj & Umrah Guide -->
-      <article class="app-card">
-        <div class="icon-wrap" aria-hidden="true">
-          <!-- Simple Kaaba glyph -->
-          <svg class="mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="glyph" aria-hidden="true">
+          <!-- Kaaba glyph -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <rect x="4" y="6.5" width="16" height="11" rx="2" ry="2"/>
             <path d="M4 9.5h16M8 13h3"/>
           </svg>
         </div>
-        <div class="app-meta">
-          <h3 class="app-title" id="app2Name">Hajj & Umrah Guide</h3>
-          <div class="links">
+        <div class="meta">
+          <h3 class="title" id="app2Name">Hajj & Umrah Guide</h3>
+
+          <div class="actions">
             <a class="btn btn-ios" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
-              <!-- Apple -->
-              <svg viewBox="0 0 24 24" fill="none" stroke="#d4af37" stroke-width="1.3" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#d4af37" stroke="none"
-                      d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
-                <path fill="#d4af37" stroke="none"
-                      d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
+                <path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
               </svg>
               <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
 
             <button class="btn btn-android" onclick="openModal('Hajj & Umrah Guide')">
-              <!-- Android -->
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#d4af37"
-                  d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
+                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn2">Android – Beta Test</span></span>
             </button>
           </div>
@@ -272,11 +313,11 @@
     </section>
   </main>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <div class="modal-head">
-        <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+        <button class="close" onclick="closeModal()" aria-label="Close">&times;</button>
         <h2 id="modalTitle">Android Beta Testing</h2>
         <p id="modalSubtitle">Join our testing program</p>
       </div>
@@ -293,28 +334,28 @@
         </div>
 
         <form id="signupForm">
-          <input type="hidden" id="selectedApps" value=""/>
+          <input type="hidden" id="selectedApps" value="" />
 
-          <div class="form-group">
+          <div class="group">
             <label for="userName" id="labelName">Your Name</label>
-            <input type="text" id="userName" required/>
+            <input type="text" id="userName" required />
           </div>
 
-          <div class="form-group">
+          <div class="group">
             <label for="userEmail" id="labelEmail">Google Account Email</label>
-            <input type="email" id="userEmail" required/>
+            <input type="email" id="userEmail" required />
             <div class="hint" id="emailHint">This is the email you use for Google Play Store</div>
           </div>
 
-          <div class="form-group">
+          <div class="group">
             <label id="labelApps">Which apps do you want to test?</label>
             <div class="checks">
               <div class="check">
-                <input type="checkbox" id="checkAlif" value="Alif Play" checked/>
+                <input type="checkbox" id="checkAlif" value="Alif Play" checked />
                 <label for="checkAlif" id="labelAlif">Alif Play</label>
               </div>
               <div class="check">
-                <input type="checkbox" id="checkHajj" value="Hajj & Umrah Guide"/>
+                <input type="checkbox" id="checkHajj" value="Hajj & Umrah Guide" />
                 <label for="checkHajj" id="labelHajj">Hajj & Umrah Guide</label>
               </div>
             </div>
@@ -331,7 +372,7 @@
 
   <script>
     let currentLang='en';
-    const t = {
+    const tr = {
       en:{
         tagline:'Innovative, educational, family-oriented apps',
         app1Name:'Alif Play', app2Name:'Hajj & Umrah Guide',
@@ -377,14 +418,14 @@
     function switchLanguage(lang){
       currentLang = lang;
       document.documentElement.lang = lang;
-      document.documentElement.dir = (lang==='ar')? 'rtl':'ltr';
+      document.documentElement.dir = (lang==='ar')?'rtl':'ltr';
       document.getElementById('btnEnglish').classList.toggle('active', lang==='en');
       document.getElementById('btnArabic').classList.toggle('active', lang==='ar');
       applyText();
     }
 
     function applyText(){
-      const x = t[currentLang];
+      const x = tr[currentLang];
       document.getElementById('tagline').textContent = x.tagline;
       document.getElementById('app1Name').textContent = x.app1Name;
       document.getElementById('app2Name').textContent = x.app2Name;
@@ -415,11 +456,11 @@
       document.getElementById('signupModal').classList.add('active');
       document.body.style.overflow='hidden';
       if(appName==='Alif Play'){
-        document.getElementById('checkAlif').checked = true;
-        document.getElementById('checkHajj').checked = false;
-      }else{
-        document.getElementById('checkAlif').checked = false;
-        document.getElementById('checkHajj').checked = true;
+        document.getElementById('checkAlif').checked=true;
+        document.getElementById('checkHajj').checked=false;
+      } else {
+        document.getElementById('checkAlif').checked=false;
+        document.getElementById('checkHajj').checked=true;
       }
     }
     function closeModal(){
@@ -429,15 +470,13 @@
       document.getElementById('successMsg').style.display='none';
       document.getElementById('errorMsg').style.display='none';
     }
-    document.getElementById('signupModal').addEventListener('click',e=>{
-      if(e.target===e.currentTarget) closeModal();
-    });
+    document.getElementById('signupModal').addEventListener('click', (e)=>{ if(e.target===e.currentTarget) closeModal(); });
 
-    document.getElementById('signupForm').addEventListener('submit',function(e){
+    document.getElementById('signupForm').addEventListener('submit', function(e){
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const original = btn.textContent;
-      btn.disabled=true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
+      btn.disabled = true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
       document.getElementById('successMsg').style.display='none';
       document.getElementById('errorMsg').style.display='none';
 
@@ -457,8 +496,8 @@
         submittedAt:new Date().toISOString()
       };
 
-      fetch('https://api.web3forms.com/submit',{
-        method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      fetch('https://api.web3forms.com/submit', {
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(payload)
       })
       .then(r=>r.json())
@@ -478,7 +517,7 @@
       });
     });
 
-    // initial text
+    // Initial text
     applyText();
   </script>
 </body>

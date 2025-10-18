@@ -7,15 +7,8 @@
   <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --g900:#0b1f14;
-      --g800:#0f2f1c;
-      --g700:#143b23;
-      --g600:#1a4d2e;
-      --g500:#225d3a;
-      --gold:#d4af37;
-      --gold-soft:#e1c968;
-      --paper:#f7fbf7;
-      --ink:#123321;
+      --g900:#0b1f14; --g800:#0f2f1c; --g700:#143b23; --g600:#1a4d2e; --g500:#225d3a;
+      --gold:#d4af37; --paper:#f7fbf7; --ink:#123321;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
@@ -30,22 +23,15 @@
     }
     [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
 
-    /* Floating sparkles */
-    .sparkles::before,
-    .sparkles::after{
-      content:""; position:absolute; inset:-20%; pointer-events:none; background:
-        radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
-        radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
-        radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,.25), transparent 60%),
-        radial-gradient(2px 2px at 30% 70%, rgba(255,255,255,.30), transparent 60%),
-        radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,.20), transparent 60%);
-      animation: drift 18s linear infinite;
-    }
-    .sparkles::after{ animation-duration:26s; opacity:.6; filter: blur(.3px); }
-    @keyframes drift{
-      0%{ transform: translateY(0) }
-      100%{ transform: translateY(-12%) }
-    }
+    .sparkles::before,.sparkles::after{content:"";position:absolute;inset:-20%;pointer-events:none;background:
+      radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
+      radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
+      radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,.25), transparent 60%),
+      radial-gradient(2px 2px at 30% 70%, rgba(255,255,255,.30), transparent 60%),
+      radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,.20), transparent 60%);
+      animation: drift 18s linear infinite}
+    .sparkles::after{animation-duration:26s;opacity:.6;filter: blur(.3px)}
+    @keyframes drift{0%{transform:translateY(0)}100%{transform:translateY(-12%)}}
 
     .container{
       width:min(1200px,96vw); height:min(96vh,980px);
@@ -59,186 +45,119 @@
         linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
     }
 
-    /* language toggle */
-    .lang{
-      position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20;
-    }
-    [dir="rtl"] .lang{ right:auto; left:16px; }
+    .lang{position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20}
+    [dir="rtl"] .lang{right:auto; left:16px}
     .lang button{
       border:1px solid var(--gold); color:var(--gold); background:rgba(212,175,55,.08);
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
       padding:8px 12px; border-radius:12px; font-weight:900; cursor:pointer;
-      transition: .2s transform, .2s box-shadow, .2s background;
-    }
-    .lang button:hover{ transform: translateY(-2px); box-shadow:0 8px 22px rgba(212,175,55,.3) }
-    .lang .active{ background:var(--gold); color:var(--g900) }
+      transition:.2s transform,.2s box-shadow,.2s background}
+    .lang button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,175,55,.3)}
+    .lang .active{background:var(--gold);color:var(--g900)}
 
-    /* hero */
-    .hero{
-      padding:26px 18px 14px; display:grid; place-items:center; text-align:center;
-      position:relative; overflow:visible;
-    }
+    .hero{padding:26px 18px 14px; display:grid; place-items:center; text-align:center; position:relative}
     .logo-wrap{
-      width:140px; height:140px; border-radius:26px; overflow:hidden;
-      display:grid; place-items:center;
+      width:140px; height:140px; border-radius:26px; overflow:hidden; display:grid; place-items:center;
       border:1px solid rgba(212,175,55,.4);
       box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
-      position:relative; background:rgba(212,175,55,.06);
-      isolation:isolate;
-    }
+      position:relative; background:rgba(212,175,55,.06); isolation:isolate}
     .logo-wrap::after{
-      /* subtle highlight sweep */
       content:""; position:absolute; inset:-50% -20% auto -20%; height:60%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
       transform: rotate(12deg) translateX(-120%); filter: blur(8px);
-      animation: sweep 4.8s ease-in-out infinite;
-    }
-    @keyframes sweep{
-      0%{ transform: rotate(12deg) translateX(-120%) }
-      50%{ transform: rotate(12deg) translateX(120%) }
-      100%{ transform: rotate(12deg) translateX(120%) }
-    }
+      animation: sweep 4.8s ease-in-out infinite}
+    @keyframes sweep{0%{transform: rotate(12deg) translateX(-120%)}50%{transform: rotate(12deg) translateX(120%)}100%{transform: rotate(12deg) translateX(120%)}}
     .logo{width:100%; height:100%; object-fit:cover}
-    .brand{ margin-top:14px }
-    .brand h1{
-      font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold);
-      text-shadow:0 2px 0 rgba(0,0,0,.25);
-    }
-    .brand p{ color:#f8efc9; opacity:.95; font-size:1.05rem }
+    .brand{margin-top:14px}
+    .brand h1{font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.25)}
+    .brand p{color:#f8efc9; opacity:.95; font-size:1.05rem}
 
-    /* content */
-    .content{
-      padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px;
-    }
-    @media (max-width:900px){ .content{ grid-template-columns:1fr } }
+    .content{padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px}
+    @media (max-width:900px){.content{grid-template-columns:1fr}}
 
     .card{
       position:relative; overflow:hidden; border-radius:22px;
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
       border:1px solid rgba(212,175,55,.22);
-      box-shadow:
-        0 22px 50px rgba(0,0,0,.35),
-        inset 0 0 0 1px rgba(255,255,255,.05);
+      box-shadow:0 22px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05);
       padding:22px; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
-      transition:.25s transform,.25s box-shadow;
-    }
-    .card:hover{ transform: translateY(-3px); box-shadow:0 26px 60px rgba(0,0,0,.45) }
+      transition:.25s transform,.25s box-shadow}
+    .card:hover{transform:translateY(-3px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
     .card::before{
-      /* gold border glow */
-      content:""; position:absolute; inset:-1px; border-radius:22px;
-      padding:1px; background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude;
-      pointer-events:none;
-    }
+      content:""; position:absolute; inset:-1px; border-radius:22px; padding:1px;
+      background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
+      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
 
     .glyph{
       width:88px; height:88px; border-radius:18px; display:grid; place-items:center;
       background: linear-gradient(135deg, var(--g600), var(--g500));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 26px rgba(0,0,0,.35);
-    }
-    .glyph svg{ width:46px; height:46px; color:#fff }
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 26px rgba(0,0,0,.35)}
+    .glyph img{width:60px; height:60px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))}
+    .meta{display:flex; flex-direction:column; gap:12px}
+    .title{font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem}
 
-    .meta{ display:flex; flex-direction:column; gap:12px }
-    .title{ font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem }
-
-    .actions{ display:flex; flex-direction:column; gap:12px }
+    .actions{display:flex; flex-direction:column; gap:12px}
     .btn{
       --bg:#000; --ink:#fff;
       display:flex; align-items:center; justify-content:center; gap:10px;
-      background: var(--bg); color: var(--ink);
+      background:var(--bg); color:var(--ink);
       padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900;
-      border:0; cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter;
-      position:relative; overflow:hidden;
-    }
-    .btn:hover{ transform: translateY(-2px) }
-    .btn:active{ transform: translateY(0) scale(.99) }
-    .btn .label{ display:flex; align-items:center; gap:10px }
-    .btn .badge{
-      padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
-      background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)
-    }
-    .btn-ios{ --bg:#000 }
-    .btn-ios:hover{ box-shadow: 0 10px 24px rgba(0,0,0,.35) }
-    .btn-android{ --bg:#1f6a42 }
-    .btn-android:hover{ box-shadow: 0 10px 24px rgba(31,106,66,.35) }
+      border:0; cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter}
+    .btn:hover{transform:translateY(-2px)}
+    .btn .label{display:flex; align-items:center; gap:10px}
+    .btn .badge{padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
+      background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)}
+    .btn-ios{--bg:#000}
+    .btn-ios:hover{box-shadow:0 10px 24px rgba(0,0,0,.35)}
+    .btn-android{--bg:#1f6a42}
+    .btn-android:hover{box-shadow:0 10px 24px rgba(31,106,66,.35)}
+    .btn svg{width:20px; height:20px; display:block}
+    .gold-fill{fill:var(--gold)}
 
-    .btn svg{ width:20px; height:20px; display:block }
-    .gold-fill{ fill: var(--gold) }
-    .gold-stroke{ stroke: var(--gold) }
-
-    /* modal */
-    .modal{ display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+    .modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
       backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-      z-index:50; align-items:center; justify-content:center;
-    }
-    .modal.active{ display:flex }
-    .modal-card{
-      width:min(640px,92vw); max-height:92vh; overflow:auto; border-radius:20px;
-      background:#fff; color:var(--ink);
-      box-shadow:0 34px 90px rgba(0,0,0,.6);
-    }
-    .modal-head{
-      padding:22px; background:linear-gradient(135deg,var(--g600),var(--g900));
-      border-bottom:2px solid var(--gold); color:var(--gold); position:relative;
-      border-radius:20px 20px 0 0;
-    }
-    .modal-head p{ color:#faefc6 }
-    .close{
-      position:absolute; right:14px; top:14px; width:40px; height:40px; border-radius:50%;
-      border:0; background:rgba(212,175,55,.18); color:var(--gold);
-      font-size:26px; font-weight:900; cursor:pointer
-    }
-    [dir="rtl"] .close{ right:auto; left:14px }
-    .modal-body{ padding:22px }
-    .callout{
-      background:#fff8e1; border:2px solid var(--gold); border-radius:12px; padding:16px; margin-bottom:18px;
-    }
-    .callout h4{ margin-bottom:8px }
-    .callout ol{ margin:10px 0 0 20px }
-    [dir="rtl"] .callout ol{ margin:10px 20px 0 0 }
-
-    .group{ margin-bottom:16px }
-    label{ display:block; font-weight:800; margin-bottom:6px }
-    input{
-      width:100%; padding:12px 14px; border-radius:10px; border:2px solid var(--gold);
-      background:#fff; color:#163924; font-size:1rem;
-    }
+      z-index:50; align-items:center; justify-content:center}
+    .modal.active{display:flex}
+    .modal-card{width:min(640px,92vw); max-height:92vh; overflow:auto; border-radius:20px;
+      background:#fff; color:var(--ink); box-shadow:0 34px 90px rgba(0,0,0,.6)}
+    .modal-head{padding:22px; background:linear-gradient(135deg,var(--g600),var(--g900));
+      border-bottom:2px solid var(--gold); color:var(--gold); position:relative; border-radius:20px 20px 0 0}
+    .modal-head p{color:#faefc6}
+    .close{position:absolute; right:14px; top:14px; width:40px; height:40px; border-radius:50%;
+      border:0; background:rgba(212,175,55,.18); color:var(--gold); font-size:26px; font-weight:900; cursor:pointer}
+    [dir="rtl"] .close{right:auto; left:14px}
+    .modal-body{padding:22px}
+    .callout{background:#fff8e1; border:2px solid var(--gold); border-radius:12px; padding:16px; margin-bottom:18px}
+    .callout h4{margin-bottom:8px}
+    .callout ol{margin:10px 0 0 20px}
+    [dir="rtl"] .callout ol{margin:10px 20px 0 0}
+    .group{margin-bottom:16px}
+    label{display:block; font-weight:800; margin-bottom:6px}
+    input{width:100%; padding:12px 14px; border-radius:10px; border:2px solid var(--gold); background:#fff; color:#163924; font-size:1rem}
     [dir="rtl"] input{text-align:right}
-    .hint{ font-size:.85rem; color:#2c6b48; margin-top:6px }
-    .checks{ background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px }
-    .check{ display:flex; align-items:center; gap:8px; margin:10px 0 }
-
-    .submit{
-      width:100%; padding:16px; border:0; border-radius:12px; color:#fff;
-      font-weight:1000; font-size:1.05rem; cursor:pointer;
-      background: linear-gradient(135deg,var(--g600), var(--gold));
-      box-shadow:0 12px 30px rgba(26,77,46,.35);
-    }
-    .submit:disabled{ opacity:.6; cursor:not-allowed }
-    .msg{ display:none; margin-top:14px; padding:12px; border-radius:10px; text-align:center; font-weight:900 }
-    .ok{ background:#e8f5e9; color:#0e3c23; border:2px solid #4caf50 }
-    .err{ background:#ffebee; color:#8d2b2b; border:2px solid #ef5350 }
-
-    /* custom scrollbar */
-    ::-webkit-scrollbar{ width:10px; height:10px }
-    ::-webkit-scrollbar-thumb{ background:linear-gradient(var(--gold), #b8962f); border-radius:999px }
-    ::-webkit-scrollbar-track{ background:rgba(255,255,255,.06) }
+    .hint{font-size:.85rem; color:#2c6b48; margin-top:6px}
+    .checks{background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px}
+    .check{display:flex; align-items:center; gap:8px; margin:10px 0}
+    .submit{width:100%; padding:16px; border:0; border-radius:12px; color:#fff; font-weight:1000; font-size:1.05rem; cursor:pointer;
+      background: linear-gradient(135deg,var(--g600), var(--gold)); box-shadow:0 12px 30px rgba(26,77,46,.35)}
+    .submit:disabled{opacity:.6; cursor:not-allowed}
+    .msg{display:none; margin-top:14px; padding:12px; border-radius:10px; text-align:center; font-weight:900}
+    .ok{background:#e8f5e9; color:#0e3c23; border:2px solid #4caf50}
+    .err{background:#ffebee; color:#8d2b2b; border:2px solid #ef5350}
   </style>
 </head>
 <body class="sparkles">
-  <!-- Language toggle -->
   <div class="lang">
     <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
     <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
   </div>
 
   <main class="container">
-    <!-- HERO -->
     <header class="hero">
       <div class="logo-wrap">
-        <!-- Replace with your new green+gold logo -->
-        <img class="logo" src="images/ashcore-ashkur.png" alt="AshCore Labs logo (اشكر)">
+        <!-- Correct path with URL-encoded spaces -->
+        <img class="logo" src="images/Golden%20Elegance%20of%20AshCore%20Labs.png" alt="AshCore Labs logo (اشكر)">
       </div>
       <div class="brand">
         <h1>AshCore Labs</h1>
@@ -246,31 +165,20 @@
       </div>
     </header>
 
-    <!-- CONTENT -->
     <section class="content">
-      <!-- Card 1 -->
+      <!-- Alif Play -->
       <article class="card">
         <div class="glyph" aria-hidden="true">
-          <!-- Book glyph -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5V5.8A2.8 2.8 0 0 1 6.8 3h10.7A2.5 2.5 0 0 1 20 5.5V19"/>
-            <path d="M4 19.5c0-1.9 1.5-3.5 3.5-3.5H20"/>
-            <path d="M8 7h8M8 11h8"/>
-          </svg>
+          <img src="images/alifplay-icon.png" alt="Alif Play icon">
         </div>
         <div class="meta">
           <h3 class="title" id="app1Name">Alif Play</h3>
-
           <div class="actions">
             <a class="btn btn-ios" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <!-- Apple brand (inline SVG, always renders) -->
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
-                <path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
-              </svg>
+              <!-- Apple brand (inline SVG) -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-
             <button class="btn btn-android" onclick="openModal('Alif Play')">
               <!-- Android brand -->
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
@@ -281,27 +189,18 @@
         </div>
       </article>
 
-      <!-- Card 2 -->
+      <!-- Hajj & Umrah Guide -->
       <article class="card">
         <div class="glyph" aria-hidden="true">
-          <!-- Kaaba glyph -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="4" y="6.5" width="16" height="11" rx="2" ry="2"/>
-            <path d="M4 9.5h16M8 13h3"/>
-          </svg>
+          <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah icon">
         </div>
         <div class="meta">
           <h3 class="title" id="app2Name">Hajj & Umrah Guide</h3>
-
           <div class="actions">
             <a class="btn btn-ios" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/>
-                <path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-
             <button class="btn btn-android" onclick="openModal('Hajj & Umrah Guide')">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
                 d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
@@ -313,7 +212,7 @@
     </section>
   </main>
 
-  <!-- MODAL -->
+  <!-- Modal -->
   <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <div class="modal-head">
@@ -334,19 +233,16 @@
         </div>
 
         <form id="signupForm">
-          <input type="hidden" id="selectedApps" value="" />
-
+          <input type="hidden" id="selectedApps" value=""/>
           <div class="group">
             <label for="userName" id="labelName">Your Name</label>
             <input type="text" id="userName" required />
           </div>
-
           <div class="group">
             <label for="userEmail" id="labelEmail">Google Account Email</label>
             <input type="email" id="userEmail" required />
             <div class="hint" id="emailHint">This is the email you use for Google Play Store</div>
           </div>
-
           <div class="group">
             <label id="labelApps">Which apps do you want to test?</label>
             <div class="checks">
@@ -360,9 +256,7 @@
               </div>
             </div>
           </div>
-
           <button type="submit" class="submit" id="submitBtn">Sign Up for Beta Testing</button>
-
           <div class="msg ok" id="successMsg"><span id="successText">✅ Success! Check your email for the Google Play invite.</span></div>
           <div class="msg err" id="errorMsg"><span id="errorText">❌ Something went wrong. Please try again.</span></div>
         </form>
@@ -373,46 +267,26 @@
   <script>
     let currentLang='en';
     const tr = {
-      en:{
-        tagline:'Innovative, educational, family-oriented apps',
-        app1Name:'Alif Play', app2Name:'Hajj & Umrah Guide',
-        iosBtn1:'iOS – App Store', iosBtn2:'iOS – App Store',
-        androidBtn1:'Android – Beta Test', androidBtn2:'Android – Beta Test',
-        modalTitle:'Android Beta Testing', modalSubtitle:'Join our testing program',
-        helpTitle:'How to find your Google Account email:',
-        helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
-        step1:'Open the <strong>Settings</strong> app on your phone',
-        step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
-        step3:'Your email address appears at the top',
-        step4:'Copy that email and enter it below',
-        labelName:'Your Name', labelEmail:'Google Account Email',
-        emailHint:'This is the email you use for Google Play Store',
-        labelApps:'Which apps do you want to test?',
-        labelAlif:'Alif Play', labelHajj:'Hajj & Umrah Guide',
-        submitBtn:'Sign Up for Beta Testing',
-        success:'✅ Success! Check your email for the Google Play invite.',
-        error:'❌ Something went wrong. Please try again.'
-      },
-      ar:{
-        tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',
-        app1Name:'أليف بلاي', app2Name:'دليل الحج والعمرة',
-        iosBtn1:'iOS – متجر التطبيقات', iosBtn2:'iOS – متجر التطبيقات',
-        androidBtn1:'Android – اختبار تجريبي', androidBtn2:'Android – اختبار تجريبي',
-        modalTitle:'الاختبار التجريبي لأندرويد', modalSubtitle:'انضم إلى برنامج الاختبار',
-        helpTitle:'كيفية العثور على بريد حساب Google:',
-        helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
-        step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',
-        step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
-        step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',
-        step4:'انسخ هذا البريد وأدخله أدناه',
-        labelName:'اسمك', labelEmail:'بريد حساب Google',
-        emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
-        labelApps:'ما التطبيقات التي تريد اختبارها؟',
-        labelAlif:'أليف بلاي', labelHajj:'دليل الحج والعمرة',
-        submitBtn:'التسجيل للاختبار التجريبي',
-        success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
-        error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
-      }
+      en:{tagline:'Innovative, educational, family-oriented apps',app1Name:'Alif Play',app2Name:'Hajj & Umrah Guide',
+          iosBtn1:'iOS – App Store',iosBtn2:'iOS – App Store',androidBtn1:'Android – Beta Test',androidBtn2:'Android – Beta Test',
+          modalTitle:'Android Beta Testing',modalSubtitle:'Join our testing program',helpTitle:'How to find your Google Account email:',
+          helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
+          step1:'Open the <strong>Settings</strong> app on your phone',step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
+          step3:'Your email address appears at the top',step4:'Copy that email and enter it below',labelName:'Your Name',
+          labelEmail:'Google Account Email',emailHint:'This is the email you use for Google Play Store',
+          labelApps:'Which apps do you want to test?',labelAlif:'Alif Play',labelHajj:'Hajj & Umrah Guide',
+          submitBtn:'Sign Up for Beta Testing',success:'✅ Success! Check your email for the Google Play invite.',
+          error:'❌ Something went wrong. Please try again.'},
+      ar:{tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',app1Name:'أليف بلاي',app2Name:'دليل الحج والعمرة',
+          iosBtn1:'iOS – متجر التطبيقات',iosBtn2:'iOS – متجر التطبيقات',androidBtn1:'Android – اختبار تجريبي',androidBtn2:'Android – اختبار تجريبي',
+          modalTitle:'الاختبار التجريبي لأندرويد',modalSubtitle:'انضم إلى برنامج الاختبار',helpTitle:'كيفية العثور على بريد حساب Google:',
+          helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
+          step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
+          step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',step4:'انسخ هذا البريد وأدخله أدناه',labelName:'اسمك',
+          labelEmail:'بريد حساب Google',emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
+          labelApps:'ما التطبيقات التي تريد اختبارها؟',labelAlif:'أليف بلاي',labelHajj:'دليل الحج والعمرة',
+          submitBtn:'التسجيل للاختبار التجريبي',success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
+          error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'}
     };
 
     function switchLanguage(lang){
@@ -423,7 +297,6 @@
       document.getElementById('btnArabic').classList.toggle('active', lang==='ar');
       applyText();
     }
-
     function applyText(){
       const x = tr[currentLang];
       document.getElementById('tagline').textContent = x.tagline;
@@ -455,13 +328,8 @@
     function openModal(appName){
       document.getElementById('signupModal').classList.add('active');
       document.body.style.overflow='hidden';
-      if(appName==='Alif Play'){
-        document.getElementById('checkAlif').checked=true;
-        document.getElementById('checkHajj').checked=false;
-      } else {
-        document.getElementById('checkAlif').checked=false;
-        document.getElementById('checkHajj').checked=true;
-      }
+      if(appName==='Alif Play'){document.getElementById('checkAlif').checked=true;document.getElementById('checkHajj').checked=false;}
+      else{document.getElementById('checkAlif').checked=false;document.getElementById('checkHajj').checked=true;}
     }
     function closeModal(){
       document.getElementById('signupModal').classList.remove('active');
@@ -470,13 +338,13 @@
       document.getElementById('successMsg').style.display='none';
       document.getElementById('errorMsg').style.display='none';
     }
-    document.getElementById('signupModal').addEventListener('click', (e)=>{ if(e.target===e.currentTarget) closeModal(); });
+    document.getElementById('signupModal').addEventListener('click',(e)=>{ if(e.target===e.currentTarget) closeModal(); });
 
     document.getElementById('signupForm').addEventListener('submit', function(e){
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const original = btn.textContent;
-      btn.disabled = true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
+      btn.disabled=true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
       document.getElementById('successMsg').style.display='none';
       document.getElementById('errorMsg').style.display='none';
 
@@ -496,8 +364,8 @@
         submittedAt:new Date().toISOString()
       };
 
-      fetch('https://api.web3forms.com/submit', {
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      fetch('https://api.web3forms.com/submit',{
+        method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(payload)
       })
       .then(r=>r.json())

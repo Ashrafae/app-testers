@@ -7,7 +7,8 @@
   <meta name="color-scheme" content="light only" />
   <style>
     :root{
-      --g900:#0b1f14; --g800:#0f2f1c; --g700:#143b23; --g600:#1a4d2e; --g500:#225d3a;
+      --g900:#0b1f14; --g850:#0d2619; --g800:#0f2f1c; --g750:#123923;
+      --g700:#143b23; --g650:#175230; --g600:#1a4d2e; --g500:#225d3a;
       --gold:#d4af37; --paper:#f7fbf7; --ink:#123321;
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -23,6 +24,7 @@
     }
     [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
 
+    /* ambient sparkles */
     .sparkles::before,.sparkles::after{content:"";position:absolute;inset:-20%;pointer-events:none;background:
       radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
       radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
@@ -34,7 +36,7 @@
     @keyframes drift{0%{transform:translateY(0)}100%{transform:translateY(-12%)}}
 
     .container{
-      width:min(1200px,96vw); height:min(96vh,980px);
+      width:min(1200px,96vw); height:min(96vh,1100px);
       border-radius:28px; position:relative; overflow:hidden;
       border:1px solid rgba(212,175,55,.22);
       box-shadow:0 40px 110px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);
@@ -45,6 +47,7 @@
         linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
     }
 
+    /* language toggle */
     .lang{position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20}
     [dir="rtl"] .lang{right:auto; left:16px}
     .lang button{
@@ -55,6 +58,7 @@
     .lang button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,175,55,.3)}
     .lang .active{background:var(--gold);color:var(--g900)}
 
+    /* hero */
     .hero{padding:26px 18px 14px; display:grid; place-items:center; text-align:center; position:relative}
     .logo-wrap{
       width:140px; height:140px; border-radius:26px; overflow:hidden; display:grid; place-items:center;
@@ -72,9 +76,9 @@
     .brand h1{font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.25)}
     .brand p{color:#f8efc9; opacity:.95; font-size:1.05rem}
 
+    /* layout */
     .content{padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px}
-    @media (max-width:900px){.content{grid-template-columns:1fr}}
-
+    @media (max-width:980px){.content{grid-template-columns:1fr}}
     .card{
       position:relative; overflow:hidden; border-radius:22px;
       background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
@@ -88,7 +92,6 @@
       background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
       -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
       -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
-
     .glyph{
       width:88px; height:88px; border-radius:18px; display:grid; place-items:center;
       background: linear-gradient(135deg, var(--g600), var(--g500));
@@ -96,25 +99,24 @@
     .glyph img{width:60px; height:60px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))}
     .meta{display:flex; flex-direction:column; gap:12px}
     .title{font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem}
+    .desc{color:#deefd9; opacity:.9; font-size:.98rem}
 
+    /* buttons – moved away from black to deep green gradient */
     .actions{display:flex; flex-direction:column; gap:12px}
     .btn{
-      --bg:#000; --ink:#fff;
+      --bg:linear-gradient(135deg,var(--g650),var(--g800)); --ink:#fff;
       display:flex; align-items:center; justify-content:center; gap:10px;
       background:var(--bg); color:var(--ink);
       padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900;
-      border:0; cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter}
-    .btn:hover{transform:translateY(-2px)}
+      border:1px solid rgba(212,175,55,.35); cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.28)}
     .btn .label{display:flex; align-items:center; gap:10px}
     .btn .badge{padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
       background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)}
-    .btn-ios{--bg:#000}
-    .btn-ios:hover{box-shadow:0 10px 24px rgba(0,0,0,.35)}
-    .btn-android{--bg:#1f6a42}
-    .btn-android:hover{box-shadow:0 10px 24px rgba(31,106,66,.35)}
     .btn svg{width:20px; height:20px; display:block}
     .gold-fill{fill:var(--gold)}
 
+    /* modal */
     .modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
       backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
       z-index:50; align-items:center; justify-content:center}
@@ -138,7 +140,11 @@
     [dir="rtl"] input{text-align:right}
     .hint{font-size:.85rem; color:#2c6b48; margin-top:6px}
     .checks{background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px}
-    .check{display:flex; align-items:center; gap:8px; margin:10px 0}
+    /* FIX: perfect alignment for the choices */
+    .check{display:grid; grid-template-columns:24px 1fr; align-items:center; gap:10px; margin:10px 0}
+    .check input{width:18px; height:18px; margin:0}
+    .check label{margin:0; font-weight:700}
+    [dir="rtl"] .check{grid-template-columns:1fr 24px}
     .submit{width:100%; padding:16px; border:0; border-radius:12px; color:#fff; font-weight:1000; font-size:1.05rem; cursor:pointer;
       background: linear-gradient(135deg,var(--g600), var(--gold)); box-shadow:0 12px 30px rgba(26,77,46,.35)}
     .submit:disabled{opacity:.6; cursor:not-allowed}
@@ -148,12 +154,14 @@
   </style>
 </head>
 <body class="sparkles">
+  <!-- Language toggle -->
   <div class="lang">
     <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
     <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
   </div>
 
   <main class="container">
+    <!-- HERO -->
     <header class="hero">
       <div class="logo-wrap">
         <!-- Correct path with URL-encoded spaces -->
@@ -165,6 +173,7 @@
       </div>
     </header>
 
+    <!-- CONTENT -->
     <section class="content">
       <!-- Alif Play -->
       <article class="card">
@@ -173,14 +182,15 @@
         </div>
         <div class="meta">
           <h3 class="title" id="app1Name">Alif Play</h3>
+          <p class="desc">Interactive Arabic learning activities for kids and families.</p>
           <div class="actions">
-            <a class="btn btn-ios" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <!-- Apple brand (inline SVG) -->
+            <a class="btn" id="iosBtn1Wrap" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
+              <!-- Apple brand -->
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-            <button class="btn btn-android" onclick="openModal('Alif Play')">
-              <!-- Android brand -->
+            <button class="btn" onclick="openModal('Alif Play')">
+              <!-- Android -->
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
                 d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn1">Android – Beta Test</span></span>
@@ -196,12 +206,13 @@
         </div>
         <div class="meta">
           <h3 class="title" id="app2Name">Hajj & Umrah Guide</h3>
+          <p class="desc">Step-by-step rituals, duas, and checklists for a peaceful journey.</p>
           <div class="actions">
-            <a class="btn btn-ios" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
+            <a class="btn" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-            <button class="btn btn-android" onclick="openModal('Hajj & Umrah Guide')">
+            <button class="btn" onclick="openModal('Hajj & Umrah Guide')">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
                 d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn2">Android – Beta Test</span></span>
@@ -209,10 +220,37 @@
           </div>
         </div>
       </article>
+
+      <!-- NEW: Cross-platform Apps -->
+      <article class="card">
+        <div class="glyph" aria-hidden="true">
+          <!-- simple layers icon inlined -->
+          <svg viewBox="0 0 24 24" width="60" height="60" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))">
+            <path d="M12 3 3 8l9 5 9-5-9-5z"/>
+            <path d="M3 13l9 5 9-5"/>
+            <path d="M3 18l9 5 9-5"/>
+          </svg>
+        </div>
+        <div class="meta">
+          <h3 class="title" id="app3Name">Cross-platform Apps</h3>
+          <p class="desc">One codebase. iOS & Android experiences tuned for families.</p>
+          <div class="actions">
+            <a class="btn" id="iosBtn3Wrap" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
+              <span class="label"><span id="iosBtn3">iOS – Showcase</span></span>
+            </a>
+            <button class="btn" onclick="openModal('Cross-platform Apps')">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
+                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <span class="label"><span id="androidBtn3">Android – Showcase</span></span>
+            </button>
+          </div>
+        </div>
+      </article>
     </section>
   </main>
 
-  <!-- Modal -->
+  <!-- MODAL -->
   <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
       <div class="modal-head">
@@ -233,7 +271,7 @@
         </div>
 
         <form id="signupForm">
-          <input type="hidden" id="selectedApps" value=""/>
+          <input type="hidden" id="selectedApps" value="" />
           <div class="group">
             <label for="userName" id="labelName">Your Name</label>
             <input type="text" id="userName" required />
@@ -254,6 +292,10 @@
                 <input type="checkbox" id="checkHajj" value="Hajj & Umrah Guide" />
                 <label for="checkHajj" id="labelHajj">Hajj & Umrah Guide</label>
               </div>
+              <div class="check">
+                <input type="checkbox" id="checkXPlat" value="Cross-platform Apps" />
+                <label for="checkXPlat" id="labelXPlat">Cross-platform Apps</label>
+              </div>
             </div>
           </div>
           <button type="submit" class="submit" id="submitBtn">Sign Up for Beta Testing</button>
@@ -267,26 +309,46 @@
   <script>
     let currentLang='en';
     const tr = {
-      en:{tagline:'Innovative, educational, family-oriented apps',app1Name:'Alif Play',app2Name:'Hajj & Umrah Guide',
-          iosBtn1:'iOS – App Store',iosBtn2:'iOS – App Store',androidBtn1:'Android – Beta Test',androidBtn2:'Android – Beta Test',
-          modalTitle:'Android Beta Testing',modalSubtitle:'Join our testing program',helpTitle:'How to find your Google Account email:',
-          helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
-          step1:'Open the <strong>Settings</strong> app on your phone',step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
-          step3:'Your email address appears at the top',step4:'Copy that email and enter it below',labelName:'Your Name',
-          labelEmail:'Google Account Email',emailHint:'This is the email you use for Google Play Store',
-          labelApps:'Which apps do you want to test?',labelAlif:'Alif Play',labelHajj:'Hajj & Umrah Guide',
-          submitBtn:'Sign Up for Beta Testing',success:'✅ Success! Check your email for the Google Play invite.',
-          error:'❌ Something went wrong. Please try again.'},
-      ar:{tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',app1Name:'أليف بلاي',app2Name:'دليل الحج والعمرة',
-          iosBtn1:'iOS – متجر التطبيقات',iosBtn2:'iOS – متجر التطبيقات',androidBtn1:'Android – اختبار تجريبي',androidBtn2:'Android – اختبار تجريبي',
-          modalTitle:'الاختبار التجريبي لأندرويد',modalSubtitle:'انضم إلى برنامج الاختبار',helpTitle:'كيفية العثور على بريد حساب Google:',
-          helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
-          step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
-          step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',step4:'انسخ هذا البريد وأدخله أدناه',labelName:'اسمك',
-          labelEmail:'بريد حساب Google',emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
-          labelApps:'ما التطبيقات التي تريد اختبارها؟',labelAlif:'أليف بلاي',labelHajj:'دليل الحج والعمرة',
-          submitBtn:'التسجيل للاختبار التجريبي',success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
-          error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'}
+      en:{
+        tagline:'Innovative, educational, family-oriented apps',
+        app1Name:'Alif Play', app2Name:'Hajj & Umrah Guide', app3Name:'Cross-platform Apps',
+        iosBtn1:'iOS – App Store', iosBtn2:'iOS – App Store', iosBtn3:'iOS – Showcase',
+        androidBtn1:'Android – Beta Test', androidBtn2:'Android – Beta Test', androidBtn3:'Android – Showcase',
+        modalTitle:'Android Beta Testing', modalSubtitle:'Join our testing program',
+        helpTitle:'How to find your Google Account email:',
+        helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
+        step1:'Open the <strong>Settings</strong> app on your phone',
+        step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
+        step3:'Your email address appears at the top',
+        step4:'Copy that email and enter it below',
+        labelName:'Your Name', labelEmail:'Google Account Email',
+        emailHint:'This is the email you use for Google Play Store',
+        labelApps:'Which apps do you want to test?',
+        labelAlif:'Alif Play', labelHajj:'Hajj & Umrah Guide', labelXPlat:'Cross-platform Apps',
+        submitBtn:'Sign Up for Beta Testing',
+        success:'✅ Success! Check your email for the Google Play invite.',
+        error:'❌ Something went wrong. Please try again.'
+      },
+      ar:{
+        tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',
+        app1Name:'أليف بلاي', app2Name:'دليل الحج والعمرة', app3Name:'تطبيقات متعددة المنصات',
+        iosBtn1:'iOS – متجر التطبيقات', iosBtn2:'iOS – متجر التطبيقات', iosBtn3:'iOS – معرض التطبيقات',
+        androidBtn1:'Android – اختبار تجريبي', androidBtn2:'Android – اختبار تجريبي', androidBtn3:'Android – معرض التطبيقات',
+        modalTitle:'الاختبار التجريبي لأندرويد', modalSubtitle:'انضم إلى برنامج الاختبار',
+        helpTitle:'كيفية العثور على بريد حساب Google:',
+        helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
+        step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',
+        step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
+        step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',
+        step4:'انسخ هذا البريد وأدخله أدناه',
+        labelName:'اسمك', labelEmail:'بريد حساب Google',
+        emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
+        labelApps:'ما التطبيقات التي تريد اختبارها؟',
+        labelAlif:'أليف بلاي', labelHajj:'دليل الحج والعمرة', labelXPlat:'تطبيقات متعددة المنصات',
+        submitBtn:'التسجيل للاختبار التجريبي',
+        success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
+        error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
+      }
     };
 
     function switchLanguage(lang){
@@ -297,15 +359,19 @@
       document.getElementById('btnArabic').classList.toggle('active', lang==='ar');
       applyText();
     }
+
     function applyText(){
       const x = tr[currentLang];
       document.getElementById('tagline').textContent = x.tagline;
       document.getElementById('app1Name').textContent = x.app1Name;
       document.getElementById('app2Name').textContent = x.app2Name;
+      document.getElementById('app3Name').textContent = x.app3Name;
       document.getElementById('iosBtn1').textContent = x.iosBtn1;
       document.getElementById('iosBtn2').textContent = x.iosBtn2;
+      document.getElementById('iosBtn3').textContent = x.iosBtn3;
       document.getElementById('androidBtn1').textContent = x.androidBtn1;
       document.getElementById('androidBtn2').textContent = x.androidBtn2;
+      document.getElementById('androidBtn3').textContent = x.androidBtn3;
       document.getElementById('modalTitle').textContent = x.modalTitle;
       document.getElementById('modalSubtitle').textContent = x.modalSubtitle;
       document.getElementById('helpTitle').textContent = x.helpTitle;
@@ -320,6 +386,7 @@
       document.getElementById('labelApps').textContent = x.labelApps;
       document.getElementById('labelAlif').textContent = x.labelAlif;
       document.getElementById('labelHajj').textContent = x.labelHajj;
+      document.getElementById('labelXPlat').textContent = x.labelXPlat;
       document.getElementById('submitBtn').textContent = x.submitBtn;
       document.getElementById('successText').textContent = x.success;
       document.getElementById('errorText').textContent = x.error;
@@ -328,8 +395,10 @@
     function openModal(appName){
       document.getElementById('signupModal').classList.add('active');
       document.body.style.overflow='hidden';
-      if(appName==='Alif Play'){document.getElementById('checkAlif').checked=true;document.getElementById('checkHajj').checked=false;}
-      else{document.getElementById('checkAlif').checked=false;document.getElementById('checkHajj').checked=true;}
+      // Default selection based on the clicked card
+      document.getElementById('checkAlif').checked = (appName==='Alif Play');
+      document.getElementById('checkHajj').checked = (appName==='Hajj & Umrah Guide');
+      document.getElementById('checkXPlat').checked = (appName==='Cross-platform Apps');
     }
     function closeModal(){
       document.getElementById('signupModal').classList.remove('active');
@@ -344,13 +413,14 @@
       e.preventDefault();
       const btn = document.getElementById('submitBtn');
       const original = btn.textContent;
-      btn.disabled=true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
+      btn.disabled = true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
       document.getElementById('successMsg').style.display='none';
       document.getElementById('errorMsg').style.display='none';
 
       const selected=[];
       if(document.getElementById('checkAlif').checked) selected.push('Alif Play');
       if(document.getElementById('checkHajj').checked) selected.push('Hajj & Umrah Guide');
+      if(document.getElementById('checkXPlat').checked) selected.push('Cross-platform Apps');
 
       const payload={
         access_key:'2817a6cd-689c-4709-96c5-305137b2b841',
@@ -364,8 +434,8 @@
         submittedAt:new Date().toISOString()
       };
 
-      fetch('https://api.web3forms.com/submit',{
-        method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      fetch('https://api.web3forms.com/submit', {
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
         body:JSON.stringify(payload)
       })
       .then(r=>r.json())

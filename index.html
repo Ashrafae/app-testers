@@ -2,442 +2,574 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AshCore Labs — Beta Testing</title>
-  <meta name="color-scheme" content="light only" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join Android beta testing for Alif Play and Hajj & Umrah Guide apps" />
+  <title>Android Beta Testing – Alif Play & Hajj & Umrah Guide | برنامج الاختبار التجريبي لأندرويد</title>
   <style>
-    :root{
-      --g900:#0b1f14; --g850:#0d2619; --g800:#0f2f1c; --g750:#123923;
-      --g700:#143b23; --g650:#175230; --g600:#1a4d2e; --g500:#225d3a;
-      --gold:#d4af37; --paper:#f7fbf7; --ink:#123321;
+    /* (base styles unchanged) */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:#1a4d2e;min-height:100vh;padding:0;transition:direction .3s ease}
+    .top-header{background:linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);padding:25px 20px;text-align:center;border-bottom:4px solid #d4af37}
+    .top-header-logo{max-width:200px;width:50%;height:auto;margin:0 auto;display:block;filter:drop-shadow(0 4px 15px rgba(0,0,0,.4))}
+    .main-wrapper{padding:20px}
+    [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro','Arial',sans-serif}
+    .container{max-width:900px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+    .lang-switcher{position:absolute;top:20px;right:20px;z-index:1000;display:flex;flex-direction:column;gap:10px}
+    [dir="rtl"] .lang-switcher{right:auto;left:20px}
+    .lang-btn{background:#fff;border:2px solid #d4af37;padding:12px 25px;border-radius:8px;cursor:pointer;font-weight:700;font-size:1.1em;box-shadow:0 4px 15px rgba(0,0,0,.2);transition:all .3s ease;text-align:center;color:#1a4d2e}
+    .lang-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.4);background:#d4af37;color:#fff}
+    .lang-btn.active{background:#1a4d2e;color:#d4af37;border-color:#1a4d2e}
+    .header{background:linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);color:#d4af37;padding:15px 20px 12px;text-align:center;position:relative}
+    .header h1{font-size:1.1em;margin-bottom:5px;color:#d4af37;font-weight:600}
+    .header p{font-size:.85em;opacity:.95;color:#f0e68c}
+    .content{padding:50px 40px}
+    .info-box{background:#e8f5e9;border-left:4px solid #1a4d2e;padding:18px;margin-bottom:20px;border-radius:8px}
+    [dir="rtl"] .info-box{border-left:none;border-right:4px solid #1a4d2e}
+    .info-box p{color:#1a4d2e;margin:0;font-size:1.05em}
+    .apps-section{margin-bottom:50px}
+    .apps-section h2{color:#1a4d2e;margin-bottom:35px;font-size:2.2em;text-align:center}
+    .apps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px;margin-bottom:40px}
+    .app-card{background:#f5f5f0;border-radius:15px;padding:30px;text-align:center;transition:transform .3s,box-shadow .3s;border:2px solid #d4af37}
+    .app-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(26,77,46,.2)}
+    .app-icon{width:120px;height:120px;margin:0 auto 25px;border-radius:22px;overflow:hidden;box-shadow:0 5px 20px rgba(26,77,46,.3)}
+    .app-icon img{width:100%;height:100%;object-fit:cover}
+    .app-name{font-size:1.5em;font-weight:600;color:#1a4d2e;margin-bottom:10px}
+    .app-status{font-size:1em;color:#4a7c59;display:flex;align-items:center;justify-content:center;gap:8px}
+    .status-badge{display:inline-block;width:10px;height:10px;border-radius:50%;background:#d4af37;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .form-section{background:#f5f5f0;border-radius:15px;padding:40px;border:2px solid #d4af37}
+    .form-section h3{color:#1a4d2e;margin-bottom:30px;font-size:1.8em}
+    .form-group{margin-bottom:28px}
+    label{display:block;color:#1a4d2e;font-weight:600;margin-bottom:10px;font-size:1em}
+    input,select,textarea{width:100%;padding:14px 16px;border:2px solid #d4af37;border-radius:8px;font-size:1em;transition:border-color .3s;background:#fff;color:#1a4d2e}
+    [dir="rtl"] input,[dir="rtl"] select,[dir="rtl"] textarea{text-align:right}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:#1a4d2e;box-shadow:0 0 0 3px rgba(26,77,46,.1)}
+    .custom-select{position:relative}
+    .custom-select select{appearance:none;cursor:pointer;padding-right:40px}
+    [dir="rtl"] .custom-select select{padding-right:15px;padding-left:40px}
+    .custom-select::after{content:"▼";position:absolute;right:15px;top:50%;transform:translateY(-50%);pointer-events:none;color:#1a4d2e;font-size:.9em}
+    [dir="rtl"] .custom-select::after{right:auto;left:15px}
+    .submit-btn{width:100%;padding:18px;background:linear-gradient(135deg,#1a4d2e 0%,#d4af37 100%);color:#fff;border:none;border-radius:8px;font-size:1.2em;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s}
+    .submit-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(26,77,46,.4)}
+    .submit-btn:active{transform:translateY(0)}
+    .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .success-message,.error-message{display:none;padding:18px;border-radius:8px;margin-top:20px;animation:slideIn .3s ease-out}
+    .success-message{background:#e8f5e9;color:#1a4d2e;border:2px solid #4caf50}
+    .error-message{background:#ffebee;color:#c62828;border:2px solid #ef5350}
+    @keyframes slideIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+    .footer{background:linear-gradient(135deg,#1a4d2e 0%,#0d2818 100%);text-align:center;padding:35px 30px;color:#d4af37;font-size:1em;border-top:4px solid #d4af37;margin-top:0}
+    .footer-logo{max-width:180px;width:40%;height:auto;margin:0 auto 20px;display:block;filter:drop-shadow(0 4px 15px rgba(0,0,0,.4))}
+    .footer-company-name{font-size:1.8em;font-weight:700;color:#d4af37;margin-bottom:15px;letter-spacing:1px}
+    .footer-content{margin-top:20px}
+    .footer-content p{color:#f0e68c;margin:10px 0}
+    .footer a{color:#d4af37;text-decoration:none;font-weight:600}
+    .footer a:hover{text-decoration:underline}
+    .hidden{display:none}
+
+    /* iOS banner styles */
+    .ios-banner{background:#fff8e1;border:2px solid #d4af37;border-radius:12px;padding:18px 20px;margin:20px 0 35px}
+    .ios-banner h3{color:#8fa196;margin:0 0 14px;font-size:1.2em}
+    .ios-badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+    .ios-card{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #e6d8a6;border-radius:10px;padding:12px}
+    .ios-card .mini-icon{width:44px;height:44px;border-radius:10px;overflow:hidden;flex:0 0 44px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+    .ios-card .app-meta{flex:1}
+    .ios-card .app-title{font-weight:700;color:#1a4d2e;font-size:.98em;line-height:1.2}
+    .ios-card .sub{font-size:.85em;color:#4a7c59;margin-top:2px}
+    .store-badge{display:inline-flex;align-items:center;gap:8px;border:2px solid #1a4d2e;border-radius:8px;padding:8px 12px;text-decoration:none;color:#1a4d2e;font-weight:700;transition:transform .15s,box-shadow .15s}
+    .store-badge:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(26,77,46,.25)}
+    .store-badge svg{width:18px;height:18px}
+
+    @media (max-width:768px){
+      .header{padding:12px 15px 10px}
+      .header h1{font-size:1em}
+      .header p{font-size:.8em}
+      .apps-grid{grid-template-columns:1fr}
+      .content{padding:35px 25px}
+      .form-section{padding:25px}
+      .lang-switcher{top:10px;right:10px;gap:8px}
+      [dir="rtl"] .lang-switcher{right:auto;left:10px}
+      .lang-btn{padding:10px 20px;font-size:1em}
+      .top-header-logo{max-width:150px;width:40%}
+      .footer-logo{max-width:130px;width:35%}
+      .footer-company-name{font-size:1.4em}
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(1400px 900px at -10% -20%, rgba(212,175,55,.15), transparent 55%),
-        radial-gradient(1200px 700px at 110% 10%, rgba(212,175,55,.10), transparent 60%),
-        linear-gradient(135deg,var(--g600) 0%, var(--g900) 100%);
-      color:#fff; display:flex; align-items:center; justify-content:center;
-      padding:28px; overflow:hidden;
+    @media (max-width:480px){
+      .header h1{font-size:.95em}
+      .header p{font-size:.75em}
+      .apps-section h2{font-size:1.7em}
     }
-    [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
-
-    .sparkles::before,.sparkles::after{content:"";position:absolute;inset:-20%;pointer-events:none;background:
-      radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
-      radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
-      radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,.25), transparent 60%),
-      radial-gradient(2px 2px at 30% 70%, rgba(255,255,255,.30), transparent 60%),
-      radial-gradient(2px 2px at 90% 80%, rgba(255,255,255,.20), transparent 60%);
-      animation: drift 18s linear infinite}
-    .sparkles::after{animation-duration:26s;opacity:.6;filter: blur(.3px)}
-    @keyframes drift{0%{transform:translateY(0)}100%{transform:translateY(-12%)}}
-
-    .container{
-      width:min(1200px,96vw); height:min(96vh,980px);
-      border-radius:28px; position:relative; overflow:hidden;
-      border:1px solid rgba(212,175,55,.22);
-      box-shadow:0 40px 110px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);
-      display:grid; grid-template-rows:auto 1fr;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00) 35%),
-        radial-gradient(800px 300px at 50% -10%, rgba(212,175,55,.10), transparent 70%),
-        linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
-    }
-
-    .lang{position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20}
-    [dir="rtl"] .lang{right:auto; left:16px}
-    .lang button{
-      border:1px solid var(--gold); color:var(--gold); background:rgba(212,175,55,.08);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      padding:8px 12px; border-radius:12px; font-weight:900; cursor:pointer;
-      transition:.2s transform,.2s box-shadow,.2s background}
-    .lang button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,175,55,.3)}
-    .lang .active{background:var(--gold);color:var(--g900)}
-
-    .hero{padding:26px 18px 14px; display:grid; place-items:center; text-align:center; position:relative}
-    .logo-wrap{
-      width:140px; height:140px; border-radius:26px; overflow:hidden; display:grid; place-items:center;
-      border:1px solid rgba(212,175,55,.4);
-      box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
-      position:relative; background:rgba(212,175,55,.06); isolation:isolate}
-    .logo-wrap::after{
-      content:""; position:absolute; inset:-50% -20% auto -20%; height:60%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
-      transform: rotate(12deg) translateX(-120%); filter: blur(8px);
-      animation: sweep 4.8s ease-in-out infinite}
-    @keyframes sweep{0%{transform: rotate(12deg) translateX(-120%)}50%{transform: rotate(12deg) translateX(120%)}100%{transform: rotate(12deg) translateX(120%)}}
-    .logo{width:100%; height:100%; object-fit:cover}
-    .brand{margin-top:14px}
-    .brand h1{font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.25)}
-    .brand p{color:#f8efc9; opacity:.95; font-size:1.05rem}
-
-    .content{padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px}
-    @media (max-width:900px){.content{grid-template-columns:1fr}}
-
-    .card{
-      position:relative; overflow:hidden; border-radius:22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border:1px solid rgba(212,175,55,.22);
-      box-shadow:0 22px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05);
-      padding:22px; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
-      transition:.25s transform,.25s box-shadow}
-    .card:hover{transform:translateY(-3px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
-    .card::before{
-      content:""; position:absolute; inset:-1px; border-radius:22px; padding:1px;
-      background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
-    .glyph{
-      width:88px; height:88px; border-radius:18px; display:grid; place-items:center;
-      background: linear-gradient(135deg, var(--g600), var(--g500));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 26px rgba(0,0,0,.35)}
-    .glyph img{width:60px; height:60px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))}
-    .meta{display:flex; flex-direction:column; gap:12px}
-    .title{font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem}
-    .desc{color:#deefd9; opacity:.9; font-size:.98rem}
-
-    .actions{display:flex; flex-direction:column; gap:12px}
-    .btn{
-      --bg:linear-gradient(135deg,var(--g650),var(--g800)); --ink:#fff;
-      display:flex; align-items:center; justify-content:center; gap:10px;
-      background:var(--bg); color:var(--ink);
-      padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900;
-      border:1px solid rgba(212,175,55,.35); cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.28)}
-    .btn .label{display:flex; align-items:center; gap:10px}
-    .btn .badge{padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
-      background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)}
-    .btn svg{width:20px; height:20px; display:block}
-    .gold-fill{fill:var(--gold)}
-    .tiny-note{font-size:.85rem;color:#f6e7b0;opacity:.95;margin-top:2px}
-
-    /* modal */
-    .modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
-      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
-      z-index:50; align-items:center; justify-content:center}
-    .modal.active{display:flex}
-    .modal-card{width:min(640px,92vw); max-height:92vh; overflow:auto; border-radius:20px;
-      background:#fff; color:var(--ink); box-shadow:0 34px 90px rgba(0,0,0,.6)}
-    .modal-head{padding:22px; background:linear-gradient(135deg,var(--g600),var(--g900));
-      border-bottom:2px solid var(--gold); color:var(--gold); position:relative; border-radius:20px 20px 0 0}
-    .modal-head p{color:#faefc6}
-    .close{position:absolute; right:14px; top:14px; width:40px; height:40px; border-radius:50%;
-      border:0; background:rgba(212,175,55,.18); color:var(--gold); font-size:26px; font-weight:900; cursor:pointer}
-    [dir="rtl"] .close{right:auto; left:14px}
-    .modal-body{padding:22px}
-    .callout{background:#fff8e1; border:2px solid var(--gold); border-radius:12px; padding:16px; margin-bottom:18px}
-    .callout h4{margin-bottom:8px}
-    .callout ol{margin:10px 0 0 20px}
-    [dir="rtl"] .callout ol{margin:10px 20px 0 0}
-    .group{margin-bottom:16px}
-    label{display:block; font-weight:800; margin-bottom:6px}
-    input{width:100%; padding:12px 14px; border-radius:10px; border:2px solid var(--gold); background:#fff; color:#163924; font-size:1rem}
-    [dir="rtl"] input{text-align:right}
-    .hint{font-size:.85rem; color:#2c6b48; margin-top:6px}
-    .checks{background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px}
-    .check{display:grid; grid-template-columns:24px 1fr; align-items:center; gap:10px; margin:10px 0}
-    .check input{width:18px; height:18px; margin:0}
-    .check label{margin:0; font-weight:700}
-    [dir="rtl"] .check{grid-template-columns:1fr 24px}
-    .submit{width:100%; padding:16px; border:0; border-radius:12px; color:#fff; font-weight:1000; font-size:1.05rem; cursor:pointer;
-      background: linear-gradient(135deg,var(--g600), var(--gold)); box-shadow:0 12px 30px rgba(26,77,46,.35)}
-    .submit:disabled{opacity:.6; cursor:not-allowed}
-    .msg{display:none; margin-top:14px; padding:12px; border-radius:10px; text-align:center; font-weight:900}
-    .ok{background:#e8f5e9; color:#0e3c23; border:2px solid #4caf50}
-    .err{background:#ffebee; color:#8d2b2b; border:2px solid #ef5350}
   </style>
 </head>
-<body class="sparkles">
-  <div class="lang">
-    <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
-    <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
+<body>
+  <div class="top-header">
+    <img src="images/ashcore-labs.png" alt="AshCore Labs" class="top-header-logo" onerror="this.style.display='none'">
   </div>
 
-  <main class="container">
-    <header class="hero">
-      <div class="logo-wrap">
-        <img class="logo" src="images/Golden%20Elegance%20of%20AshCore%20Labs.png" alt="AshCore Labs logo (اشكر)">
+  <div class="main-wrapper">
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btnEnglish" onclick="switchLanguage('en')">English</button>
+      <button class="lang-btn" id="btnArabic" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1 id="headerTitle">🤖 Android Beta Testing</h1>
+        <p id="headerSubtitle">iOS is live publicly — this page is for Android testers only.</p>
       </div>
-      <div class="brand">
-        <h1>AshCore Labs</h1>
-        <p id="tagline">Innovative, educational, family-oriented apps</p>
-      </div>
-    </header>
 
-    <section class="content">
-      <!-- Alif Play -->
-      <article class="card">
-        <div class="glyph" aria-hidden="true">
-          <img src="images/alifplay-icon.png" alt="Alif Play icon">
-        </div>
-        <div class="meta">
-          <h3 class="title" id="app1Name">Alif Play</h3>
-          <p class="desc">Interactive Arabic learning activities for kids and families.</p>
-          <div class="actions">
-            <a class="btn" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <!-- Apple -->
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
-            </a>
-
-            <!-- Android: request access -->
-            <button class="btn" onclick="openModal('Alif Play')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label"><span id="androidBtn1">Android – Request Beta Access</span></span>
-            </button>
-
-            <!-- Android: direct beta link -->
-            <a class="btn" href="https://play.google.com/apps/internaltest/4700371851644656021" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label" id="androidOpen1">Android – Open Beta Link</span>
-            </a>
-            <div class="tiny-note" id="linkNote1">Note: The link will open only after your Google account email is added to the testers list.</div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Hajj & Umrah Guide -->
-      <article class="card">
-        <div class="glyph" aria-hidden="true">
-          <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah icon">
-        </div>
-        <div class="meta">
-          <h3 class="title" id="app2Name">Hajj & Umrah Guide</h3>
-          <p class="desc">Step-by-step rituals, duas, and checklists for a peaceful journey.</p>
-          <div class="actions">
-            <a class="btn" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
-              <!-- Apple -->
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
-            </a>
-
-            <!-- Android: request access -->
-            <button class="btn" onclick="openModal('Hajj & Umrah Guide')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label"><span id="androidBtn2">Android – Request Beta Access</span></span>
-            </button>
-
-            <!-- Android: direct beta link -->
-            <a class="btn" href="https://play.google.com/apps/internaltest/4701234619866645444" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label" id="androidOpen2">Android – Open Beta Link</span>
-            </a>
-            <div class="tiny-note" id="linkNote2">Note: The link will open only after your Google account email is added to the testers list.</div>
-          </div>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <!-- Modal -->
-  <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <div class="modal-head">
-        <button class="close" onclick="closeModal()" aria-label="Close">&times;</button>
-        <h2 id="modalTitle">Android Beta Testing</h2>
-        <p id="modalSubtitle">Join our testing program</p>
-      </div>
-      <div class="modal-body">
-        <div class="callout">
-          <h4 id="helpTitle">How to find your Google Account email:</h4>
-          <p id="helpIntro">We need the email linked to your Google account on your Android device to send you the testing invite.</p>
-          <ol id="helpList">
-            <li id="helpStep1">Open the <strong>Settings</strong> app on your phone</li>
-            <li id="helpStep2">Tap on <strong>Google</strong> (or <strong>Accounts</strong>)</li>
-            <li id="helpStep3">Your email address appears at the top</li>
-            <li id="helpStep4">Copy that email and enter it below</li>
-          </ol>
+      <div class="content">
+        <div class="info-box">
+          <p id="infoText">
+            <strong>📲 Android Only:</strong> Sign up below to receive a Google Play testing invite. Your feedback helps us refine the Android versions before wide release.
+          </p>
         </div>
 
-        <form id="signupForm">
-          <input type="hidden" id="selectedApps" value="" />
-          <div class="group">
-            <label for="userName" id="labelName">Your Name</label>
-            <input type="text" id="userName" required />
-          </div>
-          <div class="group">
-            <label for="userEmail" id="labelEmail">Google Account Email</label>
-            <input type="email" id="userEmail" required />
-            <div class="hint" id="emailHint">This is the email you use for Google Play Store</div>
-          </div>
-          <div class="group">
-            <label id="labelApps">Which apps do you want to test?</label>
-            <div class="checks">
-              <div class="check">
-                <input type="checkbox" id="checkAlif" value="Alif Play" checked />
-                <label for="checkAlif" id="labelAlif">Alif Play</label>
+        <!-- iOS banner (info + two App Store buttons) -->
+        <div class="ios-banner">
+          <h3 id="iosBannerTitle">🍎 Prefer iOS? Get the apps on the App Store</h3>
+          <div class="ios-badges">
+            <!-- Alif Play -->
+            <div class="ios-card">
+              <div class="mini-icon">
+                <img src="images/alifplay-icon.png" alt="Alif Play" style="width:100%;height:100%;object-fit:cover">
               </div>
-              <div class="check">
-                <input type="checkbox" id="checkHajj" value="Hajj & Umrah Guide" />
-                <label for="checkHajj" id="labelHajj">Hajj & Umrah Guide</label>
+              <div class="app-meta">
+                <div class="app-title" id="iosAlifTitle">Alif Play</div>
+                <div class="sub" id="iosLiveText1">Public on iOS</div>
               </div>
+              <a class="store-badge" id="iosAlifBtn"
+                 href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener"
+                 title="Get on the App Store">
+                <!-- Apple icon -->
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.467 2.2-1.22 2.97-.78.79-1.98 1.41-3.12 1.33-.14-1.13.45-2.31 1.19-3.06.78-.8 2.16-1.39 3.15-1.24zm3.45 17.13c-.61 1.41-1.35 2.8-2.44 2.82-1.08.02-1.43-.69-2.67-.69s-1.63.68-2.67.71c-1.09.04-1.92-1.52-2.54-2.93-1.38-3.01-2.44-8.53.26-10.88 1.16-1 2.66-1.02 3.9-.36.57.31 1.03.38 1.58.17.65-.25 1.32-.52 2.04-.45.73.07 1.8.48 2.65 1.83-2.32 1.41-1.95 4.7.37 5.7-.24.6-.51 1.2-.77 1.98z"/></svg>
+                <span id="iosBtnText1">Get iOS on the App Store</span>
+              </a>
+            </div>
+
+            <!-- Hajj & Umrah Guide -->
+            <div class="ios-card">
+              <div class="mini-icon">
+                <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide" style="width:100%;height:100%;object-fit:cover">
+              </div>
+              <div class="app-meta">
+                <div class="app-title" id="iosHajjTitle">Hajj & Umrah Guide</div>
+                <div class="sub" id="iosLiveText2">Public on iOS</div>
+              </div>
+              <a class="store-badge" id="iosHajjBtn"
+                 href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener"
+                 title="Get on the App Store">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.467 2.2-1.22 2.97-.78.79-1.98 1.41-3.12 1.33-.14-1.13.45-2.31 1.19-3.06.78-.8 2.16-1.39 3.15-1.24zm3.45 17.13c-.61 1.41-1.35 2.8-2.44 2.82-1.08.02-1.43-.69-2.67-.69s-1.63.68-2.67.71c-1.09.04-1.92-1.52-2.54-2.93-1.38-3.01-2.44-8.53.26-10.88 1.16-1 2.66-1.02 3.9-.36.57.31 1.03.38 1.58.17.65-.25 1.32-.52 2.04-.45.73.07 1.8.48 2.65 1.83-2.32 1.41-1.95 4.7.37 5.7-.24.6-.51 1.2-.77 1.98z"/></svg>
+                <span id="iosBtnText2">Get iOS on the App Store</span>
+              </a>
             </div>
           </div>
-          <button type="submit" class="submit" id="submitBtn">Sign Up for Beta Testing</button>
-          <div class="msg ok" id="successMsg"><span id="successText">✅ Success! Check your email for the Google Play invite.</span></div>
-          <div class="msg err" id="errorMsg"><span id="errorText">❌ Something went wrong. Please try again.</span></div>
-        </form>
+        </div>
+        <!-- end iOS banner -->
+
+        <div class="apps-section">
+          <h2 id="appsTitle">Apps Available for Android Testing</h2>
+          <div class="apps-grid">
+            <div class="app-card">
+              <div class="app-icon">
+                <img src="images/alifplay-icon.png" alt="Alif Play"
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%23FFD700%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Ctext x=%2250%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22220%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EA%3C/text%3E%3Ctext x=%2278%25%22 y=%2242%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%22140%22 font-weight=%22bold%22 fill=%22%23d4af37%22%3Eإ%3C/text%3E%3Ctext x=%2250%25%22 y=%2275%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2270%22 font-weight=%22bold%22 fill=%22%231a4d2e%22%3EAlifPlay%3C/text%3E%3C/svg%3E'">
+              </div>
+              <div class="app-name">Alif Play</div>
+              <div class="app-status"><span class="status-badge"></span><span id="alifStatus">Android Beta – Join internal testing</span></div>
+            </div>
+
+            <div class="app-card">
+              <div class="app-icon">
+                <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah Guide"
+                     onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Crect fill=%22%231a4d2e%22 width=%22512%22 height=%22512%22 rx=%22115%22/%3E%3Cpath d=%22M180 120 L332 180 L332 220 L180 280 L180 240 L280 200 L180 160 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 200 L332 200 L332 220 L180 220 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M180 230 L332 230 L332 260 L180 260 Z%22 fill=%22%23D4AF37%22/%3E%3Cpath d=%22M140 300 Q180 320 256 320 Q332 320 372 300 L372 380 Q332 400 256 400 Q180 400 140 380 Z%22 fill=%22%23D4AF37%22/%3E%3Ctext x=%2250%25%22 y=%2290%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23D4AF37%22%3EHajj %26 Umrah%3C/text%3E%3C/svg%3E'">
+              </div>
+              <div class="app-name">Hajj & Umrah Guide</div>
+              <div class="app-status"><span class="status-badge"></span><span id="hajjStatus">Android Beta – Join internal testing</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Android sign-up -->
+        <div class="form-section">
+          <h3 id="formTitle">📝 Sign Up as an Android Tester</h3>
+          <form id="testerForm">
+            <div class="form-group">
+              <label for="appSelect" id="labelApp">Select App to Test *</label>
+              <div class="custom-select">
+                <select id="appSelect" name="app" required>
+                  <option value="">Choose an app...</option>
+                  <option value="alifplay" data-en="Alif Play - Educational Learning App" data-ar="أليف بلاي - تطبيق تعليمي">Alif Play - Educational Learning App</option>
+                  <option value="hajj-umrah" data-en="Hajj & Umrah Guide - Spiritual Journey Companion" data-ar="دليل الحج والعمرة - رفيق الرحلة الروحية">Hajj & Umrah Guide - Spiritual Journey Companion</option>
+                  <option value="both" data-en="Both Apps - I want to test everything!" data-ar="كلا التطبيقين - أريد اختبار كل شيء!">Both Apps - I want to test everything!</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="name" id="labelName">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" id="labelEmail">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="deviceModel" id="labelDevice">Device Model (Optional)</label>
+              <input type="text" id="deviceModel" name="deviceModel" placeholder="e.g., Samsung Galaxy S24, Pixel 8">
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Join Android Beta 🚀</button>
+
+            <div class="success-message" id="successMessage">
+              <span id="successText">✅ <strong>Thank you for signing up!</strong><br>We’ll email you a Google Play testing invite shortly.</span>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+              <span id="errorText">❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr157@icloud.com</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Feedback -->
+        <div class="form-section" style="margin-top:40px;">
+          <h3 id="feedbackTitle">💬 Already Testing? Share Your Feedback</h3>
+          <p id="feedbackDescription" style="color:#4a7c59;margin-bottom:25px;font-size:.95em;">
+            Help us improve by reporting bugs, suggesting features, or sharing your experience.
+          </p>
+
+          <form id="feedbackForm">
+            <div class="form-group">
+              <label for="feedbackApp" id="labelFeedbackApp">Which App? *</label>
+              <div class="custom-select">
+                <select id="feedbackApp" name="feedbackApp" required>
+                  <option value="">Select app...</option>
+                  <option value="alifplay" data-en="Alif Play" data-ar="أليف بلاي">Alif Play</option>
+                  <option value="hajj-umrah" data-en="Hajj & Umrah Guide" data-ar="دليل الحج والعمرة">Hajj & Umrah Guide</option>
+                  <option value="both" data-en="Both Apps" data-ar="كلا التطبيقين">Both Apps</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackName" id="labelFeedbackName">Your Name *</label>
+              <input type="text" id="feedbackName" name="feedbackName" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackEmail" id="labelFeedbackEmail">Your Email *</label>
+              <input type="email" id="feedbackEmail" name="feedbackEmail" placeholder="email@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackType" id="labelFeedbackType">Feedback Type *</label>
+              <div class="custom-select">
+                <select id="feedbackType" name="feedbackType" required>
+                  <option value="">Select type...</option>
+                  <option value="bug" data-en="Bug Report" data-ar="بلاغ عن خطأ">Bug Report</option>
+                  <option value="suggestion" data-en="Feature Suggestion" data-ar="اقتراح ميزة">Feature Suggestion</option>
+                  <option value="comment" data-en="General Comment" data-ar="تعليق عام">General Comment</option>
+                  <option value="improvement" data-en="Improvement Idea" data-ar="فكرة تحسين">Improvement Idea</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="feedbackMessage" id="labelFeedbackMessage">Your Feedback *</label>
+              <textarea id="feedbackMessage" name="feedbackMessage" rows="6"
+                placeholder="Describe the issue, suggestion, or feedback in detail..."
+                required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="feedbackBtn">Submit Feedback 📨</button>
+
+            <div class="success-message" id="feedbackSuccessMessage">
+              <span id="feedbackSuccessText">✅ <strong>Thank you for your feedback!</strong><br>We’ve received your message and will review it carefully.</span>
+            </div>
+
+            <div class="error-message" id="feedbackErrorMessage">
+              <span id="feedbackErrorText">❌ <strong>Submission failed.</strong><br>Please try again or email us directly at ashr157@icloud.com</span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 
+  <div class="footer">
+    <img src="images/ashcore-labs.png" alt="AshCore Labs" class="footer-logo" onerror="this.style.display='none'">
+    <div class="footer-company-name">AshCore Labs</div>
+    <div class="footer-content">
+      <p id="footerCopyright">© 2025 AshCore Labs. All rights reserved.</p>
+      <p id="footerContact">Questions? Contact us at <a href="mailto:ashr157@icloud.com">ashr157@icloud.com</a></p>
+    </div>
+  </div>
+
   <script>
-    let currentLang='en';
-    const tr = {
-      en:{
-        tagline:'Innovative, educational, family-oriented apps',
-        app1Name:'Alif Play', app2Name:'Hajj & Umrah Guide',
-        iosBtn1:'iOS – App Store', iosBtn2:'iOS – App Store',
-        androidBtn1:'Android – Request Beta Access', androidBtn2:'Android – Request Beta Access',
-        androidOpen1:'Android – Open Beta Link', androidOpen2:'Android – Open Beta Link',
-        note:'Note: The link will open only after your Google account email is added to the testers list.',
-        modalTitle:'Android Beta Testing', modalSubtitle:'Join our testing program',
-        helpTitle:'How to find your Google Account email:',
-        helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
-        step1:'Open the <strong>Settings</strong> app on your phone',
-        step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
-        step3:'Your email address appears at the top',
-        step4:'Copy that email and enter it below',
-        labelName:'Your Name', labelEmail:'Google Account Email',
-        emailHint:'This is the email you use for Google Play Store',
-        labelApps:'Which apps do you want to test?',
-        labelAlif:'Alif Play', labelHajj:'Hajj & Umrah Guide',
-        submitBtn:'Sign Up for Beta Testing',
-        success:'✅ Success! Check your email for the Google Play invite.',
-        error:'❌ Something went wrong. Please try again.'
+    const translations = {
+      en: {
+        headerTitle: "🤖 Android Beta Testing",
+        headerSubtitle: "iOS is live publicly — this page is for Android testers only.",
+        infoText: "<strong>📲 Android Only:</strong> Sign up below to receive a Google Play testing invite. Your feedback helps us refine the Android versions before wide release.",
+        iosBannerTitle: "🍎 Prefer iOS? Get the apps on the App Store",
+        iosLive: "Public on iOS",
+        iosBtn: "Get iOS on the App Store",
+        appsTitle: "Apps Available for Android Testing",
+        alifStatus: "Android Beta – Join internal testing",
+        hajjStatus: "Android Beta – Join internal testing",
+        formTitle: "📝 Sign Up as an Android Tester",
+        labelApp: "Select App to Test *",
+        labelName: "Full Name *",
+        labelEmail: "Email Address *",
+        labelDevice: "Device Model (Optional)",
+        submitBtn: "Join Android Beta 🚀",
+        successText: "✅ <strong>Thank you for signing up!</strong><br>We’ll email you a Google Play testing invite shortly.",
+        errorText: "❌ <strong>Submission failed.</strong><br>Please try again or contact us directly at ashr157@icloud.com",
+        footerCopyright: "© 2025 AshCore Labs. All rights reserved.",
+        footerContact: "Questions? Contact us at ",
+        placeholderName: "Enter your full name",
+        placeholderEmail: "email@example.com",
+        placeholderDevice: "e.g., Samsung Galaxy S24, Pixel 8",
+        selectApp: "Choose an app...",
+        feedbackTitle: "💬 Already Testing? Share Your Feedback",
+        feedbackDescription: "Help us improve by reporting bugs, suggesting features, or sharing your experience.",
+        labelFeedbackApp: "Which App? *",
+        labelFeedbackName: "Your Name *",
+        labelFeedbackEmail: "Your Email *",
+        labelFeedbackType: "Feedback Type *",
+        labelFeedbackMessage: "Your Feedback *",
+        feedbackBtn: "Submit Feedback 📨",
+        feedbackSuccessText: "✅ <strong>Thank you for your feedback!</strong><br>We’ve received your message and will review it carefully.",
+        feedbackErrorText: "❌ <strong>Submission failed.</strong><br>Please try again or email us directly at ashr157@icloud.com",
+        selectFeedbackApp: "Select app...",
+        selectFeedbackType: "Select type...",
+        feedbackPlaceholder: "Describe the issue, suggestion, or feedback in detail...",
+        feedbackNamePlaceholder: "Enter your name"
       },
-      ar:{
-        tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',
-        app1Name:'أليف بلاي', app2Name:'دليل الحج والعمرة',
-        iosBtn1:'iOS – متجر التطبيقات', iosBtn2:'iOS – متجر التطبيقات',
-        androidBtn1:'Android – طلب الانضمام للتجربة', androidBtn2:'Android – طلب الانضمام للتجربة',
-        androidOpen1:'Android – رابط النسخة التجريبية', androidOpen2:'Android – رابط النسخة التجريبية',
-        note:'ملاحظة: يعمل الرابط فقط بعد إضافة بريدك الإلكتروني في Google إلى قائمة المختبرين.',
-        modalTitle:'الاختبار التجريبي لأندرويد', modalSubtitle:'انضم إلى برنامج الاختبار',
-        helpTitle:'كيفية العثور على بريد حساب Google:',
-        helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
-        step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',
-        step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
-        step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',
-        step4:'انسخ هذا البريد وأدخله أدناه',
-        labelName:'اسمك', labelEmail:'بريد حساب Google',
-        emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
-        labelApps:'ما التطبيقات التي تريد اختبارها؟',
-        labelAlif:'أليف بلاي', labelHajj:'دليل الحج والعمرة',
-        submitBtn:'التسجيل للاختبار التجريبي',
-        success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
-        error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
+      ar: {
+        headerTitle: "🤖 الاختبار التجريبي لأندرويد",
+        headerSubtitle: "إصدار iOS متاح للعامة — هذه الصفحة لمختبري أندرويد فقط.",
+        infoText: "<strong>📲 أندرويد فقط:</strong> سجّل أدناه للحصول على دعوة اختبار عبر متجر Google Play. ملاحظاتك تساعدنا في تحسين الإصدارات قبل الإطلاق الواسع.",
+        iosBannerTitle: "🍎 تفضّل iOS؟ حمِّل التطبيقات من App Store",
+        iosLive: "متاح للعامة على iOS",
+        iosBtn: "حمّل نسخة iOS من App Store",
+        appsTitle: "التطبيقات المتاحة لاختبار أندرويد",
+        alifStatus: "اختبار أندرويد التجريبي – انضم للاختبار الداخلي",
+        hajjStatus: "اختبار أندرويد التجريبي – انضم للاختبار الداخلي",
+        formTitle: "📝 سجِّل كمختبر لأندرويد",
+        labelApp: "اختر التطبيق للاختبار *",
+        labelName: "الاسم الكامل *",
+        labelEmail: "عنوان البريد الإلكتروني *",
+        labelDevice: "موديل الجهاز (اختياري)",
+        submitBtn: "انضم لاختبار أندرويد 🚀",
+        successText: "✅ <strong>شكراً لتسجيلك!</strong><br>سَنرسل لك دعوة اختبار عبر Google Play قريباً.",
+        errorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو مراسلتنا على ashr157@icloud.com",
+        footerCopyright: "© 2025 AshCore Labs. جميع الحقوق محفوظة.",
+        footerContact: "أسئلة؟ تواصل معنا على ",
+        placeholderName: "أدخل اسمك الكامل",
+        placeholderEmail: "email@example.com",
+        placeholderDevice: "مثال: Samsung Galaxy S24، Pixel 8",
+        selectApp: "اختر تطبيقاً...",
+        feedbackTitle: "💬 هل تختبر بالفعل؟ شارك ملاحظاتك",
+        feedbackDescription: "ساعدنا في التحسين من خلال الإبلاغ عن الأخطاء أو اقتراح الميزات أو مشاركة تجربتك.",
+        labelFeedbackApp: "أي تطبيق؟ *",
+        labelFeedbackName: "اسمك *",
+        labelFeedbackEmail: "بريدك الإلكتروني *",
+        labelFeedbackType: "نوع الملاحظات *",
+        labelFeedbackMessage: "ملاحظاتك *",
+        feedbackBtn: "إرسال الملاحظات 📨",
+        feedbackSuccessText: "✅ <strong>شكراً لملاحظاتك!</strong><br>لقد استلمنا رسالتك وسنقوم بمراجعتها بعناية.",
+        feedbackErrorText: "❌ <strong>فشل الإرسال.</strong><br>يرجى المحاولة مرة أخرى أو مراسلتنا على ashr157@icloud.com",
+        selectFeedbackApp: "اختر تطبيقاً...",
+        selectFeedbackType: "اختر النوع...",
+        feedbackPlaceholder: "صف المشكلة أو الاقتراح أو الملاحظات بالتفصيل...",
+        feedbackNamePlaceholder: "أدخل اسمك"
       }
     };
 
-    function switchLanguage(lang){
+    let currentLang = 'en';
+
+    function switchLanguage(lang) {
       currentLang = lang;
-      document.documentElement.lang = lang;
-      document.documentElement.dir = (lang==='ar')?'rtl':'ltr';
-      document.getElementById('btnEnglish').classList.toggle('active', lang==='en');
-      document.getElementById('btnArabic').classList.toggle('active', lang==='ar');
-      applyText();
+      applyTranslations();
+      document.getElementById('btnEnglish').classList.toggle('active', lang === 'en');
+      document.getElementById('btnArabic').classList.toggle('active', lang === 'ar');
     }
 
-    function applyText(){
-      const x = tr[currentLang];
-      document.getElementById('tagline').textContent = x.tagline;
-      document.getElementById('app1Name').textContent = x.app1Name;
-      document.getElementById('app2Name').textContent = x.app2Name;
-      document.getElementById('iosBtn1').textContent = x.iosBtn1;
-      document.getElementById('iosBtn2').textContent = x.iosBtn2;
-      document.getElementById('androidBtn1').textContent = x.androidBtn1;
-      document.getElementById('androidBtn2').textContent = x.androidBtn2;
-      document.getElementById('androidOpen1').textContent = x.androidOpen1;
-      document.getElementById('androidOpen2').textContent = x.androidOpen2;
-      document.getElementById('linkNote1').textContent = x.note;
-      document.getElementById('linkNote2').textContent = x.note;
-      document.getElementById('modalTitle').textContent = x.modalTitle;
-      document.getElementById('modalSubtitle').textContent = x.modalSubtitle;
-      document.getElementById('helpTitle').textContent = x.helpTitle;
-      document.getElementById('helpIntro').textContent = x.helpIntro;
-      document.getElementById('helpStep1').innerHTML = x.step1;
-      document.getElementById('helpStep2').innerHTML = x.step2;
-      document.getElementById('helpStep3').innerHTML = x.step3;
-      document.getElementById('helpStep4').innerHTML = x.step4;
-      document.getElementById('labelName').textContent = x.labelName;
-      document.getElementById('labelEmail').textContent = x.labelEmail;
-      document.getElementById('emailHint').textContent = x.emailHint;
-      document.getElementById('labelApps').textContent = x.labelApps;
-      document.getElementById('labelAlif').textContent = x.labelAlif;
-      document.getElementById('labelHajj').textContent = x.labelHajj;
-      document.getElementById('submitBtn').textContent = x.submitBtn;
-      document.getElementById('successText').textContent = x.success;
-      document.getElementById('errorText').textContent = x.error;
+    function applyTranslations() {
+      const t = translations[currentLang];
+      const html = document.documentElement;
+      html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      html.setAttribute('lang', currentLang);
+
+      // Headers & info
+      document.getElementById('headerTitle').textContent = t.headerTitle;
+      document.getElementById('headerSubtitle').textContent = t.headerSubtitle;
+      document.getElementById('infoText').innerHTML = t.infoText;
+
+      // iOS banner
+      document.getElementById('iosBannerTitle').textContent = t.iosBannerTitle;
+      document.getElementById('iosLiveText1').textContent = t.iosLive;
+      document.getElementById('iosLiveText2').textContent = t.iosLive;
+      document.getElementById('iosBtnText1').textContent = t.iosBtn;
+      document.getElementById('iosBtnText2').textContent = t.iosBtn;
+
+      // Android testing section
+      document.getElementById('appsTitle').textContent = t.appsTitle;
+      document.getElementById('alifStatus').textContent = t.alifStatus;
+      document.getElementById('hajjStatus').textContent = t.hajjStatus;
+
+      // Forms
+      document.getElementById('formTitle').textContent = t.formTitle;
+      document.getElementById('labelApp').textContent = t.labelApp;
+      document.getElementById('labelName').textContent = t.labelName;
+      document.getElementById('labelEmail').textContent = t.labelEmail;
+      document.getElementById('labelDevice').textContent = t.labelDevice;
+      document.getElementById('submitBtn').textContent = t.submitBtn;
+      document.getElementById('successText').innerHTML = t.successText;
+      document.getElementById('errorText').innerHTML = t.errorText;
+
+      // Feedback
+      document.getElementById('feedbackTitle').textContent = t.feedbackTitle;
+      document.getElementById('feedbackDescription').textContent = t.feedbackDescription;
+      document.getElementById('labelFeedbackApp').textContent = t.labelFeedbackApp;
+      document.getElementById('labelFeedbackName').textContent = t.labelFeedbackName;
+      document.getElementById('labelFeedbackEmail').textContent = t.labelFeedbackEmail;
+      document.getElementById('labelFeedbackType').textContent = t.labelFeedbackType;
+      document.getElementById('labelFeedbackMessage').textContent = t.labelFeedbackMessage;
+      document.getElementById('feedbackBtn').textContent = t.feedbackBtn;
+      document.getElementById('feedbackSuccessText').innerHTML = t.feedbackSuccessText;
+      document.getElementById('feedbackErrorText').innerHTML = t.feedbackErrorText;
+
+      // Footer
+      document.getElementById('footerCopyright').textContent = t.footerCopyright;
+      document.getElementById('footerContact').innerHTML = t.footerContact + '<a href="mailto:ashr157@icloud.com">ashr157@icloud.com</a>';
+
+      // Placeholders
+      document.getElementById('name').placeholder = t.placeholderName;
+      document.getElementById('email').placeholder = t.placeholderEmail;
+      document.getElementById('deviceModel').placeholder = t.placeholderDevice;
+      document.getElementById('feedbackName').placeholder = t.feedbackNamePlaceholder;
+      document.getElementById('feedbackEmail').placeholder = t.placeholderEmail;
+      document.getElementById('feedbackMessage').placeholder = t.feedbackPlaceholder;
+
+      // Select defaults
+      document.getElementById('appSelect').options[0].text = t.selectApp;
+      document.getElementById('feedbackApp').options[0].text = t.selectFeedbackApp;
+      document.getElementById('feedbackType').options[0].text = t.selectFeedbackType;
+
+      // Data-driven options
+      document.querySelectorAll('option[data-en]').forEach(option => {
+        option.text = option.getAttribute('data-' + currentLang);
+      });
     }
 
-    function openModal(appName){
-      document.getElementById('signupModal').classList.add('active');
-      document.body.style.overflow='hidden';
-      document.getElementById('checkAlif').checked = (appName==='Alif Play');
-      document.getElementById('checkHajj').checked = (appName==='Hajj & Umrah Guide');
-    }
-    function closeModal(){
-      document.getElementById('signupModal').classList.remove('active');
-      document.body.style.overflow='auto';
-      document.getElementById('signupForm').reset();
-      document.getElementById('successMsg').style.display='none';
-      document.getElementById('errorMsg').style.display='none';
-    }
-    document.getElementById('signupModal').addEventListener('click',(e)=>{ if(e.target===e.currentTarget) closeModal(); });
-
-    document.getElementById('signupForm').addEventListener('submit', function(e){
+    // Android signup (platform forced to 'android')
+    document.getElementById('testerForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const original = btn.textContent;
-      btn.disabled = true; btn.textContent = (currentLang==='en')?'Submitting…':'جاري الإرسال…';
-      document.getElementById('successMsg').style.display='none';
-      document.getElementById('errorMsg').style.display='none';
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = currentLang === 'en' ? 'Submitting...' : 'جاري الإرسال...';
 
-      const selected=[];
-      if(document.getElementById('checkAlif').checked) selected.push('Alif Play');
-      if(document.getElementById('checkHajj').checked) selected.push('Hajj & Umrah Guide');
+      document.getElementById('successMessage').style.display = 'none';
+      document.getElementById('errorMessage').style.display = 'none';
 
-      const payload={
-        access_key:'2817a6cd-689c-4709-96c5-305137b2b841',
-        subject:'New Android Beta Tester - AshCore Labs',
-        from_name:'AshCore Labs Beta Program',
-        name:document.getElementById('userName').value,
-        email:document.getElementById('userEmail').value,
-        apps:selected.join(', '),
-        platform:'Android',
-        language:currentLang,
-        submittedAt:new Date().toISOString()
+      const formData = {
+        access_key: '2817a6cd-689c-4709-96c5-305137b2b841',
+        subject: 'New ANDROID Beta Tester Signup - AshCore Labs',
+        from_name: 'AshCore Labs Android Beta',
+        app: document.getElementById('appSelect').value,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        platform: 'android',
+        deviceModel: document.getElementById('deviceModel').value || 'Not specified',
+        language: currentLang,
+        submittedAt: new Date().toISOString(),
+        userAgent: navigator.userAgent
       };
 
       fetch('https://api.web3forms.com/submit', {
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify(payload)
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(formData)
       })
-      .then(r=>r.json())
-      .then(data=>{
-        if(data.success){
-          document.getElementById('successMsg').style.display='block';
-          document.getElementById('signupForm').reset();
-          setTimeout(()=>closeModal(),2600);
-        }else{
-          document.getElementById('errorMsg').style.display='block';
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('successMessage').style.display = 'block';
+          document.getElementById('testerForm').reset();
+          setTimeout(()=>{document.getElementById('successMessage').style.display='none'},7000);
+        } else {
+          document.getElementById('errorMessage').style.display = 'block';
+          console.error('Web3Forms Error:', data);
         }
-        btn.disabled=false; btn.textContent=original;
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       })
-      .catch(()=>{
-        document.getElementById('errorMsg').style.display='block';
-        btn.disabled=false; btn.textContent=original;
+      .catch(err => {
+        console.error('Submission Error:', err);
+        document.getElementById('errorMessage').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       });
     });
 
-    applyText();
+    // Feedback submit
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const originalText = feedbackBtn.textContent;
+      feedbackBtn.disabled = true;
+      feedbackBtn.textContent = currentLang === 'en' ? 'Sending...' : 'جاري الإرسال...';
+
+      const feedbackData = {
+        access_key: '2817a6cd-689c-4709-96c5-305137b2b841',
+        subject: 'Android Beta Feedback - AshCore Labs',
+        from_name: 'AshCore Labs Beta Feedback',
+        app: document.getElementById('feedbackApp').value,
+        name: document.getElementById('feedbackName').value,
+        email: document.getElementById('feedbackEmail').value,
+        feedbackType: document.getElementById('feedbackType').value,
+        message: document.getElementById('feedbackMessage').value,
+        language: currentLang,
+        submittedAt: new Date().toISOString(),
+        userAgent: navigator.userAgent
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(feedbackData)
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('feedbackSuccessMessage').style.display = 'block';
+          document.getElementById('feedbackForm').reset();
+          setTimeout(()=>{document.getElementById('feedbackSuccessMessage').style.display='none'},7000);
+        } else {
+          document.getElementById('feedbackErrorMessage').style.display = 'block';
+          console.error('Feedback Error:', data);
+        }
+        feedbackBtn.disabled = false;
+        feedbackBtn.textContent = originalText;
+      })
+      .catch(err => {
+        console.error('Feedback Submission Error:', err);
+        document.getElementById('feedbackErrorMessage').style.display = 'block';
+        feedbackBtn.disabled = false;
+        feedbackBtn.textContent = originalText;
+      });
+    });
+
+    // Initialize
+    applyTranslations();
+
+    // ===== IMPORTANT: Set your real App Store links here (or directly in the hrefs above) =====
+        document.getElementById('iosAlifBtn').href = 'https://apps.apple.com/app/id6753190449';
+        document.getElementById('iosHajjBtn').href = 'https://apps.apple.com/app/id6753349690';
   </script>
 </body>
 </html>

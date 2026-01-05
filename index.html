@@ -1,3 +1,4 @@
+[paste the entire HTML content I provided earlier here]
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -113,7 +114,6 @@
     .gold-fill{fill:var(--gold)}
     .tiny-note{font-size:.85rem;color:#f6e7b0;opacity:.95;margin-top:2px}
 
-    /* "Coming soon" button style */
     .btn.disabled{
       opacity:.7;
       cursor:not-allowed;
@@ -121,7 +121,6 @@
     }
     .btn.disabled:hover{transform:none; box-shadow:none}
 
-    /* modal */
     .modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
       backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
       z-index:50; align-items:center; justify-content:center}
@@ -145,7 +144,6 @@
     [dir="rtl"] input{text-align:right}
     .hint{font-size:.85rem; color:#2c6b48; margin-top:6px}
     .checks{background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px 14px}
-    /* ✅ FIX: robust alignment (EN & AR) */
     .check{
       display:flex; align-items:center; gap:12px; padding:8px 2px;
     }
@@ -176,7 +174,7 @@
   <main class="container">
     <header class="hero">
       <div class="logo-wrap">
-        <img class="logo" src="images/Golden%20Elegance%20of%20AshCore%20Labs.png" alt="AshCore Labs logo (اشكر)">
+        <img class="logo" src="images/Golden%20Elegance%20of%20AshCore%20Labs.png" alt="AshCore Labs logo">
       </div>
       <div class="brand">
         <h1>AshCore Labs</h1>
@@ -185,9 +183,8 @@
     </header>
 
     <section class="content">
-      <!-- Alif Play -->
       <article class="card">
-        <div class="glyph" aria-hidden="true">
+        <div class="glyph">
           <img src="images/alifplay-icon.png" alt="Alif Play icon">
         </div>
         <div class="meta">
@@ -195,22 +192,15 @@
           <p class="desc" id="app1Desc">Interactive Arabic learning activities for kids and families.</p>
           <div class="actions">
             <a class="btn" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <!-- Apple -->
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-
-            <!-- Android: request access -->
             <button class="btn" onclick="openModal('Alif Play')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn1">Android – Request Beta Access</span></span>
             </button>
-
-            <!-- Android: direct beta link -->
             <a class="btn" href="https://play.google.com/apps/internaltest/4700371851644656021" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label" id="androidOpen1">Android – Open Beta Link</span>
             </a>
             <div class="tiny-note" id="linkNote1">Note: The link will open only after your Google account email is added to the testers list.</div>
@@ -218,9 +208,8 @@
         </div>
       </article>
 
-      <!-- Hajj & Umrah Guide -->
       <article class="card">
-        <div class="glyph" aria-hidden="true">
+        <div class="glyph">
           <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah icon">
         </div>
         <div class="meta">
@@ -228,22 +217,15 @@
           <p class="desc" id="app2Desc">Step-by-step rituals, duas, and checklists for a peaceful journey.</p>
           <div class="actions">
             <a class="btn" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
-              <!-- Apple -->
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
               <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
             </a>
-
-            <!-- Android: request access -->
             <button class="btn" onclick="openModal('Hajj & Umrah Guide')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn2">Android – Request Beta Access</span></span>
             </button>
-
-            <!-- Android: direct beta link -->
             <a class="btn" href="https://play.google.com/apps/internaltest/4701234619866645444" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 0 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label" id="androidOpen2">Android – Open Beta Link</span>
             </a>
             <div class="tiny-note" id="linkNote2">Note: The link will open only after your Google account email is added to the testers list.</div>
@@ -251,32 +233,24 @@
         </div>
       </article>
 
-      <!-- Muslim One Pro (NEW) -->
       <article class="card">
-        <div class="glyph" aria-hidden="true">
+        <div class="glyph">
           <img src="images/icon-f.png" alt="Muslim One Pro icon">
         </div>
         <div class="meta">
           <h3 class="title" id="app3Name">Muslim One Pro</h3>
           <p class="desc" id="app3Desc">Your complete Islamic companion: prayer times, Quran, hadith, duas, azkar, and more.</p>
           <div class="actions">
-            <!-- iOS (coming soon) -->
-            <a class="btn disabled" href="#" onclick="return false;" aria-disabled="true">
+            <a class="btn disabled" href="#" onclick="return false;">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn3">iOS – Coming Soon</span><span class="badge" id="iosBadge3">SOON</span></span>
+              <span class="label"><span id="iosBtn3">iOS – Coming Soon</span><span class="badge">SOON</span></span>
             </a>
-
-            <!-- Android: request access -->
             <button class="btn" onclick="openModal('Muslim One Pro')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label"><span id="androidBtn3">Android – Request Beta Access</span></span>
             </button>
-
-            <!-- Android: direct beta link -->
             <a class="btn" href="https://play.google.com/apps/internaltest/4701619841603960253" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill"
-                d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
               <span class="label" id="androidOpen3">Android – Open Beta Link</span>
             </a>
             <div class="tiny-note" id="linkNote3">Note: The link will open only after your Google account email is added to the testers list.</div>
@@ -286,11 +260,10 @@
     </section>
   </main>
 
-  <!-- Modal -->
-  <div id="signupModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div id="signupModal" class="modal">
     <div class="modal-card">
       <div class="modal-head">
-        <button class="close" onclick="closeModal()" aria-label="Close">&times;</button>
+        <button class="close" onclick="closeModal()">&times;</button>
         <h2 id="modalTitle">Android Beta Testing</h2>
         <p id="modalSubtitle">Join our testing program</p>
       </div>
@@ -307,7 +280,6 @@
         </div>
 
         <form id="signupForm">
-          <input type="hidden" id="selectedApps" value="" />
           <div class="group">
             <label for="userName" id="labelName">Your Name</label>
             <input type="text" id="userName" required />
@@ -347,29 +319,22 @@
     const tr = {
       en:{
         tagline:'Innovative, educational, family-oriented apps',
-
         app1Name:'Alif Play',
         app2Name:'Hajj & Umrah Guide',
         app3Name:'Muslim One Pro',
-
         app1Desc:'Interactive Arabic learning activities for kids and families.',
         app2Desc:'Step-by-step rituals, duas, and checklists for a peaceful journey.',
         app3Desc:'Your complete Islamic companion: prayer times, Quran, hadith, duas, azkar, and more.',
-
         iosBtn1:'iOS – App Store',
         iosBtn2:'iOS – App Store',
         iosBtn3:'iOS – Coming Soon',
-
         androidBtn1:'Android – Request Beta Access',
         androidBtn2:'Android – Request Beta Access',
         androidBtn3:'Android – Request Beta Access',
-
         androidOpen1:'Android – Open Beta Link',
         androidOpen2:'Android – Open Beta Link',
         androidOpen3:'Android – Open Beta Link',
-
         note:'Note: The link will open only after your Google account email is added to the testers list.',
-
         modalTitle:'Android Beta Testing', modalSubtitle:'Join our testing program',
         helpTitle:'How to find your Google Account email:',
         helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
@@ -387,29 +352,22 @@
       },
       ar:{
         tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',
-
         app1Name:'ألف بلاي',
         app2Name:'دليل الحج والعمرة',
         app3Name:'مسلم ون برو',
-
         app1Desc:'أنشطة تفاعلية لتعلّم العربية للأطفال والعائلة.',
         app2Desc:'مناسك خطوة بخطوة، أدعية، وقوائم تساعدك على رحلة مطمئنة.',
         app3Desc:'رفيقك الإسلامي المتكامل: مواقيت الصلاة، القرآن، الأحاديث، الأدعية، الأذكار، وأكثر.',
-
         iosBtn1:'iOS – متجر التطبيقات',
         iosBtn2:'iOS – متجر التطبيقات',
         iosBtn3:'iOS – قريبًا',
-
         androidBtn1:'Android – طلب الانضمام للتجربة',
         androidBtn2:'Android – طلب الانضمام للتجربة',
         androidBtn3:'Android – طلب الانضمام للتجربة',
-
         androidOpen1:'Android – رابط النسخة التجريبية',
         androidOpen2:'Android – رابط النسخة التجريبية',
         androidOpen3:'Android – رابط النسخة التجريبية',
-
         note:'ملاحظة: يعمل الرابط فقط بعد إضافة بريدك الإلكتروني في Google إلى قائمة المختبرين.',
-
         modalTitle:'الاختبار التجريبي لأندرويد', modalSubtitle:'انضم إلى برنامج الاختبار',
         helpTitle:'كيفية العثور على بريد حساب Google:',
         helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
@@ -439,31 +397,24 @@
     function applyText(){
       const x = tr[currentLang];
       document.getElementById('tagline').textContent = x.tagline;
-
       document.getElementById('app1Name').textContent = x.app1Name;
       document.getElementById('app2Name').textContent = x.app2Name;
       document.getElementById('app3Name').textContent = x.app3Name;
-
       document.getElementById('app1Desc').textContent = x.app1Desc;
       document.getElementById('app2Desc').textContent = x.app2Desc;
       document.getElementById('app3Desc').textContent = x.app3Desc;
-
       document.getElementById('iosBtn1').textContent = x.iosBtn1;
       document.getElementById('iosBtn2').textContent = x.iosBtn2;
       document.getElementById('iosBtn3').textContent = x.iosBtn3;
-
       document.getElementById('androidBtn1').textContent = x.androidBtn1;
       document.getElementById('androidBtn2').textContent = x.androidBtn2;
       document.getElementById('androidBtn3').textContent = x.androidBtn3;
-
       document.getElementById('androidOpen1').textContent = x.androidOpen1;
       document.getElementById('androidOpen2').textContent = x.androidOpen2;
       document.getElementById('androidOpen3').textContent = x.androidOpen3;
-
       document.getElementById('linkNote1').textContent = x.note;
       document.getElementById('linkNote2').textContent = x.note;
       document.getElementById('linkNote3').textContent = x.note;
-
       document.getElementById('modalTitle').textContent = x.modalTitle;
       document.getElementById('modalSubtitle').textContent = x.modalSubtitle;
       document.getElementById('helpTitle').textContent = x.helpTitle;
@@ -476,11 +427,9 @@
       document.getElementById('labelEmail').textContent = x.labelEmail;
       document.getElementById('emailHint').textContent = x.emailHint;
       document.getElementById('labelApps').textContent = x.labelApps;
-
       document.getElementById('labelAlif').textContent = x.labelAlif;
       document.getElementById('labelHajj').textContent = x.labelHajj;
       document.getElementById('labelMuslim').textContent = x.labelMuslim;
-
       document.getElementById('submitBtn').textContent = x.submitBtn;
       document.getElementById('successText').textContent = x.success;
       document.getElementById('errorText').textContent = x.error;
@@ -489,8 +438,6 @@
     function openModal(appName){
       document.getElementById('signupModal').classList.add('active');
       document.body.style.overflow='hidden';
-
-      // Reset checks based on which app button was clicked
       document.getElementById('checkAlif').checked   = (appName==='Alif Play');
       document.getElementById('checkHajj').checked   = (appName==='Hajj & Umrah Guide');
       document.getElementById('checkMuslim').checked = (appName==='Muslim One Pro');

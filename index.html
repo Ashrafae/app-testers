@@ -1,4 +1,3 @@
-[paste the entire HTML content I provided earlier here]
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -21,11 +20,11 @@
         radial-gradient(1200px 700px at 110% 10%, rgba(212,175,55,.10), transparent 60%),
         linear-gradient(135deg,var(--g600) 0%, var(--g900) 100%);
       color:#fff; display:flex; align-items:center; justify-content:center;
-      padding:28px; overflow:hidden;
+      padding:28px; overflow-y:auto; min-height:100vh;
     }
     [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
 
-    .sparkles::before,.sparkles::after{content:"";position:absolute;inset:-20%;pointer-events:none;background:
+    .sparkles::before,.sparkles::after{content:"";position:fixed;inset:-20%;pointer-events:none;background:
       radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,.35), transparent 60%),
       radial-gradient(2px 2px at 60% 10%, rgba(255,255,255,.25), transparent 60%),
       radial-gradient(2px 2px at 80% 40%, rgba(255,255,255,.25), transparent 60%),
@@ -36,15 +35,16 @@
     @keyframes drift{0%{transform:translateY(0)}100%{transform:translateY(-12%)}}
 
     .container{
-      width:min(1200px,96vw); height:min(96vh,980px);
+      width:min(1100px,96vw); max-width:1100px;
       border-radius:28px; position:relative; overflow:hidden;
       border:1px solid rgba(212,175,55,.22);
       box-shadow:0 40px 110px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);
-      display:grid; grid-template-rows:auto 1fr;
+      display:flex; flex-direction:column; gap:26px; padding:32px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00) 35%),
         radial-gradient(800px 300px at 50% -10%, rgba(212,175,55,.10), transparent 70%),
         linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
+      margin:20px auto;
     }
 
     .lang{position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20}
@@ -57,9 +57,9 @@
     .lang button:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,175,55,.3)}
     .lang .active{background:var(--gold);color:var(--g900)}
 
-    .hero{padding:26px 18px 14px; display:grid; place-items:center; text-align:center; position:relative}
+    .hero{padding:12px 0 18px; display:grid; place-items:center; text-align:center; position:relative}
     .logo-wrap{
-      width:140px; height:140px; border-radius:26px; overflow:hidden; display:grid; place-items:center;
+      width:100px; height:100px; border-radius:22px; overflow:hidden; display:grid; place-items:center;
       border:1px solid rgba(212,175,55,.4);
       box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
       position:relative; background:rgba(212,175,55,.06); isolation:isolate}
@@ -70,56 +70,86 @@
       animation: sweep 4.8s ease-in-out infinite}
     @keyframes sweep{0%{transform: rotate(12deg) translateX(-120%)}50%{transform: rotate(12deg) translateX(120%)}100%{transform: rotate(12deg) translateX(120%)}}
     .logo{width:100%; height:100%; object-fit:cover}
-    .brand{margin-top:14px}
-    .brand h1{font-size:2.5rem; letter-spacing:.03em; font-weight:1000; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.25)}
-    .brand p{color:#f8efc9; opacity:.95; font-size:1.05rem}
+    .brand{margin-top:10px}
+    .brand h1{font-size:2rem; letter-spacing:.03em; font-weight:1000; color:var(--gold); text-shadow:0 2px 0 rgba(0,0,0,.25)}
+    .brand p{color:#f8efc9; opacity:.95; font-size:.95rem}
 
-    .content{padding:22px 26px 28px; display:grid; grid-template-columns:1fr 1fr; gap:22px}
-    @media (max-width:900px){.content{grid-template-columns:1fr}}
-
-    .card{
-      position:relative; overflow:hidden; border-radius:22px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border:1px solid rgba(212,175,55,.22);
-      box-shadow:0 22px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05);
-      padding:22px; display:grid; grid-template-columns:auto 1fr; gap:18px; align-items:center;
-      transition:.25s transform,.25s box-shadow}
-    .card:hover{transform:translateY(-3px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
-    .card::before{
-      content:""; position:absolute; inset:-1px; border-radius:22px; padding:1px;
-      background: linear-gradient(135deg, rgba(212,175,55,.6), rgba(212,175,55,.1));
+    /* Hero card for Muslim One Pro */
+    .hero-card{
+      position:relative; overflow:hidden; border-radius:24px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+      border:2px solid rgba(212,175,55,.35);
+      box-shadow:0 28px 70px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
+      padding:32px; display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center;
+      transition:.3s transform,.3s box-shadow}
+    .hero-card:hover{transform:translateY(-4px);box-shadow:0 32px 80px rgba(0,0,0,.55)}
+    .hero-card::before{
+      content:""; position:absolute; inset:-2px; border-radius:24px; padding:2px;
+      background: linear-gradient(135deg, rgba(212,175,55,.7), rgba(212,175,55,.2));
       -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
       -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none}
-    .glyph{
-      width:88px; height:88px; border-radius:18px; display:grid; place-items:center;
+    
+    .hero-glyph{
+      width:120px; height:120px; border-radius:22px; display:grid; place-items:center;
       background: linear-gradient(135deg, var(--g600), var(--g500));
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 26px rgba(0,0,0,.35)}
-    .glyph img{width:60px; height:60px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))}
-    .meta{display:flex; flex-direction:column; gap:12px}
-    .title{font-weight:1000; letter-spacing:.02em; color:#fff; font-size:1.45rem}
-    .desc{color:#deefd9; opacity:.9; font-size:.98rem}
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08), 0 16px 36px rgba(0,0,0,.4)}
+    .hero-glyph img{width:90px; height:90px; object-fit:contain; filter: drop-shadow(0 3px 6px rgba(0,0,0,.3))}
+    
+    .hero-meta{display:flex; flex-direction:column; gap:16px}
+    .hero-title{font-weight:1000; letter-spacing:.03em; color:#fff; font-size:2rem; line-height:1.2}
+    .hero-desc{color:#deefd9; opacity:.95; font-size:1.1rem; line-height:1.5}
+    .hero-badge{display:inline-block; padding:6px 14px; border-radius:999px; font-size:.85rem; 
+      font-weight:900; letter-spacing:.05em; background:rgba(212,175,55,.2); 
+      color:var(--gold); border:1px solid rgba(212,175,55,.4); margin-bottom:8px}
 
-    .actions{display:flex; flex-direction:column; gap:12px}
+    /* Secondary apps section */
+    .secondary{margin-top:8px}
+    .secondary-header{text-align:center; margin-bottom:20px}
+    .secondary-header h3{font-size:1.2rem; color:var(--gold); font-weight:900; letter-spacing:.02em}
+    .secondary-header p{font-size:.9rem; color:#deefd9; opacity:.85; margin-top:4px}
+    
+    .secondary-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    @media (max-width:768px){.secondary-grid{grid-template-columns:1fr}}
+
+    .mini-card{
+      position:relative; overflow:hidden; border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.01));
+      border:1px solid rgba(212,175,55,.2);
+      box-shadow:0 16px 36px rgba(0,0,0,.3), inset 0 0 0 1px rgba(255,255,255,.03);
+      padding:18px; display:flex; gap:14px; align-items:flex-start;
+      transition:.25s transform,.25s box-shadow}
+    .mini-card:hover{transform:translateY(-2px);box-shadow:0 20px 45px rgba(0,0,0,.4)}
+    
+    .mini-glyph{
+      width:60px; height:60px; border-radius:14px; display:grid; place-items:center; flex-shrink:0;
+      background: linear-gradient(135deg, var(--g650), var(--g700));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.05), 0 8px 18px rgba(0,0,0,.3)}
+    .mini-glyph img{width:42px; height:42px; object-fit:contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.25))}
+    
+    .mini-meta{flex:1; display:flex; flex-direction:column; gap:10px}
+    .mini-title{font-weight:900; font-size:1.05rem; color:#fff; letter-spacing:.01em}
+    .mini-desc{font-size:.82rem; color:#deefd9; opacity:.85; line-height:1.3}
+
+    .actions{display:flex; flex-direction:column; gap:12px; margin-top:8px}
     .btn{
-      --bg:linear-gradient(135deg,var(--g650),var(--g800)); --ink:#fff;
       display:flex; align-items:center; justify-content:center; gap:10px;
-      background:var(--bg); color:var(--ink);
-      padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900;
-      border:1px solid rgba(212,175,55,.35); cursor:pointer; transition:.2s transform,.2s box-shadow,.2s filter}
+      background:linear-gradient(135deg,var(--g650),var(--g800)); color:#fff;
+      padding:14px 16px; border-radius:14px; text-decoration:none; font-weight:900; font-size:.95rem;
+      border:1px solid rgba(212,175,55,.35); cursor:pointer; transition:.2s transform,.2s box-shadow}
     .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.28)}
     .btn .label{display:flex; align-items:center; gap:10px}
-    .btn .badge{padding:3px 8px; border-radius:999px; font-size:.76rem; letter-spacing:.02em;
+    .btn .badge{padding:3px 8px; border-radius:999px; font-size:.72rem; letter-spacing:.02em;
       background:rgba(212,175,55,.18); color:var(--gold); border:1px solid rgba(212,175,55,.35)}
-    .btn svg{width:20px; height:20px; display:block}
+    .btn svg{width:18px; height:18px; display:block}
     .gold-fill{fill:var(--gold)}
-    .tiny-note{font-size:.85rem;color:#f6e7b0;opacity:.95;margin-top:2px}
+    .tiny-note{font-size:.8rem;color:#f6e7b0;opacity:.9;margin-top:2px}
 
-    .btn.disabled{
-      opacity:.7;
-      cursor:not-allowed;
-      filter:saturate(.8);
-    }
+    .btn.disabled{opacity:.65; cursor:not-allowed; filter:saturate(.75)}
     .btn.disabled:hover{transform:none; box-shadow:none}
+
+    .btn-mini{padding:10px 12px; font-size:.85rem}
+    .btn-mini svg{width:16px; height:16px}
+    .btn-mini .badge{font-size:.68rem; padding:2px 6px}
 
     .modal{display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
       backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
@@ -144,16 +174,10 @@
     [dir="rtl"] input{text-align:right}
     .hint{font-size:.85rem; color:#2c6b48; margin-top:6px}
     .checks{background:#f5f7f4; border:2px solid var(--gold); border-radius:12px; padding:12px 14px}
-    .check{
-      display:flex; align-items:center; gap:12px; padding:8px 2px;
-    }
-    .check input{
-      width:20px; height:20px; margin:0; flex:0 0 20px; accent-color: var(--g600);
-    }
-    .check label{
-      font-weight:700; line-height:1.4; flex:1 1 auto; text-align:left;
-      white-space:normal; word-break:normal; overflow-wrap:anywhere;
-    }
+    .check{display:flex; align-items:center; gap:12px; padding:8px 2px}
+    .check input{width:20px; height:20px; margin:0; flex:0 0 20px; accent-color: var(--g600)}
+    .check label{font-weight:700; line-height:1.4; flex:1 1 auto; text-align:left;
+      white-space:normal; word-break:normal; overflow-wrap:anywhere}
     [dir="rtl"] .checks{direction:rtl}
     [dir="rtl"] .check{flex-direction:row-reverse}
     [dir="rtl"] .check label{text-align:right}
@@ -163,6 +187,16 @@
     .msg{display:none; margin-top:14px; padding:12px; border-radius:10px; text-align:center; font-weight:900}
     .ok{background:#e8f5e9; color:#0e3c23; border:2px solid #4caf50}
     .err{background:#ffebee; color:#8d2b2b; border:2px solid #ef5350}
+
+    @media (max-width:768px){
+      .hero-card{grid-template-columns:1fr; text-align:center; gap:18px}
+      .hero-glyph{width:100px; height:100px; margin:0 auto}
+      .hero-glyph img{width:75px; height:75px}
+      .hero-title{font-size:1.6rem}
+      .hero-desc{font-size:1rem}
+      .mini-card{flex-direction:column; text-align:center}
+      .mini-glyph{margin:0 auto}
+    }
   </style>
 </head>
 <body class="sparkles">
@@ -182,84 +216,86 @@
       </div>
     </header>
 
-    <section class="content">
-      <article class="card">
-        <div class="glyph">
-          <img src="images/alifplay-icon.png" alt="Alif Play icon">
+    <!-- Hero: Muslim One Pro -->
+    <article class="hero-card">
+      <div class="hero-glyph">
+        <img src="images/icon-f.png" alt="Muslim One Pro icon">
+      </div>
+      <div class="hero-meta">
+        <div>
+          <span class="hero-badge" id="newBadge">NEW</span>
+          <h2 class="hero-title" id="app3Name">Muslim One Pro</h2>
         </div>
-        <div class="meta">
-          <h3 class="title" id="app1Name">Alif Play</h3>
-          <p class="desc" id="app1Desc">Interactive Arabic learning activities for kids and families.</p>
-          <div class="actions">
-            <a class="btn" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn1">iOS – App Store</span><span class="badge">LIVE</span></span>
-            </a>
-            <button class="btn" onclick="openModal('Alif Play')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label"><span id="androidBtn1">Android – Request Beta Access</span></span>
-            </button>
-            <a class="btn" href="https://play.google.com/apps/internaltest/4700371851644656021" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label" id="androidOpen1">Android – Open Beta Link</span>
-            </a>
-            <div class="tiny-note" id="linkNote1">Note: The link will open only after your Google account email is added to the testers list.</div>
-          </div>
+        <p class="hero-desc" id="app3Desc">Your complete Islamic companion: prayer times, Quran, hadith, duas, azkar, and more.</p>
+        <div class="actions">
+          <a class="btn disabled" href="#" onclick="return false;">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
+            <span class="label"><span id="iosBtn3">iOS – Coming Soon</span><span class="badge">SOON</span></span>
+          </a>
+          <button class="btn" onclick="openModal('Muslim One Pro')">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+            <span class="label"><span id="androidBtn3">Android – Request Beta Access</span></span>
+          </button>
+          <a class="btn" href="https://play.google.com/apps/internaltest/4701619841603960253" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+            <span class="label" id="androidOpen3">Android – Open Beta Link</span>
+          </a>
+          <div class="tiny-note" id="linkNote3">Note: The link will open only after your Google account email is added to the testers list.</div>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <article class="card">
-        <div class="glyph">
-          <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah icon">
-        </div>
-        <div class="meta">
-          <h3 class="title" id="app2Name">Hajj & Umrah Guide</h3>
-          <p class="desc" id="app2Desc">Step-by-step rituals, duas, and checklists for a peaceful journey.</p>
-          <div class="actions">
-            <a class="btn" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn2">iOS – App Store</span><span class="badge">LIVE</span></span>
-            </a>
-            <button class="btn" onclick="openModal('Hajj & Umrah Guide')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label"><span id="androidBtn2">Android – Request Beta Access</span></span>
-            </button>
-            <a class="btn" href="https://play.google.com/apps/internaltest/4701234619866645444" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label" id="androidOpen2">Android – Open Beta Link</span>
-            </a>
-            <div class="tiny-note" id="linkNote2">Note: The link will open only after your Google account email is added to the testers list.</div>
+    <!-- Secondary Apps -->
+    <section class="secondary">
+      <div class="secondary-header">
+        <h3 id="otherAppsTitle">Also Available for Testing</h3>
+        <p id="otherAppsDesc">Try our other Islamic apps</p>
+      </div>
+      <div class="secondary-grid">
+        <article class="mini-card">
+          <div class="mini-glyph">
+            <img src="images/alifplay-icon.png" alt="Alif Play icon">
           </div>
-        </div>
-      </article>
+          <div class="mini-meta">
+            <h4 class="mini-title" id="app1Name">Alif Play</h4>
+            <p class="mini-desc" id="app1Desc">Interactive Arabic learning for kids.</p>
+            <div class="actions">
+              <a class="btn btn-mini" href="https://apps.apple.com/app/id6753190449" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
+                <span class="label"><span id="iosBtn1">iOS</span><span class="badge">LIVE</span></span>
+              </a>
+              <button class="btn btn-mini" onclick="openModal('Alif Play')">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+                <span id="androidBtn1">Android Beta</span>
+              </button>
+            </div>
+          </div>
+        </article>
 
-      <article class="card">
-        <div class="glyph">
-          <img src="images/icon-f.png" alt="Muslim One Pro icon">
-        </div>
-        <div class="meta">
-          <h3 class="title" id="app3Name">Muslim One Pro</h3>
-          <p class="desc" id="app3Desc">Your complete Islamic companion: prayer times, Quran, hadith, duas, azkar, and more.</p>
-          <div class="actions">
-            <a class="btn disabled" href="#" onclick="return false;">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
-              <span class="label"><span id="iosBtn3">iOS – Coming Soon</span><span class="badge">SOON</span></span>
-            </a>
-            <button class="btn" onclick="openModal('Muslim One Pro')">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label"><span id="androidBtn3">Android – Request Beta Access</span></span>
-            </button>
-            <a class="btn" href="https://play.google.com/apps/internaltest/4701619841603960253" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
-              <span class="label" id="androidOpen3">Android – Open Beta Link</span>
-            </a>
-            <div class="tiny-note" id="linkNote3">Note: The link will open only after your Google account email is added to the testers list.</div>
+        <article class="mini-card">
+          <div class="mini-glyph">
+            <img src="images/hajj-umrah-icon.png" alt="Hajj & Umrah icon">
           </div>
-        </div>
-      </article>
+          <div class="mini-meta">
+            <h4 class="mini-title" id="app2Name">Hajj & Umrah Guide</h4>
+            <p class="mini-desc" id="app2Desc">Step-by-step pilgrimage guide.</p>
+            <div class="actions">
+              <a class="btn btn-mini" href="https://apps.apple.com/app/id6753349690" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M16.365 12.407c-.03-3.027 2.471-4.495 2.58-4.562-1.405-2.06-3.587-2.341-4.358-2.368-1.864-.189-3.64 1.095-4.586 1.095-.947 0-2.405-1.07-3.96-1.04-2.03.03-3.91 1.186-4.954 3.015-2.114 3.662-.54 9.07 1.518 12.04 1.006 1.44 2.202 3.06 3.766 3.006 1.52-.06 2.088-.974 3.93-.974 1.84 0 2.35.974 3.96.944 1.64-.03 2.677-1.47 3.68-2.915 1.16-1.69 1.64-3.33 1.67-3.416-.037-.017-3.208-1.232-3.666-4.825Z"/><path class="gold-fill" d="M13.84 3.79c.817-.99 1.368-2.368 1.216-3.79-1.176.047-2.576.784-3.41 1.774-.75.867-1.41 2.295-1.24 3.64 1.31.104 2.615-.665 3.434-1.624Z"/></svg>
+                <span class="label"><span id="iosBtn2">iOS</span><span class="badge">LIVE</span></span>
+              </a>
+              <button class="btn btn-mini" onclick="openModal('Hajj & Umrah Guide')">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+                <span id="androidBtn2">Android Beta</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
+  <!-- Modal -->
   <div id="signupModal" class="modal">
     <div class="modal-card">
       <div class="modal-head">
@@ -271,7 +307,7 @@
         <div class="callout">
           <h4 id="helpTitle">How to find your Google Account email:</h4>
           <p id="helpIntro">We need the email linked to your Google account on your Android device to send you the testing invite.</p>
-          <ol id="helpList">
+          <ol>
             <li id="helpStep1">Open the <strong>Settings</strong> app on your phone</li>
             <li id="helpStep2">Tap on <strong>Google</strong> (or <strong>Accounts</strong>)</li>
             <li id="helpStep3">Your email address appears at the top</li>
@@ -293,16 +329,16 @@
             <label id="labelApps">Which apps do you want to test?</label>
             <div class="checks">
               <div class="check">
-                <input type="checkbox" id="checkAlif" value="Alif Play" checked />
+                <input type="checkbox" id="checkMuslim" value="Muslim One Pro" checked />
+                <label for="checkMuslim" id="labelMuslim">Muslim One Pro</label>
+              </div>
+              <div class="check">
+                <input type="checkbox" id="checkAlif" value="Alif Play" />
                 <label for="checkAlif" id="labelAlif">Alif Play</label>
               </div>
               <div class="check">
                 <input type="checkbox" id="checkHajj" value="Hajj & Umrah Guide" />
                 <label for="checkHajj" id="labelHajj">Hajj & Umrah Guide</label>
-              </div>
-              <div class="check">
-                <input type="checkbox" id="checkMuslim" value="Muslim One Pro" />
-                <label for="checkMuslim" id="labelMuslim">Muslim One Pro</label>
               </div>
             </div>
           </div>
@@ -319,66 +355,76 @@
     const tr = {
       en:{
         tagline:'Innovative, educational, family-oriented apps',
-        app1Name:'Alif Play',
-        app2Name:'Hajj & Umrah Guide',
+        newBadge:'NEW',
         app3Name:'Muslim One Pro',
-        app1Desc:'Interactive Arabic learning activities for kids and families.',
-        app2Desc:'Step-by-step rituals, duas, and checklists for a peaceful journey.',
         app3Desc:'Your complete Islamic companion: prayer times, Quran, hadith, duas, azkar, and more.',
-        iosBtn1:'iOS – App Store',
-        iosBtn2:'iOS – App Store',
         iosBtn3:'iOS – Coming Soon',
-        androidBtn1:'Android – Request Beta Access',
-        androidBtn2:'Android – Request Beta Access',
         androidBtn3:'Android – Request Beta Access',
-        androidOpen1:'Android – Open Beta Link',
-        androidOpen2:'Android – Open Beta Link',
         androidOpen3:'Android – Open Beta Link',
-        note:'Note: The link will open only after your Google account email is added to the testers list.',
-        modalTitle:'Android Beta Testing', modalSubtitle:'Join our testing program',
+        linkNote3:'Note: The link will open only after your Google account email is added to the testers list.',
+        otherAppsTitle:'Also Available for Testing',
+        otherAppsDesc:'Try our other Islamic apps',
+        app1Name:'Alif Play',
+        app1Desc:'Interactive Arabic learning for kids.',
+        app2Name:'Hajj & Umrah Guide',
+        app2Desc:'Step-by-step pilgrimage guide.',
+        iosBtn1:'iOS',
+        iosBtn2:'iOS',
+        androidBtn1:'Android Beta',
+        androidBtn2:'Android Beta',
+        modalTitle:'Android Beta Testing',
+        modalSubtitle:'Join our testing program',
         helpTitle:'How to find your Google Account email:',
         helpIntro:'We need the email linked to your Google account on your Android device to send you the testing invite.',
         step1:'Open the <strong>Settings</strong> app on your phone',
         step2:'Tap on <strong>Google</strong> (or <strong>Accounts</strong>)',
         step3:'Your email address appears at the top',
         step4:'Copy that email and enter it below',
-        labelName:'Your Name', labelEmail:'Google Account Email',
+        labelName:'Your Name',
+        labelEmail:'Google Account Email',
         emailHint:'This is the email you use for Google Play Store',
         labelApps:'Which apps do you want to test?',
-        labelAlif:'Alif Play', labelHajj:'Hajj & Umrah Guide', labelMuslim:'Muslim One Pro',
+        labelMuslim:'Muslim One Pro',
+        labelAlif:'Alif Play',
+        labelHajj:'Hajj & Umrah Guide',
         submitBtn:'Sign Up for Beta Testing',
         success:'✅ Success! Check your email for the Google Play invite.',
         error:'❌ Something went wrong. Please try again.'
       },
       ar:{
         tagline:'تطبيقات مبتكرة تعليمية موجهة للعائلة',
-        app1Name:'ألف بلاي',
-        app2Name:'دليل الحج والعمرة',
+        newBadge:'جديد',
         app3Name:'مسلم ون برو',
-        app1Desc:'أنشطة تفاعلية لتعلّم العربية للأطفال والعائلة.',
-        app2Desc:'مناسك خطوة بخطوة، أدعية، وقوائم تساعدك على رحلة مطمئنة.',
         app3Desc:'رفيقك الإسلامي المتكامل: مواقيت الصلاة، القرآن، الأحاديث، الأدعية، الأذكار، وأكثر.',
-        iosBtn1:'iOS – متجر التطبيقات',
-        iosBtn2:'iOS – متجر التطبيقات',
         iosBtn3:'iOS – قريبًا',
-        androidBtn1:'Android – طلب الانضمام للتجربة',
-        androidBtn2:'Android – طلب الانضمام للتجربة',
         androidBtn3:'Android – طلب الانضمام للتجربة',
-        androidOpen1:'Android – رابط النسخة التجريبية',
-        androidOpen2:'Android – رابط النسخة التجريبية',
         androidOpen3:'Android – رابط النسخة التجريبية',
-        note:'ملاحظة: يعمل الرابط فقط بعد إضافة بريدك الإلكتروني في Google إلى قائمة المختبرين.',
-        modalTitle:'الاختبار التجريبي لأندرويد', modalSubtitle:'انضم إلى برنامج الاختبار',
+        linkNote3:'ملاحظة: يعمل الرابط فقط بعد إضافة بريدك الإلكتروني في Google إلى قائمة المختبرين.',
+        otherAppsTitle:'متاح أيضًا للاختبار',
+        otherAppsDesc:'جرّب تطبيقاتنا الإسلامية الأخرى',
+        app1Name:'أليف بلاي',
+        app1Desc:'تعلّم العربية التفاعلي للأطفال.',
+        app2Name:'دليل الحج والعمرة',
+        app2Desc:'دليل الحج والعمرة خطوة بخطوة.',
+        iosBtn1:'iOS',
+        iosBtn2:'iOS',
+        androidBtn1:'Android نسخة تجريبية',
+        androidBtn2:'Android نسخة تجريبية',
+        modalTitle:'الاختبار التجريبي لأندرويد',
+        modalSubtitle:'انضم إلى برنامج الاختبار',
         helpTitle:'كيفية العثور على بريد حساب Google:',
         helpIntro:'نحتاج إلى البريد المرتبط بحساب Google على جهازك لإرسال دعوة الاختبار.',
         step1:'افتح تطبيق <strong>الإعدادات</strong> على هاتفك',
         step2:'اضغط على <strong>Google</strong> (أو <strong>الحسابات</strong>)',
         step3:'سيظهر عنوان بريدك الإلكتروني في الأعلى',
         step4:'انسخ هذا البريد وأدخله أدناه',
-        labelName:'اسمك', labelEmail:'بريد حساب Google',
+        labelName:'اسمك',
+        labelEmail:'بريد حساب Google',
         emailHint:'هذا هو البريد الذي تستخدمه لمتجر Google Play',
         labelApps:'ما التطبيقات التي تريد اختبارها؟',
-        labelAlif:'أليف بلاي', labelHajj:'دليل الحج والعمرة', labelMuslim:'مسلم ون برو',
+        labelMuslim:'مسلم ون برو',
+        labelAlif:'أليف بلاي',
+        labelHajj:'دليل الحج والعمرة',
         submitBtn:'التسجيل للاختبار التجريبي',
         success:'✅ تم بنجاح! تحقق من بريدك للحصول على دعوة Google Play.',
         error:'❌ حدث خطأ. يرجى المحاولة مرة أخرى.'
@@ -397,24 +443,23 @@
     function applyText(){
       const x = tr[currentLang];
       document.getElementById('tagline').textContent = x.tagline;
-      document.getElementById('app1Name').textContent = x.app1Name;
-      document.getElementById('app2Name').textContent = x.app2Name;
+      document.getElementById('newBadge').textContent = x.newBadge;
       document.getElementById('app3Name').textContent = x.app3Name;
-      document.getElementById('app1Desc').textContent = x.app1Desc;
-      document.getElementById('app2Desc').textContent = x.app2Desc;
       document.getElementById('app3Desc').textContent = x.app3Desc;
+      document.getElementById('iosBtn3').textContent = x.iosBtn3;
+      document.getElementById('androidBtn3').textContent = x.androidBtn3;
+      document.getElementById('androidOpen3').textContent = x.androidOpen3;
+      document.getElementById('linkNote3').textContent = x.linkNote3;
+      document.getElementById('otherAppsTitle').textContent = x.otherAppsTitle;
+      document.getElementById('otherAppsDesc').textContent = x.otherAppsDesc;
+      document.getElementById('app1Name').textContent = x.app1Name;
+      document.getElementById('app1Desc').textContent = x.app1Desc;
+      document.getElementById('app2Name').textContent = x.app2Name;
+      document.getElementById('app2Desc').textContent = x.app2Desc;
       document.getElementById('iosBtn1').textContent = x.iosBtn1;
       document.getElementById('iosBtn2').textContent = x.iosBtn2;
-      document.getElementById('iosBtn3').textContent = x.iosBtn3;
       document.getElementById('androidBtn1').textContent = x.androidBtn1;
       document.getElementById('androidBtn2').textContent = x.androidBtn2;
-      document.getElementById('androidBtn3').textContent = x.androidBtn3;
-      document.getElementById('androidOpen1').textContent = x.androidOpen1;
-      document.getElementById('androidOpen2').textContent = x.androidOpen2;
-      document.getElementById('androidOpen3').textContent = x.androidOpen3;
-      document.getElementById('linkNote1').textContent = x.note;
-      document.getElementById('linkNote2').textContent = x.note;
-      document.getElementById('linkNote3').textContent = x.note;
       document.getElementById('modalTitle').textContent = x.modalTitle;
       document.getElementById('modalSubtitle').textContent = x.modalSubtitle;
       document.getElementById('helpTitle').textContent = x.helpTitle;
@@ -427,9 +472,9 @@
       document.getElementById('labelEmail').textContent = x.labelEmail;
       document.getElementById('emailHint').textContent = x.emailHint;
       document.getElementById('labelApps').textContent = x.labelApps;
+      document.getElementById('labelMuslim').textContent = x.labelMuslim;
       document.getElementById('labelAlif').textContent = x.labelAlif;
       document.getElementById('labelHajj').textContent = x.labelHajj;
-      document.getElementById('labelMuslim').textContent = x.labelMuslim;
       document.getElementById('submitBtn').textContent = x.submitBtn;
       document.getElementById('successText').textContent = x.success;
       document.getElementById('errorText').textContent = x.error;
@@ -438,9 +483,9 @@
     function openModal(appName){
       document.getElementById('signupModal').classList.add('active');
       document.body.style.overflow='hidden';
+      document.getElementById('checkMuslim').checked = (appName==='Muslim One Pro');
       document.getElementById('checkAlif').checked   = (appName==='Alif Play');
       document.getElementById('checkHajj').checked   = (appName==='Hajj & Umrah Guide');
-      document.getElementById('checkMuslim').checked = (appName==='Muslim One Pro');
     }
 
     function closeModal(){
@@ -462,9 +507,9 @@
       document.getElementById('errorMsg').style.display='none';
 
       const selected=[];
+      if(document.getElementById('checkMuslim').checked) selected.push('Muslim One Pro');
       if(document.getElementById('checkAlif').checked) selected.push('Alif Play');
       if(document.getElementById('checkHajj').checked) selected.push('Hajj & Umrah Guide');
-      if(document.getElementById('checkMuslim').checked) selected.push('Muslim One Pro');
 
       const payload={
         access_key:'2817a6cd-689c-4709-96c5-305137b2b841',

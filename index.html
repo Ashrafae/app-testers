@@ -13,14 +13,19 @@
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
+
+    /* ✅ FIX: DO NOT CENTER PAGE VERTICALLY */
     body{
       font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
       background:
         radial-gradient(1400px 900px at -10% -20%, rgba(212,175,55,.15), transparent 55%),
         radial-gradient(1200px 700px at 110% 10%, rgba(212,175,55,.10), transparent 60%),
         linear-gradient(135deg,var(--g600) 0%, var(--g900) 100%);
-      color:#fff; display:flex; align-items:center; justify-content:center;
-      padding:28px; overflow-y:auto; min-height:100vh;
+      color:#fff;
+      display:block;              /* ✅ was flex */
+      min-height:100vh;
+      padding:28px;
+      overflow-x:hidden;
     }
     [dir="rtl"] body{font-family:'Segoe UI','Geeza Pro',Arial,sans-serif}
 
@@ -44,7 +49,7 @@
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.00) 35%),
         radial-gradient(800px 300px at 50% -10%, rgba(212,175,55,.10), transparent 70%),
         linear-gradient(180deg,var(--g700) 0%, var(--g800) 80%);
-      margin:20px auto;
+      margin:18px auto;          /* ✅ centered horizontally only */
     }
 
     .lang{position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:20}
@@ -59,7 +64,7 @@
 
     .hero{padding:10px 0 10px; display:grid; place-items:center; text-align:center; position:relative; gap:12px}
 
-    /* ✅ BIG HEADER LOGO (uses images/logo_1.png) */
+    /* ✅ BIG HEADER LOGO */
     .logo-wrap{
       width:min(860px, 94vw);
       max-width:860px;
@@ -165,9 +170,6 @@
     .gold-fill{fill:var(--gold)}
     .tiny-note{font-size:.8rem;color:#f6e7b0;opacity:.9;margin-top:2px}
 
-    .btn.disabled{opacity:.65; cursor:not-allowed; filter:saturate(.75)}
-    .btn.disabled:hover{transform:none; box-shadow:none}
-
     .btn-mini{padding:10px 12px; font-size:.85rem}
     .btn-mini svg{width:16px; height:16px}
     .btn-mini .badge{font-size:.68rem; padding:2px 6px}
@@ -228,12 +230,12 @@
   </style>
 </head>
 <body class="sparkles">
-  <div class="lang">
-    <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
-    <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
-  </div>
-
   <main class="container">
+    <div class="lang">
+      <button class="active" id="btnEnglish" onclick="switchLanguage('en')">EN</button>
+      <button id="btnArabic" onclick="switchLanguage('ar')">AR</button>
+    </div>
+
     <header class="hero">
       <div class="logo-wrap">
         <img class="logo" src="images/logo_1.png" alt="AshCore Labs logo">
@@ -265,7 +267,7 @@
             <span class="label"><span id="androidBtn3">Android – Request Beta Access</span></span>
           </button>
           <a class="btn" href="https://play.google.com/apps/internaltest/4701619841603960253" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="gold-fill" d="M8.1 6.3 6.9 4.3a.6.6 0 1 1 .98-.66l1.3 2.08A6.5 6.5 0 0 1 12 4.8c.98 0 1.92.21 2.78.61l1.3-2.07a.6.6 0 0 1 1.02.64l-1.2 2a5.9 5.9 0 0 1 3.1 5.17V17.4a1.6 1.6 0 0 1-1.6 1.6h-.5v2a1 1 0 1 1-2 0v-2H8.1v2a1 1.0 0 1 1-2 0v-2h-.5a1.6 1.6 0 0 1-1.6-1.6V10c0-2.24 1.22-4.2 3.1-5.18ZM9 9.4a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Zm6 0a.9.9 0 1 0 0-1.8.9.9 0 0 0 0 1.8Z"/></svg>
             <span class="label" id="androidOpen3">Android – Open Beta Link</span>
           </a>
           <div class="tiny-note" id="linkNote3">Note: The link will open only after your Google account email is added to the testers list.</div>
@@ -322,7 +324,6 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer-links">
         <a href="https://ashrafae.github.io/muslimonepro-privacy/" target="_blank" rel="noopener" class="footer-link" id="privacyLink">Privacy Policy</a>

@@ -70,17 +70,17 @@
       max-width:980px;
       display:flex;
       align-items:center;
-      gap:18px;
-      padding:22px 24px;
+      gap:28px;
+      padding:32px 40px;
       border-radius:26px;
 
       background: linear-gradient(135deg,
-        var(--g800) 0%,
+        rgba(212,175,55,.12) 0%,
         var(--g700) 55%,
         var(--g650) 100%);
 
-      border:1px solid rgba(212,175,55,.30);
-      box-shadow:0 22px 55px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);
+      border:2px solid rgba(212,175,55,.50);
+      box-shadow:0 22px 55px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.1);
       position:relative;
       overflow:hidden;
     }
@@ -104,30 +104,32 @@
     }
 
     .logo-wrap{
-      width:96px; height:96px; border-radius:22px; overflow:hidden; display:grid; place-items:center;
-      border:1px solid rgba(212,175,55,.45);
-      box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
-      position:relative; background:rgba(212,175,55,.06); isolation:isolate;
-      flex:0 0 96px;
+      width:140px; height:140px; border-radius:24px; overflow:hidden; display:grid; place-items:center;
+      border:2px solid rgba(212,175,55,.6);
+      box-shadow:0 16px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.12);
+      position:relative; background:rgba(255,255,255,.95); isolation:isolate;
+      flex:0 0 140px;
     }
 
     /* ✅ FIX: use the correct image that exists in your repo: images/logo_1.png */
-    .logo{width:100%; height:100%; object-fit:contain; padding:10px}
+    .logo{width:100%; height:100%; object-fit:contain; padding:12px; display:block}
 
-    .hero-text{display:flex; flex-direction:column; gap:6px}
+    .hero-text{display:flex; flex-direction:column; gap:8px}
     .hero-text h1{
-      font-size:2.5rem;
-      letter-spacing:.03em;
+      font-size:3rem;
+      letter-spacing:.05em;
       font-weight:1000;
       color:var(--gold);
-      text-shadow:0 2px 8px rgba(0,0,0,.4);
+      text-shadow:0 3px 12px rgba(0,0,0,.5), 0 0 20px rgba(212,175,55,.3);
       line-height:1.1;
+      margin:0;
     }
     .hero-text p{
-      color:#e8f6ea;
-      opacity:.95;
-      font-size:1.1rem;
-      font-weight:500;
+      color:#fff;
+      opacity:1;
+      font-size:1.2rem;
+      font-weight:600;
+      text-shadow:0 2px 6px rgba(0,0,0,.4);
     }
 
     [dir="rtl"] .hero-tile{flex-direction:row-reverse}
